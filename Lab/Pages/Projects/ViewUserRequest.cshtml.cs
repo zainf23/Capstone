@@ -33,7 +33,7 @@ namespace Lab.Pages.Projects
                 MyRequests.firstName = requestFinder["firstName"].ToString();
                 MyRequests.secondName = requestFinder["secondName"].ToString();
                 MyRequests.email = requestFinder["email"].ToString();
-                MyRequests.jmuType = requestFinder["userType"].ToString();
+                MyRequests.jmuType = requestFinder["jmuType"].ToString();
                 MyRequests.userPitch = requestFinder["userPitch"].ToString();
 
 
