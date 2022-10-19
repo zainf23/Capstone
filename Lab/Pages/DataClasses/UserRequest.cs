@@ -22,12 +22,24 @@
         public string passphrase { get; set; }
         public string email { get; set; }
 
-        public string userType { get; set; }
+        public string jmuType { get; set; }
 
-        public string professionalCompany { get; set; }
+        public string interests { get; set; }
 
-        public string professionalEmail { get; set; }
+        public string experience { get; set; }
 
-        public string facultyAssociation { get; set; }
+        public string gradYear { get; set; }
+
+        public string major { get; set; }
+
+        public string minor { get; set; }
+
+        public string jobTitle { get; set; }
+
+        public string department { get; set; }
+
+        public string moreInfo { get; set; }
+
+
     }
 }
