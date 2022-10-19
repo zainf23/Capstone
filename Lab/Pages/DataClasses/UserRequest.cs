@@ -19,7 +19,6 @@
         public string secondName { get; set; }
         public string username { get; set; }
 
-        public string passphrase { get; set; }
         public string email { get; set; }
 
         public string jmuType { get; set; }
@@ -39,6 +38,7 @@
         public string department { get; set; }
 
         public string moreInfo { get; set; }
+
 
 
     }
