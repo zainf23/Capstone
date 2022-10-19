@@ -1,0 +1,31 @@
+﻿@page
+@model Lab.Pages.Login.HashedLoginModel
+@{
+}
+
+<form asp-page="HashedLogin">
+    <input asp-for="username" class="form-control" placeholder="Enter Username" />
+    <br />
+    <label>Enter Password:</label>
+    <input asp-for="passphrase" class="form-control" type="password" />
+    <br />
+    <input type="submit" class="btn btn-primary" />
+</form>
+<br />
+@{
+    if (HttpContext.Session.GetString("username") != null)
+    {
+        <p class="text-success">@ViewData["LoginMessage"]</p>
+    }
+    else
+    {
+        <p class="text-danger">@ViewData["LoginMessage"]</p>
+    }
+}
+
+@{
+    if (ViewData["ErrorMessage"] != null)
+    {
+        <p class="text-danger">@ViewData["ErrorMessage"].ToString()</p>
+    }
+}

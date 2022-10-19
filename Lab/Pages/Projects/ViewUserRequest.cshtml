@@ -1,0 +1,38 @@
+﻿@page
+@model Lab.Pages.Projects.ViewUserRequestModel
+@{
+}
+
+
+<h2 class="h2">Requests To Join Project Team:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th class="">Name:</th>
+            <th class="">email:</th>
+            <th class="">userType:</th>
+            <th class="">userPitch:</th>
+            <th class="">Accept:</th>
+            <th class="">Reject:</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+                <tr>
+
+                    <td>@Model.MyRequests.firstName @Model.MyRequests.secondName</td>
+                    <td>@Model.MyRequests.email</td>
+                    <td>@Model.MyRequests.userType</td>
+                    <td>@Model.MyRequests.userPitch</td>
+                    <td>
+                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestid="@Model.MyRequests.requestID">Accept</a>
+                    </td>
+                    <td>
+                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestid="@Model.MyRequests.requestID">Reject</a>
+                    </td>
+
+                </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,226 @@
+﻿@page
+@using System.Data.SqlClient
+@using Lab.Pages.DB
+@model Lab.Pages.Users.ViewProfilesModel
+@{
+    ViewData["Title"] = @Model.UserToView.firstName + "'s Profile";
+}
+
+@{
+    if (@Model.UserProfile.jmuType == "Student")
+    {
+
+
+
+                            <br />
+                            <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <img src="/Images/blankpic.png" alt="avatar"
+                                         class="rounded-circle img-fluid" style="width: 150px;">
+                                        <h5 class="my-3">@Model.UserProfile.firstName @Model.UserProfile.secondName</h5>
+                                        <p class="text-muted mb-1">@Model.UserProfile.jmuType</p>
+                                        <p class="text-muted mb-4">James Madison University @Model.UserProfile.gradYear</p>
+                                    </div>
+                        <a asp-page="EditUsers" class="btn btn-purple" asp-route-userid="@Model.UserProfile.userID">Edit Profile</a>
+                                </div>
+                                
+
+                                <div class="card mb-4 mb-lg-0">
+                                    <div class="card-body p-0">
+                        <h5 class="my-1 align-items-lg-center p-3">My Skills</h5>
+                            @{
+                            foreach (var prod in Model.SkillList)
+                                {
+                                    <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
+                                    <p class="mb-0">Skill: @prod.skill</p>
+                                    <p class="mb-0">Skill Level: @prod.skillLevel</p>
+                                        <a asp-page="EditUserSkills" class="btn btn-purple" asp-route-skill="@prod.skill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
+                                    </li>
+                                    </ul>
+                                }
+                            }
+
+                        
+                                    </div>
+                    <a class="btn btn-purple" asp-page="AddSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Skill</a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Full Name</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                        <p class="text-muted mb-0">@Model.UserProfile.firstName @Model.UserProfile.secondName</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Email</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                        <p class="text-muted mb-0">@Model.UserProfile.email</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Major</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">@Model.UserProfile.major</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Minor</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">@Model.UserProfile.minor</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                
+                                
+                                    <div class="col-md-14">
+                                        <div class="card mb-4 mb-md-0">
+                                            <div class="card-body">
+                                                <p class="mb-4">
+                                                    <h5 class="text-dark font-italic me-1">Interests</h5>
+                                                </p>
+                                                <hr>
+                                                <p>@Model.UserProfile.interests</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-14">
+                                        <div class="card mb-4 mb-md-0">
+                                            <div class="card-body">
+                                                <p class="mb-4">
+                                                    <h5 class="text-dark font-italic me-1">Experience</h5>
+                                                </p>
+                                                <hr>
+                                                <p>@Model.UserProfile.experience</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            </div>
+       
+
+      
+    }
+    else {
+
+        <br />
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="/Images/blankpic.png" alt="avatar"
+                         class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">@Model.UserProfile.firstName @Model.UserProfile.secondName</h5>
+                        <p class="text-muted mb-1">@Model.UserProfile.jobTitle at James Madison University</p>
+                        <p class="text-muted mb-1">@Model.UserProfile.department Department</p>
+                    </div>
+                    <a asp-page="EditUsers" class="btn btn-purple" asp-route-userid="@Model.UserProfile.userID">Edit Profile</a>
+                </div>
+
+
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                        <h5 class="my-1 align-items-lg-center p-3">My Skills</h5>
+                        @{
+                            foreach (var prod in Model.SkillList)
+                            {
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
+                                        <p class="mb-0">Skill: @prod.skill</p>
+                                        <p class="mb-0">Skill Level: @prod.skillLevel</p>
+                                        <a asp-page="EditUserSkills" class="btn btn-purple" asp-route-skill="@prod.skill">Edit</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+
+
+                    </div>
+                    <a class="btn btn-purple" asp-page="AddSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Skill</a>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Full Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">@Model.UserProfile.firstName @Model.UserProfile.secondName</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">@Model.UserProfile.email</p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+
+                <div class="col-md-14">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <p class="mb-4">
+                                <span class="text-dark font-italic me-1">Interests</span>
+                            </p>
+                            <hr>
+                            <p>@Model.UserProfile.interests</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-14">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <p class="mb-4">
+                                <span class="text-dark font-italic me-1">Experience</span>
+                            </p>
+                            <hr>
+                            <p>@Model.UserProfile.experience</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+   
+
+    }
+
+}
+
+
+
+
+
+

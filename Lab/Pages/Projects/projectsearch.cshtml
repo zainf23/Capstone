@@ -1,0 +1,35 @@
+﻿@page
+@model Lab.Pages.Projects.projectsearchModel
+@{
+}
+
+<h2 class="h2">Projects:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th class="">Project Name:</th>
+            <th class="">Project Owner:</th>
+            <th class="">Project Description:</th>
+            <th class="">View Project:</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var prod in Model.ProjectSearchList)
+            {
+                        <tr>
+
+                            <td>@prod.projectName</td>
+                            <td>@prod.projectOwner</td>
+                            <td>@prod.projectDescription</td>
+                            <td>
+                                <a asp-page="ViewProjects" class="btn btn-primary" asp-route-projectid="@prod.projectID">View Project</a>
+                            </td>
+
+                        </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+﻿@page
+@model Lab.Pages.Projects.RequestJoinModel
+@{
+}
+
+<form asp-page="RequestJoin">
+    <input type="hidden" asp-for="@Model.userID" placeholder="userID" />
+    <input type="hidden" asp-for="@Model.projectID" placeholder="projectID" />
+    <input type="hidden" asp-for="@Model.teamID" placeholder="teamID" />
+    <p>Write about why you would be a great addition to the team!</p>
+    <input type="text" asp-for="@Model.userPitch" paceholder="teamID" />
+    <br />
+    <button type="submit">Request -> </button>
+    <a asp-page="Index">Cancel</a>
+
+</form>

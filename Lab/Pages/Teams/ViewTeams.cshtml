@@ -1,0 +1,89 @@
+﻿@page
+@using System.Data.SqlClient
+@using Lab.Pages.DB
+@model Lab.Pages.Teams.ViewTeamsModel
+@{
+    ViewData["Title"] = @Model.ProjectTeam.teamName + "'s Profile";
+}
+
+
+<h2 class="h2">Team Info:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th class="">Team Name:</th>
+            <th class="">Team Description:</th>
+            <th class="">Team Email Address:</th>
+            <th class="">Join Team:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.ProjectTeam.teamName</td>
+            <td>@Model.ProjectTeam.teamDescription</td>
+            <td>@Model.ProjectTeam.teamDescription</td>
+            <td> 
+                <a asp-page="JoinTeams" class="btn btn-primary" asp-route-teamid="@Model.ProjectTeam.teamID">Join Team</a>
+            </td>
+
+        </tr>
+    </tbody>
+
+</table>
+
+
+<h2 class="h2">Project Info:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th class="">Project Name:</th>
+            <th class="">Project Owner:</th>
+            <th class="">Project Owner Email:</th>
+            <th class="">Project Mission Statement:</th>
+            <th class="">Project Description:</th>
+            <th class="">Project Start Date:</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var prod in Model.TeamList)
+            {
+                <tr>
+                <td>@prod.projectName</td>
+                <td>@prod.projectOwner</td>
+                <td>@prod.projectOwnerEmail</td>
+                <td>@prod.projectMissionStatement</td>
+                <td>@prod.projectDescription</td>
+                <td>@prod.projectDate</td>
+
+            </tr>
+            }
+        }
+    </tbody>
+
+</table>
+
+<h2 class="h2">Team Members:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th class="">First Name:</th>
+            <th class="">last Name:</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var prod in Model.UserList)
+            {
+                <tr>
+                    <td>@prod.firstName</td>
+                    <td>@prod.secondName</td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
+

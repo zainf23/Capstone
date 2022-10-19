@@ -1,0 +1,26 @@
+﻿@page
+@model Lab.Pages.Projects.AddProjectsModel
+@{
+}
+
+<form asp-page="AddProjects">
+    <input type="hidden" asp-for="NewProject.userID" placeholder="userID" />
+    <br />
+    <input type="text" asp-for="NewProject.projectName" placeholder="Project Name" />
+    <br />
+    <input type="text" asp-for="NewProject.projectOwner" placeholder="Project Owner" />
+    <br />
+    <input type="text" asp-for="NewProject.projectOwnerEmail" placeholder="Project Owner Email" />
+    <br />
+    <input type="text" asp-for="NewProject.projectMissionStatement" placeholder="Project Mission Statement" />
+    <br />
+    <input type="text" asp-for="NewProject.projectDescription" placeholder="Project Description" />
+    <br />   
+    <input type="date" asp-for="NewProject.projectDate" placeholder="Project Date" />
+    <br />
+    <button type="submit">Create Project -> </button>
+    <a asp-page="Index">Cancel</a>
+    <button class="btn btn-outline-primary" asp-page="AddProjects" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <button class="btn btn-outline-primary" asp-page="AddProjects" asp-page-handler="ClearHandler" formnovalidate>Clear</button>
+
+</form>

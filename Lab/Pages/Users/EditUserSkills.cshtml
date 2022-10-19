@@ -1,0 +1,20 @@
+﻿@page
+@using System.Data.SqlClient
+@using Lab.Pages.DB
+@model Lab.Pages.Users.EditUserSkillsModel
+@{
+}
+
+<p>@ViewData["test"]</p>
+
+<form asp-page="Edit">
+    <input type="hidden" asp-for="@Model.UserSkillToUpdate.userID"/>
+   @* <label asp-for="@Model.UserSkillToUpdate.skill">Skill</label>*@
+    <input type="hidden" asp-for="@Model.UserSkillToUpdate.skill" />
+    @*<br />*@
+    <label asp-for="@Model.UserSkillToUpdate.skillLevel">Skill Level</label>
+    <input type="text" asp-for="@Model.UserSkillToUpdate.skillLevel" />
+    <br />
+    <input type="submit" class="btn btn-success" asp-route-userid="@HttpContext.Session.GetInt32("userid")" asp-page="ViewProfile" />
+    <a asp-page="ViewProfiles" class="btn btn-secondary" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+</form>

@@ -1,0 +1,36 @@
+﻿@page
+@using System.Data.SqlClient
+@using Lab.Pages.DB
+@model Lab.Pages.Search.ViewSkillsModel
+@{
+    ViewData["Title"] = "Skills";
+}
+
+<h2 class="h2">Skill Search Results:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th class="">First Name:</th>
+            <th class="">Second Name:</th>
+            <th class="">Skill:</th>
+            <th class="">Skill Level:</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var prod in Model.UserSkillList)
+            {
+                <tr>
+                    <td>@prod.firstName</td>
+                    <td>@prod.secondName</td>
+                    <td>@HttpContext.Session.GetString("skill")</td>
+                    <td>@prod.skillLevel</td>
+                      
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

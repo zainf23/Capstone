@@ -1,0 +1,25 @@
+﻿@page
+@model Lab.Pages.Login.LandingPageModel
+@{
+}
+
+@{
+    // if username is not null, then display login message
+    if (HttpContext.Session.GetString("username") != null)
+    {
+        <p>User @HttpContext.Session.GetString("username") is logged in!</p>
+        <a class="btn btn-outline-success" asp-page="HashedLogin" asp-route-logout="true">Logout</a>
+        <a class="btn btn-outline-success" asp-page="/Users/AddUsers">Complete Profile</a>
+    }
+
+
+    //if (logout != null)
+    //{
+    //    <p class="text-success">@ViewData["ErrorMessage"]</p>
+    //}
+    //else
+    //{
+    //    <p class="text-danger">@ViewData["LoginMessage"]</p>
+    //}
+
+}

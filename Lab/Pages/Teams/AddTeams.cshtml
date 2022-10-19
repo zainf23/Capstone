@@ -1,0 +1,23 @@
+﻿@page
+@model Lab.Pages.Teams.AddTeamsModel
+@{
+    ViewData["Title"] = "Add Teams";
+}
+
+<form asp-page="AddTeams">
+    <input type="text" asp-for="ProjectTeam.teamName" placeholder="Team Name" />
+    <br />
+    <input type="text" asp-for="ProjectTeam.teamDescription" placeholder="Team Description" />
+    <br />
+    <input type="text" asp-for="ProjectTeam.teamEmailAddress" placeholder="Team Email" />
+    <br />
+    <select asp-for="projectID" asp-items="Model.Projects">
+        <option value="">Choose a Project</option>
+    </select>
+    <br />
+    <button type="submit">Create Team -> </button>
+    <a asp-page="Index">Cancel</a>
+    <button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="ClearHandler" formnovalidate>Clear</button>
+
+</form>

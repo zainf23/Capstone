@@ -1,0 +1,99 @@
+﻿@page
+@model Lab.Pages.Users.EditUsersModel
+@{
+    ViewData["Title"] = "Edit Users";
+}
+
+@{
+    if (Model.UserToUpdate.jmuType == "Student")
+    {
+
+        <form asp-page="Edit">
+            <input type="hidden" asp-for="@Model.UserToUpdate.userID" />
+        <label asp-for="@Model.UserToUpdate.firstName">First Name</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.firstName" />
+        <br />
+        <label asp-for="@Model.UserToUpdate.secondName">Second Name</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.secondName" />
+        <br />
+        <label asp-for="@Model.UserToUpdate.email">Email</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.email" />
+        <br />
+        <label asp-for="@Model.UserToUpdate.jmuType">User Type</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.jmuType" />
+        <br />
+        <div class="form-group">
+            <label asp-for="@Model.UserToUpdate.interests">Write about your Interests!</label>
+            <textarea class="form-control" asp-for="@Model.UserToUpdate.interests" rows="3"></textarea>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="@Model.UserToUpdate.experience">Tell us about your Experience!</label>
+            <textarea class="form-control" asp-for="@Model.UserToUpdate.experience" rows="3"></textarea>
+        </div>
+        <br />
+        <label asp-for="@Model.UserToUpdate.gradYear">Graduation Year</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.gradYear" />
+        <br />
+        <label asp-for="@Model.UserToUpdate.major">Major</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.major" />
+        <br />
+        <label asp-for="@Model.UserToUpdate.minor">Minor</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.minor" />
+        <br />
+        <label asp-for="@Model.UserToUpdate.moreInfo">More Info (Link)</label>
+        <br />
+        <input type="text" asp-for="@Model.UserToUpdate.moreInfo" />
+        <br />
+        <input type="submit" class="btn btn-success" asp-page="EditUsers" />
+        <a asp-page="ViewProfiles" class="btn btn-secondary">Cancel</a>
+    </form>
+    }
+    else {
+        <form asp-page="Edit">
+            <input type="hidden" asp-for="@Model.UserToUpdate.userID" />
+            <label asp-for="@Model.UserToUpdate.firstName">First Name</label>
+            <input type="text" asp-for="@Model.UserToUpdate.firstName" />
+            <br />
+            <label asp-for="@Model.UserToUpdate.secondName">Second Name</label>
+            <input type="text" asp-for="@Model.UserToUpdate.secondName" />
+            <br />
+            <label asp-for="@Model.UserToUpdate.email">Email</label>
+            <input type="text" asp-for="@Model.UserToUpdate.email" />
+            <br />
+            <label asp-for="@Model.UserToUpdate.jmuType">User Type</label>
+            <input type="text" asp-for="@Model.UserToUpdate.jmuType" />
+            <br />
+            <div class="form-group">
+                <label asp-for="@Model.UserToUpdate.interests">Write about your Interests!</label>
+                <textarea class="form-control" asp-for="@Model.UserToUpdate.interests" rows="3"></textarea>
+            </div>
+            <br />
+            <div class="form-group">
+            <label asp-for="@Model.UserToUpdate.experience">Tell us about your Experience!</label>
+            <textarea class="form-control" asp-for="@Model.UserToUpdate.experience" rows="3"></textarea>
+            </div>
+            <br />
+            <label asp-for="@Model.UserToUpdate.jobTitle">Job Title</label>
+            <input type="text" asp-for="@Model.UserToUpdate.jobTitle" />
+            <br />
+            <label asp-for="@Model.UserToUpdate.department">Department</label>
+            <input type="text" asp-for="@Model.UserToUpdate.department" />
+            <br />
+            <label asp-for="@Model.UserToUpdate.moreInfo">More Info</label>
+            <input type="text" asp-for="@Model.UserToUpdate.moreInfo" />
+            <br />
+            <input type="submit" class="btn btn-success" asp-page="EditUsers" />
+            <a asp-page="ViewProfiles" class="btn btn-secondary">Cancel</a>
+        </form>
+
+    }
+
+}

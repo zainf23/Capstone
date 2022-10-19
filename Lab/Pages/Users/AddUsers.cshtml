@@ -1,0 +1,43 @@
+﻿@page
+@model EmptyCoreAppTest.Pages.Users.AddUsersModel
+@{
+    ViewData["Title"] = "Add Users";
+}
+
+<form asp-page="AddUsers">
+    <input type="text" asp-for="NewUser.firstName" placeholder="First Name" />
+    <br />
+    <input type="text" asp-for="NewUser.secondName" placeholder="Last Name" />
+    <br />
+    <input type="hidden" asp-for="username" placeholder="Username" />
+    <br />
+    @*<input type="text" asp-for="NewUser.passphrase" placeholder="passphrase" />
+    <br />*@
+    <input type="text" asp-for="NewUser.email" placeholder="Email" />
+    <br />
+    <input type="text" asp-for="NewUser.jmuType" placeholder="User Type" />
+    <br />
+    <input type="text" asp-for="NewUser.interests" placeholder="Interests" />
+    <br />
+    <input type="text" asp-for="NewUser.experience" placeholder="Experience" />
+    <br />
+    <input type="text" asp-for="NewUser.gradYear" placeholder="Grad Year" />
+    <br />
+    <input type="text" asp-for="NewUser.major" placeholder="Major" />
+    <br />
+    <input type="text" asp-for="NewUser.minor" placeholder="Minor" />
+    <br />
+    <input type="text" asp-for="NewUser.jobTitle" placeholder="Job Title" />
+    <br />
+    <input type="text" asp-for="NewUser.department" placeholder="Department" />
+    <br />
+    <input type="text" asp-for="NewUser.moreInfo" placeholder="More Info (Link)" />
+    <br />
+    <button type="submit">Create User -> </button>
+    <a asp-page="Index">Cancel</a>
+
+  @*  <button class="btn btn-outline-primary" asp-page="AddUsers" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <button class="btn btn-outline-primary" asp-page="AddUsers" asp-page-handler="ClearHandler" formnovalidate>Clear</button>*@
+
+
+</form>

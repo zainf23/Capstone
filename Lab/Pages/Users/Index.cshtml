@@ -1,0 +1,38 @@
+﻿@page
+@model Lab.Pages.Users.IndexModel
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2 class="h2">My User</h2>
+<table class="table table-bordered table-striped table-hover table-responsive">
+    <thead>
+        <tr>
+           @* <th>UserID</th>*@
+            <th>First Name</th>
+            <th>LastName</th>
+            <th>View Profile</th>
+            <th>Edit Profile</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var prod in Model.UserList)
+            {
+                <tr>
+                    <td>@prod.firstName</td>
+                    <td>@prod.secondName</td>
+                    <td>
+                        <a asp-page="ViewProfiles" class="btn btn-primary" asp-route-userid="@prod.userID">View Profile</a>
+                    </td>
+                    <td>
+                        <a asp-page="EditUsers" class="btn btn-primary" asp-route-userid="@prod.userID">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
+<br />
+@*<a class="btn btn-primary" asp-page="AddUsers">Add a new User -></a>*@

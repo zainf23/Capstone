@@ -1,0 +1,46 @@
+﻿@page
+@model Lab.Pages.Projects.MyProjectsModel
+@{
+}
+
+<h2 class="h2">My Projects:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-white">
+        <tr>
+            @* <th class="">Project ID:</th>*@
+            <th class="">Project Name:</th>
+            <th class="">Project Owner:</th>
+            <th class="">Project Owner Email:</th>
+            <th class="">Project Mission Statement</th>
+            <th class="">Project Description:</th>
+            <th class="">Project Date:</th>
+            <th class="">Edit:</th>
+            <th class="">View Requests:</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var prod in Model.MyProjectList)
+            {
+                    <tr>
+
+                        <td>@prod.projectName</td>
+                        <td>@prod.projectOwner</td>
+                        <td>@prod.projectOwnerEmail</td>
+                        <td>@prod.projectMissionStatement</td>
+                        <td>@prod.projectDescription</td>
+                        <td>@prod.projectDate</td>
+                        <td>
+                            <a asp-page="editProjects" class="btn btn-primary" asp-route-projectid="@prod.projectID">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-page="ViewRequests" class="btn btn-primary" asp-route-projectid="@prod.projectID">View Requests</a>
+                        </td>
+
+                    </tr>
+            }
+        }
+    </tbody>
+</table>

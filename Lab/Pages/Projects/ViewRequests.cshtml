@@ -1,0 +1,31 @@
+﻿@page
+@model Lab.Pages.Projects.ViewRequestsModel
+@{
+}
+
+<h2 class="h2">Requests To Join Project Team:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th class="">Name:</th>
+            <th class="">View Request:</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var prod in Model.MyRequestsList)
+            {
+                <tr>
+
+                    <td>@prod.firstName @prod.secondName</td>
+                    <td>
+                        <a asp-page="ViewUserRequest" class="btn btn-primary" asp-route-userid="@prod.userID">View Request</a>
+                    </td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,15 @@
+﻿@page
+@model Lab.Pages.Search.IndexModel
+@{
+    ViewData["Title"] = "Search Projects";
+}
+
+<form asp-action="Index">
+    <p>Choose a Skill to Search</p>
+    <select asp-for="Skill" asp-items="Model.SkillNames">
+        <option value="">Choose a Skill</option>
+    </select>
+    <input type="submit" class="btn btn-primary" />
+</form>
+
+

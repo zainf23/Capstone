@@ -1,0 +1,19 @@
+﻿@page
+@model EmptyCoreAppTest.Pages.Users.AddSkillsModel
+@{
+}
+
+
+<form asp-page="AddSkills">
+    <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <br />
+    <input type="text" asp-for="skill" placeholder="Skill" />
+    <br />
+    <input type="text" asp-for="skillLevel" placeholder="Skill Level" />
+    <br />
+    <button type="submit">Add Skill -> </button>
+    <a asp-page="ViewProfiles" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+   @* <button class="btn btn-outline-primary" asp-page="AddSkills" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <button class="btn btn-outline-primary" asp-page="AddSkills" asp-page-handler="ClearHandler" formnovalidate>Clear</button>*@
+
+</form>

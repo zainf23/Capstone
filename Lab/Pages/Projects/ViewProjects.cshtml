@@ -1,0 +1,72 @@
+﻿@page
+@using System.Data.SqlClient
+@using Lab.Pages.DB
+@model Lab.Pages.Projects.ViewProjectsModel
+@{
+    ViewData["Title"] = @Model.ProjectToView.projectName;
+}
+
+<h2 class="h2">Project Info:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+           @* <th class="">Project ID:</th>*@
+            <th class="">Project Name:</th>
+            <th class="">Project Owner:</th>
+            <th class="">Project Owner Email:</th>
+            <th class="">Project Mission Statement</th>
+            <th class="">Project Description:</th>
+            <th class="">Project Date:</th>
+            <th class="">Edit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+                foreach (var prod in Model.ProjectInfoList )
+                {
+                        <tr>
+                            
+                            <td>@prod.projectName</td>
+                            <td>@prod.projectOwner</td>
+                            <td>@prod.projectOwnerEmail</td>
+                            <td>@prod.projectMissionStatement</td>
+                            <td>@prod.projectDescription</td>
+                            <td>@prod.projectDate</td>    
+                            <td>
+                                <a asp-page="editProjects" class="btn btn-primary" asp-route-projectid="@prod.projectID">Edit</a>
+                            </td>
+
+                        </tr>
+                }
+        }
+        </tbody>
+    </table>
+
+<h2 class="h2">Team Info:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover">
+    <thead class="table-dark">
+        <tr>
+            @* <th class="">Project ID:</th>*@
+            <th class="">Team Name:</th>
+            <th class="">Team Description:</th>
+            <th class="">Team Email Address:</th>
+            <th class="">Request To Join</th>
+
+        </tr>
+    </thead>
+    <tbody>
+                <tr>
+
+                    <td>@Model.ProjectToView.teamName</td>
+                    <td>@Model.ProjectToView.teamDescription</td>
+                    <td>@Model.ProjectToView.teamEmailAddress</td>
+                    <td>
+                        <a asp-page="RequestJoin" class="btn btn-primary" asp-route-teamid="@Model.ProjectToView.teamID">Request To Join</a>
+                    </td>
+
+                </tr>
+    </tbody>
+</table>
+
