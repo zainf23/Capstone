@@ -34,7 +34,7 @@
 
 
 <h2 class="h2">Team List</h2>
-<table class="table table-bordered table-striped table-hover table-responsive">
+<table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
     <thead>
         <tr>
             <th>Team Name</th>
@@ -54,10 +54,10 @@
                             <td>@prod.teamDescription</td>
                             <td>@prod.teamEmailAddress</td>
                             <td>
-                                <a asp-page="ViewTeams" class="btn btn-primary" asp-route-teamid="@prod.teamID">View Profile</a>
+                                <a asp-page="ViewTeams" class="btn btn-purple" asp-route-teamid="@prod.teamID">View Profile</a>
                             </td>                  
                             <td>
-                            <a asp-page="EditTeams" class="btn btn-primary" asp-route-teamid="@prod.teamID">Edit</a>
+                            <a asp-page="EditTeams" class="btn btn-purple" asp-route-teamid="@prod.teamID">Edit</a>
                             </td>
                         </tr>
             }
@@ -66,4 +66,4 @@
 
 </table>
 <br />
-<a class="btn btn-primary" asp-page="AddTeams">Add a new Team -></a>
+<a class="btn btn-purple" asp-page="AddTeams">Add a new Team -></a>

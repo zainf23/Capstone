@@ -26,6 +26,7 @@
         <br />
         <input type="text" asp-for="@Model.UserToUpdate.jmuType" />
         <br />
+        <br />
         <div class="form-group">
             <label asp-for="@Model.UserToUpdate.interests">Write about your Interests!</label>
             <textarea class="form-control" asp-for="@Model.UserToUpdate.interests" rows="3"></textarea>
@@ -52,7 +53,8 @@
         <br />
         <input type="text" asp-for="@Model.UserToUpdate.moreInfo" />
         <br />
-        <input type="submit" class="btn btn-success" asp-page="EditUsers" />
+        <br />
+        <input type="submit" class="btn btn-purple" asp-page="EditUsers" />
         <a asp-page="ViewProfiles" class="btn btn-secondary">Cancel</a>
     </form>
     }
@@ -60,16 +62,21 @@
         <form asp-page="Edit">
             <input type="hidden" asp-for="@Model.UserToUpdate.userID" />
             <label asp-for="@Model.UserToUpdate.firstName">First Name</label>
+            <br />
             <input type="text" asp-for="@Model.UserToUpdate.firstName" />
             <br />
             <label asp-for="@Model.UserToUpdate.secondName">Second Name</label>
+            <br />
             <input type="text" asp-for="@Model.UserToUpdate.secondName" />
             <br />
             <label asp-for="@Model.UserToUpdate.email">Email</label>
+            <br />
             <input type="text" asp-for="@Model.UserToUpdate.email" />
             <br />
             <label asp-for="@Model.UserToUpdate.jmuType">User Type</label>
+            <br />
             <input type="text" asp-for="@Model.UserToUpdate.jmuType" />
+            <br />
             <br />
             <div class="form-group">
                 <label asp-for="@Model.UserToUpdate.interests">Write about your Interests!</label>
@@ -82,15 +89,19 @@
             </div>
             <br />
             <label asp-for="@Model.UserToUpdate.jobTitle">Job Title</label>
+            <br />
             <input type="text" asp-for="@Model.UserToUpdate.jobTitle" />
             <br />
             <label asp-for="@Model.UserToUpdate.department">Department</label>
+            <br />
             <input type="text" asp-for="@Model.UserToUpdate.department" />
             <br />
             <label asp-for="@Model.UserToUpdate.moreInfo">More Info</label>
+            <br />
             <input type="text" asp-for="@Model.UserToUpdate.moreInfo" />
             <br />
-            <input type="submit" class="btn btn-success" asp-page="EditUsers" />
+            <br />
+            <input type="submit" class="btn btn-purple" asp-page="EditUsers" />
             <a asp-page="ViewProfiles" class="btn btn-secondary">Cancel</a>
         </form>
 

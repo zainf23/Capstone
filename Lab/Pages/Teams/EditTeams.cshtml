@@ -7,15 +7,19 @@
 <form asp-page="Edit">
     <input type="hidden" asp-for="@Model.TeamToUpdate.teamID" />
     <label asp-for="@Model.TeamToUpdate.teamName">Team Name</label>
+    <br />
     <input type="text" asp-for="@Model.TeamToUpdate.teamName" />
     <br />
     <label asp-for="@Model.TeamToUpdate.teamDescription">Team Description</label>
+    <br />
     <input type="text" asp-for="@Model.TeamToUpdate.teamDescription" />
     <br />
     <label asp-for="@Model.TeamToUpdate.teamEmailAddress">Email</label>
+    <br />
     <input type="text" asp-for="@Model.TeamToUpdate.teamEmailAddress" />
     <br />
-    <input type="submit" class="btn btn-success" asp-page="EditTeams" />
+    <br />
+    <input type="submit" class="btn btn-purple" asp-page="EditTeams" />
     <a asp-page="Index" class="btn btn-secondary">Cancel</a>
 </form>
 
