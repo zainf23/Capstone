@@ -20,10 +20,6 @@ namespace Lab.Pages.Projects
         [Required]
         public int ProjectID { get; set; }
 
-        [BindProperty]
-        public string SearchString { get; set; }
-
-
         public IndexModel()
         {
             NewProject = new Project();
@@ -66,6 +62,6 @@ namespace Lab.Pages.Projects
 
         }
 
-                      
+
     }
 }

@@ -3,22 +3,34 @@
 @{
 }
 
-<h2 class="h2">Projects</h2>
-<table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
-    <thead class="table-dark">
-        <tr>
-            <th class="">Project Name:</th>
-            <th class="">Project Owner:</th>
-            <th class="">Project Description:</th>
-            <th class="">View Project:</th>
+<br />
+<form asp-page="projectsearch">
+    <div class="input-group">
+        <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Project" aria-label="Search" aria-describedby="search-addon" />
+        <button type="submit" class="btn btn-purple">search</button>
+    </div>
+</form>
+<br />
 
-        </tr>
-    </thead>
-    <tbody>
+@{
+    if (Model.SearchString != null)
+    {
+        <h2 class="h2">Projects:</h2>
+        <table class="table table-bordered table-responsive table triped table-hover" style="background-color:#FFFFFF">
+            <thead class="table-dark">
+                <tr>
+                    <th class="">Project Name:</th>
+                    <th class="">Project Owner:</th>
+                    <th class="">Project Description:</th>
+                    <th class="">View Project:</th>
 
-        @{
-            foreach (var prod in Model.ProjectSearchList)
-            {
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    foreach (var prod in Model.ProjectSearchList)
+                    {
                         <tr>
 
                             <td>@prod.projectName</td>
@@ -29,7 +41,9 @@
                             </td>
 
                         </tr>
-            }
-        }
-    </tbody>
-</table>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+}
