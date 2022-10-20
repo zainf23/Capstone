@@ -49,7 +49,7 @@ namespace Lab.Pages.Users
         {
             DBClass.UpdateTheSkill(UserSkillToUpdate);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("ViewProfiles");
         }
     }
 }

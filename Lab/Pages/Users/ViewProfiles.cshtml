@@ -149,7 +149,7 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
                                         <p class="mb-0">Skill: @prod.skill</p>
                                         <p class="mb-0">Skill Level: @prod.skillLevel</p>
-                                        <a asp-page="EditUserSkills" class="btn btn-purple" asp-route-skill="@prod.skill">Edit</a>
+                                        <a asp-page="EditUserSkills" class="btn btn-purple" asp-route-skill="@prod.skill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
                                     </li>
                                 </ul>
                             }
