@@ -5,6 +5,7 @@
 }
 
 <form asp-page="AddTeams">
+    <br />
     <input type="text" asp-for="ProjectTeam.teamName" placeholder="Team Name" />
     <br />
     <input type="text" asp-for="ProjectTeam.teamDescription" placeholder="Team Description" />
@@ -15,9 +16,10 @@
         <option value="">Choose a Project</option>
     </select>
     <br />
+    <br />
     <button type="submit">Create Team -> </button>
     <a asp-page="Index">Cancel</a>
-    <button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
-    <button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="ClearHandler" formnovalidate>Clear</button>
+    @*<button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="ClearHandler" formnovalidate>Clear</button>*@
 
 </form>

@@ -7,7 +7,7 @@
 <form asp-page="projectsearch">
     <div class="input-group">
         <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Project" aria-label="Search" aria-describedby="search-addon" />
-        <button type="submit" class="btn btn-outline-primary">search</button>
+        <button type="submit" class="btn btn-purple">search</button>
     </div>
 </form>
 <br />
@@ -16,7 +16,7 @@
     if (Model.SearchString != null)
     {
         <h2 class="h2">Projects:</h2>
-        <table class="table table-bordered table-resposnive table triped table-hover">
+        <table class="table table-bordered table-responsive table triped table-hover" style="background-color:#FFFFFF">
             <thead class="table-dark">
                 <tr>
                     <th class="">Project Name:</th>
@@ -37,7 +37,7 @@
                             <td>@prod.projectOwner</td>
                             <td>@prod.projectDescription</td>
                             <td>
-                                <a asp-page="ViewProjects" class="btn btn-primary" asp-route-projectid="@prod.projectID">View Project</a>
+                                <a asp-page="ViewProjects" class="btn btn-purple" asp-route-projectid="@prod.projectID">View Project</a>
                             </td>
 
                         </tr>

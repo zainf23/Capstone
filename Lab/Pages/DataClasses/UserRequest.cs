@@ -39,5 +39,7 @@
 
         public string moreInfo { get; set; }
 
+
+
     }
 }

@@ -6,12 +6,11 @@
     ViewData["Title"] = "Skills";
 }
 
-<h2 class="h2">Skill Search Results:</h2>
-<table class="table table-bordered table-resposnive table triped table-hover">
+<h2 class="h2">Skill Search Results</h2>
+<table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
     <thead class="table-dark">
         <tr>
-            <th class="">First Name:</th>
-            <th class="">Second Name:</th>
+            <th class="">Name</th>
             <th class="">Skill:</th>
             <th class="">Skill Level:</th>
 
@@ -23,8 +22,7 @@
             foreach (var prod in Model.UserSkillList)
             {
                 <tr>
-                    <td>@prod.firstName</td>
-                    <td>@prod.secondName</td>
+                    <td>@prod.firstName @prod.secondName</td>
                     <td>@HttpContext.Session.GetString("skill")</td>
                     <td>@prod.skillLevel</td>
                       

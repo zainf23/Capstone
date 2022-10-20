@@ -4,18 +4,18 @@
 }
 
 <h2 class="h2">My Projects:</h2>
-<table class="table table-bordered table-resposnive table triped table-hover">
-    <thead class="table-white">
+<table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
+    <thead class="table-dark">
         <tr>
             @* <th class="">Project ID:</th>*@
-            <th class="">Project Name:</th>
-            <th class="">Project Owner:</th>
-            <th class="">Project Owner Email:</th>
-            <th class="">Project Mission Statement</th>
-            <th class="">Project Description:</th>
-            <th class="">Project Date:</th>
-            <th class="">Edit:</th>
-            <th class="">View Requests:</th>
+            <th class="">Project Name</th>
+            <th class="">Project Owner</th>
+            <th class="">Project Owner Email</th>
+            <th class="">Mission Statement</th>
+            <th class="">Description</th>
+            <th class="">Creation Date</th>
+            <th class="">Edit</th>
+            <th class="">View Requests</th>
 
         </tr>
     </thead>
@@ -33,10 +33,10 @@
                         <td>@prod.projectDescription</td>
                         <td>@prod.projectDate</td>
                         <td>
-                            <a asp-page="editProjects" class="btn btn-primary" asp-route-projectid="@prod.projectID">Edit</a>
+                            <a asp-page="editProjects" class="btn btn-purple" asp-route-projectid="@prod.projectID">Edit</a>
                         </td>
                         <td>
-                            <a asp-page="ViewRequests" class="btn btn-primary" asp-route-projectid="@prod.projectID">View Requests</a>
+                            <a asp-page="ViewRequests" class="btn btn-purple" asp-route-projectid="@prod.projectID">View Requests</a>
                         </td>
 
                     </tr>

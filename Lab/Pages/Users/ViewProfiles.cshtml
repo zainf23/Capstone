@@ -17,7 +17,7 @@
                             <div class="col-lg-4">
                                 <div class="card mb-4">
                                     <div class="card-body text-center">
-                                        <img src="/Images/blankpic.png" alt="avatar"
+                                        <img src="/Images/blankpic.png" alt="avatar" 
                                          class="rounded-circle img-fluid" style="width: 150px;">
                                         <h5 class="my-3">@Model.UserProfile.firstName @Model.UserProfile.secondName</h5>
                                         <p class="text-muted mb-1">@Model.UserProfile.jmuType</p>
@@ -30,6 +30,7 @@
                                 <div class="card mb-4 mb-lg-0">
                                     <div class="card-body p-0">
                         <h5 class="my-1 align-items-lg-center p-3">My Skills</h5>
+                        
                             @{
                             foreach (var prod in Model.SkillList)
                                 {
@@ -38,6 +39,7 @@
                                     <p class="mb-0">Skill: @prod.skill</p>
                                     <p class="mb-0">Skill Level: @prod.skillLevel</p>
                                         <a asp-page="EditUserSkills" class="btn btn-purple" asp-route-skill="@prod.skill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
+                                        <hr>
                                     </li>
                                     </ul>
                                 }
