@@ -1,0 +1,15 @@
+﻿@page
+@model Lab.Pages.Users.AddSoftSkillsModel
+@{
+}
+
+
+<form asp-page="AddSoftSkills">
+    <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <br />
+    <input type="text" asp-for="softSkill" placeholder="Soft Skill" />
+    <br />
+    <button type="submit">Add Soft Skill -> </button>
+    <a asp-page="ViewProfiles" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+
+</form>

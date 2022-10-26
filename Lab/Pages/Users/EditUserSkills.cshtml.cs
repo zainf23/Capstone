@@ -11,6 +11,7 @@ namespace Lab.Pages.Users
 
         [BindProperty]
         public User_Skill UserSkillToUpdate { get; set; }
+       
         [BindProperty]
         public int userID { get; set; }
 

@@ -5,6 +5,8 @@
         
             public string skill { get; set; }
 
+            public string softSkill { get; set; }
+
             public int userID { get; set; }
 
             public string skillLevel { get; set; }
