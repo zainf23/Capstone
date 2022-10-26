@@ -128,6 +128,19 @@ namespace Lab.Pages.DB
 
             return (tempReader);
         }
+
+        public static SqlDataReader SingleSoftSkillReader(int userID, string softSkill)
+        {
+            SqlCommand cmdUserRead = new SqlCommand();
+            cmdUserRead.Connection = new SqlConnection();
+            cmdUserRead.Connection.ConnectionString = LabConnStr;
+            cmdUserRead.CommandText = "SELECT * FROM UserSoftSkill WHERE userID = " + userID + "and softSkill ='" + softSkill + "'";
+            cmdUserRead.Connection.Open();
+            SqlDataReader tempReader = cmdUserRead.ExecuteReader();
+
+            return (tempReader);
+        }
+
         // method to update skills
         public static void UpdateSkill(UserSkill s)
         {
@@ -150,6 +163,21 @@ namespace Lab.Pages.DB
             sqlQuery += userID + ",";
             sqlQuery += "'" + skill + "',";
             sqlQuery += "'" + skillLevel + "')";
+
+            SqlCommand cmdSkillRead = new SqlCommand();
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
+
+        }
+
+        public static void InsertSoftSkill(string softSkill, int userID)
+        {
+            string sqlQuery = "INSERT INTO UserSoftSkill (userID,softSkill) VALUES (";
+            sqlQuery += userID + ",";
+            sqlQuery += "'" + softSkill + "')";
 
             SqlCommand cmdSkillRead = new SqlCommand();
             cmdSkillRead.Connection = new SqlConnection();
@@ -265,6 +293,19 @@ namespace Lab.Pages.DB
 
             return (tempReader);
         }
+
+        public static SqlDataReader SomeSoftSkills(int userID)
+        {
+            SqlCommand cmdUserRead = new SqlCommand();
+            cmdUserRead.Connection = new SqlConnection();
+            cmdUserRead.Connection.ConnectionString = LabConnStr;
+            cmdUserRead.CommandText = "SELECT softSkill from UserSoftSkill where userID =" + userID;
+            cmdUserRead.Connection.Open();
+            SqlDataReader tempReader = cmdUserRead.ExecuteReader();
+
+            return (tempReader);
+        }
+
         // method that pulls project info based on projectID passed
         public static SqlDataReader SingleProjectReader(int projectID)
         {
@@ -382,6 +423,18 @@ namespace Lab.Pages.DB
             cmdSkillRead.CommandText = sqlQuery;
             cmdSkillRead.Connection.Open();
             cmdSkillRead.ExecuteNonQuery();
+        }
+
+        public static void UpdateTheSoftSkill(string softSkill, int userid)
+        {
+            string sqlQuery = "Delete from UserSoftSkill WHERE softskill = '" + softSkill + "' AND userID =" + userid;
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
+
         }
 
         public static int LoginQuery(string loginQuery)

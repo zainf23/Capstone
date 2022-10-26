@@ -13,6 +13,8 @@ namespace Lab.Pages.Users
 
         public List<User_Skill> SkillList { get; set; }
 
+        public List<User_Skill> SoftSkillList { get; set; }
+
         [BindProperty]
         public User UserProfile { get; set; }
        
@@ -26,6 +28,7 @@ namespace Lab.Pages.Users
         {
             UserToView = new User_Skill();
             SkillList = new List<User_Skill>();
+            SoftSkillList = new List<User_Skill>();
             UserProfile = new User();
         }
         public IActionResult OnGet()
@@ -54,25 +57,10 @@ namespace Lab.Pages.Users
             userReader.Close();
             //SqlDataReader singleprofile = DBClass.SingleProfileReader(userid);
             HttpContext.Session.SetInt32("userid", userID);
+           
+            // hard skills
+            
             SqlDataReader someskills = DBClass.SomeSkills(UserProfile.userID);
-
-            //while (singleprofile.Read())
-            //{
-            //    UserToView.userID = userid;
-            //    UserToView.firstName = singleprofile["firstName"].ToString();
-            //    UserToView.secondName = singleprofile["secondName"].ToString();
-            //    UserToView.email = singleprofile["email"].ToString();
-            //    UserToView.jmuType = singleprofile["jmuType"].ToString();
-            //    UserToView.interests = singleprofile["interests"].ToString();
-            //    UserToView.experience = singleprofile["experience"].ToString();
-            //    UserToView.gradYear = singleprofile["gradYear"].ToString();
-            //    UserToView.major = singleprofile["major"].ToString();
-            //    UserToView.minor = singleprofile["minor"].ToString();
-            //    UserToView.jobTitle = singleprofile["jobTitle"].ToString();
-            //    UserToView.department = singleprofile["department"].ToString();
-            //    UserToView.moreInfo = singleprofile["moreInfo"].ToString();
-
-            //}
 
             while (someskills.Read())
             {
@@ -87,6 +75,23 @@ namespace Lab.Pages.Users
 
             }
             someskills.Close();
+
+           // soft skills
+            
+            SqlDataReader somesoftskills = DBClass.SomeSoftSkills(UserProfile.userID);
+
+            while (somesoftskills.Read())
+            {
+                SoftSkillList.Add(new User_Skill
+                {
+
+                    softSkill = somesoftskills["softSkill"].ToString(),
+
+
+                });
+
+            }
+            somesoftskills.Close();
 
             if (HttpContext.Session.GetString("username") == null)
             {
