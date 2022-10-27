@@ -1,5 +1,6 @@
 using Lab.Pages.DataClasses;
 using Lab.Pages.DB;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
@@ -15,6 +16,8 @@ namespace Lab.Pages.Users
 
         public List<User_Skill> SoftSkillList { get; set; }
 
+        public List<User_Skill> HobbyList { get; set; }
+
         [BindProperty]
         public User UserProfile { get; set; }
        
@@ -24,15 +27,20 @@ namespace Lab.Pages.Users
         [BindProperty]
         public int userID { get; set; }
 
+        [BindProperty]
+        public string fileName { get; set; }
+
         public ViewProfilesModel()
         {
             UserToView = new User_Skill();
             SkillList = new List<User_Skill>();
             SoftSkillList = new List<User_Skill>();
+            HobbyList = new List<User_Skill>();
             UserProfile = new User();
         }
         public IActionResult OnGet()
         {
+
             username = HttpContext.Session.GetString("username");
             SqlDataReader userReader = DBClass.UserReader(username);
 
@@ -93,6 +101,32 @@ namespace Lab.Pages.Users
             }
             somesoftskills.Close();
 
+            SqlDataReader somehobbies = DBClass.SomeHobbies(UserProfile.userID);
+
+            while (somehobbies.Read())
+            {
+                HobbyList.Add(new User_Skill
+                {
+
+                    hobby = somehobbies["hobby"].ToString(),
+
+
+                });
+
+            }
+            somehobbies.Close();
+
+            String sqlQuery = "Select [fileName] FROM UserProfilePic WHERE userID =" + UserProfile.userID;
+
+            SqlDataReader picReader = DBClass.GeneralReaderQuery(sqlQuery);
+
+            while (picReader.Read())
+            {
+                fileName = picReader["fileName"].ToString();
+            }
+
+
+
             if (HttpContext.Session.GetString("username") == null)
             {
                 return RedirectToPage("/Login/HashedLogin");
@@ -100,6 +134,7 @@ namespace Lab.Pages.Users
 
             return Page();
         }
+
     }
 }
 

@@ -1,0 +1,14 @@
+﻿@page
+@model Lab.Pages.Users.AddHobbiesModel
+@{
+}
+
+<form asp-page="AddHobbies">
+    <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <br />
+    <input type="text" asp-for="hobby" placeholder="Hobby" />
+    <br />
+    <button type="submit">Add Hobby -> </button>
+    <a asp-page="ViewProfiles" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+
+</form>

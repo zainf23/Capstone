@@ -7,22 +7,21 @@ using System.Data.SqlClient;
 
 namespace Lab.Pages.Users
 {
-    public class AddSoftSkillsModel : PageModel
+    public class AddHobbiesModel : PageModel
     {
 
         [BindProperty]
         [Required]
-        public UserSoftSkill NewSoftSkill { get; set; }
+        public UserSoftSkill NewHobby { get; set; }
 
         [BindProperty]
-        public string softSkill { get; set; }
+        public string hobby { get; set; }
 
         [BindProperty]
         public int userID { get; set; }
-       
+
         [BindProperty]
         public string username { get; set; }
-
 
         public IActionResult OnGet(int userid)
         {
@@ -51,10 +50,9 @@ namespace Lab.Pages.Users
 
             return Page();
         }
-
         public IActionResult OnPost()
         {
-            DBClass.InsertSoftSkill(softSkill, userID);
+            DBClass.InsertHobby(hobby, userID);
 
             return RedirectToPage("ViewProfiles");
         }

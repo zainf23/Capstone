@@ -26,7 +26,7 @@ namespace Lab.Pages.Users
             }
 
             DBClass.UpdateTheSoftSkill(softSkill,userid);
-            return RedirectToPage("AddSoftSkills");
+            return RedirectToPage("AddSoftSkills", userid);
         }
 
 

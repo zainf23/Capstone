@@ -7,6 +7,8 @@
 
             public string softSkill { get; set; }
 
+            public string hobby { get; set; }
+
             public int userID { get; set; }
 
             public string skillLevel { get; set; }
