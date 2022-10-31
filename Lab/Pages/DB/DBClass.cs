@@ -306,6 +306,18 @@ namespace Lab.Pages.DB
             return (tempReader);
         }
 
+        public static SqlDataReader SomeHobbies(int userID)
+        {
+            SqlCommand cmdUserRead = new SqlCommand();
+            cmdUserRead.Connection = new SqlConnection();
+            cmdUserRead.Connection.ConnectionString = LabConnStr;
+            cmdUserRead.CommandText = "SELECT hobby from UserHobbies where userID =" + userID;
+            cmdUserRead.Connection.Open();
+            SqlDataReader tempReader = cmdUserRead.ExecuteReader();
+
+            return (tempReader);
+        }
+
         // method that pulls project info based on projectID passed
         public static SqlDataReader SingleProjectReader(int projectID)
         {
@@ -530,13 +542,35 @@ namespace Lab.Pages.DB
             cmdLogin.CommandText = loginQuery;
             cmdLogin.Parameters.AddWithValue("@username", username);
             cmdLogin.Parameters.AddWithValue("@passphrase", PasswordHash.HashPassword(passphrase));
-
             cmdLogin.Connection.Open();
-
-            // ExecuteScalar() returns back data type Object
-            // Use a typecast to convert this to an int.
-            // Method returns first column of first row.
             cmdLogin.ExecuteNonQuery();
+
+        }
+
+        public static void InsertHobby(string hobby, int userID)
+        {
+            string sqlQuery = "INSERT INTO UserHobbies (userID,hobby) VALUES (@userid, @hobby)";
+
+            SqlCommand cmdHobbyRead = new SqlCommand();
+            cmdHobbyRead.Connection = new SqlConnection();
+            cmdHobbyRead.Connection.ConnectionString = LabConnStr;
+            cmdHobbyRead.CommandText = sqlQuery;
+            cmdHobbyRead.Parameters.AddWithValue("@userid", userID);
+            cmdHobbyRead.Parameters.AddWithValue("@hobby", hobby);
+            cmdHobbyRead.Connection.Open();
+            cmdHobbyRead.ExecuteNonQuery();
+
+        }
+
+        public static void UpdateTheHobby(string hobby, int userid)
+        {
+            string sqlQuery = "Delete from UserHobbies WHERE hobby = '" + hobby + "' AND userID =" + userid;
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
 
         }
 

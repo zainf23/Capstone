@@ -3,7 +3,7 @@
 @using Lab.Pages.DB
 @model Lab.Pages.Users.ViewProfilesModel
 @{
-    ViewData["Title"] = @Model.UserToView.firstName + "'s Profile";
+    ViewData["Title"] = @Model.UserProfile.firstName + "'s Profile";
 }
 
 @{
@@ -17,13 +17,18 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="/Images/blankpic.png" alt="avatar"
+                            <img src="/Images/@Model.fileName" alt="avatar"
                              class="rounded-circle img-fluid" style="width: 150px;">
+                        <br />
+                        <br />
+                        <a asp-page="FileUpload" class="btn btn-outline-secondary btn-sm" asp-route-userid="@Model.UserProfile.userID">Upload Profile Picture</a>
+
+
                             <h5 class="my-3">@Model.UserProfile.firstName @Model.UserProfile.secondName</h5>
                             <p class="text-muted mb-1">@Model.UserProfile.jmuType</p>
                             <p class="text-muted mb-4">James Madison University @Model.UserProfile.gradYear</p>
                         </div>
-                        <a asp-page="EditUsers" class="btn btn-purple" asp-route-userid="@Model.UserProfile.userID">Edit Profile</a>
+                        <a asp-page="EditUsers" class="btn btn-purple btn-sm" asp-route-userid="@Model.UserProfile.userID">Edit Profile</a>
                     </div>
 
 
@@ -35,9 +40,9 @@
                             {
                                         <ul class="list-group list-group-flush rounded-3">
                                             <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
-                                                <p class="mb-0">Skill: @prod.skill</p>
+                                                <p class="mb-0">@prod.skill</p>
                                                 <p class="mb-0">Skill Level: @prod.skillLevel</p>
-                                                <a asp-page="EditUserSkills" class="btn btn-purple" asp-route-skill="@prod.skill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
+                                                <a asp-page="EditUserSkills" class="btn btn-purple btn-sm" asp-route-skill="@prod.skill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
                                                 <hr>
                                             </li>
                                         </ul>
@@ -46,7 +51,7 @@
 
 
                         </div>
-                        <a class="btn btn-purple" asp-page="AddSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Skill</a>
+                        <a class="btn btn-purple btn-sm" asp-page="AddSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Skill</a>
                     </div>
                     <br/>
                     <div class="card mb-4 mb-lg-0">
@@ -58,7 +63,7 @@
                                         <ul class="list-group list-group-flush rounded-3">
                                             <li class="list-group-item d-flex justify-content-between align-items-lg-center p-3">
                                                 <p class="mb-0">@prod.softSkill</p>
-                                                <a asp-page="EditSoftSkills" class="btn btn-purple" asp-route-softskill="@prod.softSkill" asp-route-userid="@Model.UserProfile.userID">Delete</a>
+                                                <a asp-page="EditSoftSkills" class="btn btn-purple btn-sm" asp-route-softskill="@prod.softSkill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
                                                 <hr>
                                             </li>
                                         </ul>
@@ -67,8 +72,29 @@
 
 
                         </div>
-                        <a class="btn btn-purple" asp-page="AddSoftSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Soft Skill</a>
+                        <a class="btn btn-purple btn-sm" asp-page="AddSoftSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Soft Skill</a>
                     </div>
+                <br />
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                        <h5 class="my-1 align-items-lg-left p-3">Hobbies</h5>
+                        @{
+                            foreach (var prod in Model.HobbyList)
+                            {
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-lg-center p-3">
+                                        <p class="mb-0">@prod.hobby</p>
+                                        <a asp-page="EditHobbies" class="btn btn-purple btn-sm" asp-route-hobby="@prod.hobby" asp-route-userid="@Model.UserProfile.userID">Edit</a>
+                                        <hr>
+                                    </li>
+                                </ul>
+                            }
+                        }
+
+
+                    </div>
+                    <a class="btn btn-purple btn-sm" asp-page="AddHobbies" asp-route-userid="@Model.UserProfile.userID">Add a new Hobby</a>
+                </div>
 
                 </div>
 
@@ -108,6 +134,15 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <p class="text-muted mb-0">@Model.UserProfile.minor</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">More Info</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="text-muted mb-0">@Model.UserProfile.moreInfo</p>
                                                 </div>
                                             </div>
                                             <hr>
@@ -153,27 +188,32 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="/Images/blankpic.png" alt="avatar"
+                            <img src="/Images/@Model.fileName" alt="avatar"
                              class="rounded-circle img-fluid" style="width: 150px;">
+
+                        <br />
+                        <br />
+                        <a asp-page="FileUpload" class="btn btn-outline-secondary btn-sm" asp-route-userid="@Model.UserProfile.userID">Upload Profile Picture</a>
+
                             <h5 class="my-3">@Model.UserProfile.firstName @Model.UserProfile.secondName</h5>
                             <p class="text-muted mb-1">@Model.UserProfile.jobTitle at James Madison University</p>
                             <p class="text-muted mb-1">@Model.UserProfile.department Department</p>
                         </div>
-                        <a asp-page="EditUsers" class="btn btn-purple" asp-route-userid="@Model.UserProfile.userID">Edit Profile</a>
+                        <a asp-page="EditUsers" class="btn btn-purple btn-sm" asp-route-userid="@Model.UserProfile.userID">Edit Profile</a>
                     </div>
 
 
                     <div class="card mb-4 mb-lg-0">
                         <div class="card-body p-0">
-                            <h5 class="my-1 align-items-lg-center p-3">My Skills</h5>
+                            <h5 class="my-1 align-items-lg-center p-3">Skills</h5>
                             @{
                             foreach (var prod in Model.SkillList)
                             {
                                         <ul class="list-group list-group-flush rounded-3">
                                             <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
-                                                <p class="mb-0">Skill: @prod.skill</p>
+                                                <p class="mb-0">@prod.skill</p>
                                                 <p class="mb-0">Skill Level: @prod.skillLevel</p>
-                                                <a asp-page="EditUserSkills" class="btn btn-purple" asp-route-skill="@prod.skill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
+                                                <a asp-page="EditUserSkills" class="btn btn-purple btn-sm" asp-route-skill="@prod.skill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
                                             </li>
                                         </ul>
                             }
@@ -181,9 +221,52 @@
 
 
                         </div>
-                        <a class="btn btn-purple" asp-page="AddSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Skill</a>
+                        <a class="btn btn-purple btn-sm" asp-page="AddSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Skill</a>
                     </div>
+                <br />
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                        <h5 class="my-1 align-items-lg-left p-3">Soft Skills</h5>
+                        @{
+                            foreach (var prod in Model.SoftSkillList)
+                            {
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-lg-center p-3">
+                                        <p class="mb-0">@prod.softSkill</p>
+                                        <a asp-page="EditSoftSkills" class="btn btn-purple btn-sm" asp-route-softskill="@prod.softSkill" asp-route-userid="@Model.UserProfile.userID">Edit</a>
+                                        <hr>
+                                    </li>
+                                </ul>
+                            }
+                        }
+
+
+                    </div>
+                    <a class="btn btn-purple btn-sm" asp-page="AddSoftSkills" asp-route-userid="@Model.UserProfile.userID">Add a new Soft Skill</a>
                 </div>
+                <br />
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                        <h5 class="my-1 align-items-lg-left p-3">Hobbies</h5>
+                        @{
+                            foreach (var prod in Model.HobbyList)
+                            {
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-lg-center p-3">
+                                        <p class="mb-0">@prod.hobby</p>
+                                        <a asp-page="EditHobbies" class="btn btn-purple btn-sm" asp-route-hobby="@prod.hobby" asp-route-userid="@Model.UserProfile.userID">Edit</a>
+                                        <hr>
+                                    </li>
+                                </ul>
+                            }
+                        }
+
+
+                    </div>
+                    <a class="btn btn-purple btn-sm" asp-page="AddHobbies" asp-route-userid="@Model.UserProfile.userID">Add a new Hobby</a>
+                </div>
+
+            </div>
 
                 <div class="col-lg-8">
                     <div class="card mb-4">
@@ -204,10 +287,19 @@
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">@Model.UserProfile.email</p>
                                 </div>
+                                </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">More Info</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.UserProfile.moreInfo</p>
+                                </div>
                             </div>
                             <hr>
+                            </div>
                         </div>
-                    </div>
 
 
                     <div class="col-md-14">
@@ -235,8 +327,7 @@
                     </div>
 
                 </div>
-    </div>
-        
+        </div>
    
 
     }
