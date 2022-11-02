@@ -4,10 +4,11 @@
 }
 
 <form asp-page="HashedLogin">
-    <input asp-for="username" class="form-control" placeholder="Enter Username" />
+    <label>Enter Username:</label>
+    <input asp-for="username" class="form-control" placeholder="Username" />
     <br />
     <label>Enter Password:</label>
-    <input asp-for="passphrase" class="form-control" type="password" />
+    <input asp-for="passphrase" class="form-control" type="password" placeholder="Password" />
     <br />
     <input type="submit" class="btn btn-primary" />
 </form>
