@@ -20,5 +20,7 @@
 
         public string SearchString { get; set; }
 
+        public string fileName { get; set; }
+
     }
 }

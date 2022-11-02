@@ -1,3 +1,4 @@
+using Lab.Pages.DataClasses;
 using Lab.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -61,7 +62,8 @@ namespace Lab.Pages.Projects
             sqlQuery += userPitch + "')";
 
             DBClass.InsertQuery(sqlQuery);
-            return RedirectToPage("ViewProjects");
+            HttpContext.Session.SetInt32("projectID", projectID);
+            return RedirectToPage("ViewOtherProjects");
         }
     }
 }

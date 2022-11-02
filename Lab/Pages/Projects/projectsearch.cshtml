@@ -15,35 +15,38 @@
 @{
     if (Model.SearchString != null)
     {
-        <h2 class="h2">Projects:</h2>
-        <table class="table table-bordered table-responsive table triped table-hover" style="background-color:#FFFFFF">
-            <thead class="table-dark">
-                <tr>
-                    <th class="">Project Name:</th>
-                    <th class="">Project Owner:</th>
-                    <th class="">Project Description:</th>
-                    <th class="">View Project:</th>
 
-                </tr>
-            </thead>
-            <tbody>
 
-                @{
-                    foreach (var prod in Model.ProjectSearchList)
-                    {
-                        <tr>
 
-                            <td>@prod.projectName</td>
-                            <td>@prod.projectOwner</td>
-                            <td>@prod.projectDescription</td>
-                            <td>
-                                <a asp-page="ViewProjects" class="btn btn-purple" asp-route-projectid="@prod.projectID">View Project</a>
-                            </td>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @{
+                foreach (var pro in Model.ProjectSearchList)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <img src="~/Images/@pro.fileName" class="card-img-top rounded-circle img-fluid" style="width: 170px;" />
+                            <div class="card-body">
+                                <h5 class="card-title">@pro.projectName</h5>
+                                <p class="cardd-text">Project Owner: @pro.projectOwner</p>
+                                <p class="card-text">Email: @pro.projectOwnerEmail</p>
 
-                        </tr>
-                    }
+                                <p class="card-text">
+                                    Description: <br />
+                                    @pro.projectDescription
+                                </p>
+                                <p class="card-text">
+                                    Created: @pro.projectDate
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-page="ViewOtherProjects" class="btn btn-purple" asp-route-projectid="@pro.projectID">View Project</a>
+                            </div>
+                        </div>
+                    </div>
                 }
-            </tbody>
-        </table>
+            }
+
+
+    </div>
     }
-}
+    }

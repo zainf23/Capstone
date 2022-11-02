@@ -1,5 +1,19 @@
+
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+}
+
+h2 {
+    font-family: 'Arvo', serif;
+}
+
+h5 {
+    font-family: 'Arvo', serif;
+}
+
+p {
+    font-family: 'Archivo', sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -19,6 +33,19 @@ body {
 
 .btn-purple {
     color: #FFFFFF;
-    background-color: #9370DB;
+    background-color: #4891BC;
     border-color: #000000;
 }
+
+
+@media (min-width: 576px) {
+    .card-group.card-group-scroll {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+}
+
+.card-group.card-group-scroll > .card {
+    flex-basis: 35%;
+}
+
