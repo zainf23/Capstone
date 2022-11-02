@@ -4,12 +4,55 @@
     ViewData["Title"] = "Search Projects";
 }
 
-<form asp-action="Index">
+@*<form asp-action="Index">
     <p>Choose a Skill to Search</p>
     <select asp-for="Skill" asp-items="Model.SkillNames">
         <option value="">Choose a Skill</option>
     </select>
     <input type="submit" class="btn btn-purple" />
+</form>*@
+
+<br />
+<form asp-page="Index">
+    <div class="input-group">
+        <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Users by Name, Skills, Hobbies, Interest, Experience, and More!" aria-label="Search" aria-describedby="search-addon" />
+        <button type="submit" class="btn btn-purple">search</button>
+    </div>
 </form>
+<br />
+
+@{
+    if (Model.SearchString != null)
+    {
+        <h2 class="h2">Users By Name:</h2>
+        <table class="table table-bordered table-responsive table triped table-hover" style="background-color:#FFFFFF">
+            <thead class="table-dark">
+                <tr>
+                    <th class="">First Name:</th>
+                    <th class="">Last Name:</th>
+                    <th class="">View Profile:</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    foreach (var prod in Model.UserSearchList)
+                    {
+                        <tr>
+
+                            <td>@prod.firstName</td>
+                            <td>@prod.secondName</td>
+                            <td>
+                                <a asp-page="ViewProfile" class="btn btn-purple" asp-route-userid="@prod.userID">View Profile </a>
+                            </td>
 
 
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+
+}

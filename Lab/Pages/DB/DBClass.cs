@@ -638,9 +638,31 @@ namespace Lab.Pages.DB
             cmdSkillRead.ExecuteNonQuery();
         }
 
+        public static void UpdateAcceptedRequestTwo(int requestIDTwo)
+        {
+            string sqlQuery = "UPDATE RequestTwo SET ";
+            sqlQuery += "acceptedTwo= 1" + "WHERE requestIDTwo =" + requestIDTwo;
 
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
+        }
 
+        public static void UpdateRejectedRequestTwo(int requestIDTwo)
+        {
+            string sqlQuery = "UPDATE RequestTwo SET ";
+            sqlQuery += "acceptedTwo= -1" + "WHERE requestIDTwo =" + requestIDTwo;
 
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
+        }
 
 
     }
