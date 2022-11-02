@@ -2,10 +2,13 @@
 @model Lab.Pages.Login.HashedLoginModel
 @{
 }
-<body style ="background-color: indigo">
+@{
+    Layout = null;
+}
+<body style="background-color: indigo">
 <form asp-page="HashedLogin">
     <div align="center">
-        <img src="https://logos-world.net/wp-content/uploads/2020/11/KTM-Logo-1954-1958.png" width="250" height="150">
+    <img src="~/Images/MadisonConnectHubLogo.png" width="250" height="150">
     <input asp-for="username" class="form-control" placeholder="Enter Username" style="width:300px" >
     <br/>
     <input asp-for="passphrase" class="form-control" placeholder="Enter Password" type="password" style="width:300px" />
