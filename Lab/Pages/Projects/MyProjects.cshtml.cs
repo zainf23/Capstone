@@ -17,14 +17,21 @@ namespace Lab.Pages.Projects
 
         [BindProperty]
         public int userID { get; set; }
-       
+
+        [BindProperty]
+        public string fileName { get; set; }
+
         [BindProperty]
         public List<Project> MyProjectList { get; set; }
+
+        [BindProperty]
+        public List<Project> MemberProjectList { get; set; }
 
         public MyProjectsModel()
         {
             MyProject = new Project();
             MyProjectList = new List<Project>();
+            MemberProjectList = new List<Project>();
         }
 
         public void OnGet()
@@ -55,10 +62,35 @@ namespace Lab.Pages.Projects
                     projectMissionStatement = projectFinder["projectMissionStatement"].ToString(),
                     projectDescription = projectFinder["projectDescription"].ToString(),
                     projectDate = projectFinder["projectDate"].ToString(),
+                    fileName = projectFinder["fileName"].ToString(),
 
                 });
             }
             projectFinder.Close();
+
+
+
+            string sqlQuery3 = @"Select p.projectID, p.projectName, p.projectOwner, p.projectOwnerEmail, p.projectOwnerEmail, p.projectMissionStatement, 
+                            p.projectDescription, p.projectDate, p.fileName from Project p, Team t, TeamUser tu WHERE (p.projectID = t.projectID AND t.teamID = tu.teamID AND
+                            p.userID = tu.teamID) AND (tu.userID = " + userID + "AND + p.userID !=" + userID + ")";
+            SqlDataReader otherFinder = DBClass.GeneralReaderQuery(sqlQuery3);
+
+            while (otherFinder.Read())
+            {
+                MemberProjectList.Add(new Project
+                {
+                    projectID = Int32.Parse(otherFinder["projectID"].ToString()),
+                    projectName = otherFinder["projectName"].ToString(),
+                    projectOwner = otherFinder["projectOwner"].ToString(),
+                    projectOwnerEmail = otherFinder["projectOwnerEmail"].ToString(),
+                    projectMissionStatement = otherFinder["projectMissionStatement"].ToString(),
+                    projectDescription = otherFinder["projectDescription"].ToString(),
+                    projectDate = otherFinder["projectDate"].ToString(),
+                    fileName = otherFinder["fileName"].ToString(),
+                });
+            }
+            otherFinder.Close();
+
         }
     }
 }

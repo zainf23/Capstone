@@ -2,45 +2,83 @@
 @model Lab.Pages.Projects.MyProjectsModel
 @{
 }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
 
-<h2 class="h2">My Projects:</h2>
-<table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
-    <thead class="table-dark">
-        <tr>
-            @* <th class="">Project ID:</th>*@
-            <th class="">Project Name</th>
-            <th class="">Project Owner</th>
-            <th class="">Project Owner Email</th>
-            <th class="">Mission Statement</th>
-            <th class="">Description</th>
-            <th class="">Creation Date</th>
-            <th class="">Edit</th>
-            <th class="">View Requests</th>
 
-        </tr>
-    </thead>
-    <tbody>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
-        @{
-            foreach (var prod in Model.MyProjectList)
-            {
-                    <tr>
+<h2 style = "color: #450084;">My Owned Projects</h2>
 
-                        <td>@prod.projectName</td>
-                        <td>@prod.projectOwner</td>
-                        <td>@prod.projectOwnerEmail</td>
-                        <td>@prod.projectMissionStatement</td>
-                        <td>@prod.projectDescription</td>
-                        <td>@prod.projectDate</td>
-                        <td>
-                            <a asp-page="editProjects" class="btn btn-purple" asp-route-projectid="@prod.projectID">Edit</a>
-                        </td>
-                        <td>
-                            <a asp-page="ViewRequests" class="btn btn-purple" asp-route-projectid="@prod.projectID">View Requests</a>
-                        </td>
 
-                    </tr>
-            }
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @{
+        foreach (var pro in Model.MyProjectList)
+    {
+            <div class="col">
+                <div class="card">
+                    <img src="~/Images/@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@pro.projectName</h5>
+                            <p class="cardd-text">Project Owner: @pro.projectOwner</p>
+                            <p class="card-text">Email: @pro.projectOwnerEmail</p>
+
+                            <p class="card-text">
+                                Description: <br />
+                                @pro.projectDescription
+                            </p>
+                            <p class="card-text">
+                                Created: @pro.projectDate
+                            </p>
+                    </div>
+                        <div class="card-footer">
+                            <a asp-page="ViewProjects" class="btn btn-purple" asp-route-projectid="@pro.projectID">View Project</a>
+                            <a asp-page="ViewRequests" class="btn btn-purple" asp-route-projectid="@pro.projectID">View Requests</a>
+                        </div>
+                </div>
+            </div>
+    }
+    }
+   
+</div>
+
+
+<br />
+<h2 style="color: #450084;">Projects I'm On</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @{
+        foreach (var proj in Model.MemberProjectList)
+        {
+                <div class="col">
+                    <div class="card">
+                        <img src="~/Images/@proj.fileName" class="card-img-top img-fluid" style="width: 170px;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@proj.projectName</h5>
+                            <p class="cardd-text">Project Owner: @proj.projectOwner</p>
+                            <p class="card-text">Email: @proj.projectOwnerEmail</p>
+
+                            <p class="card-text">
+                                Description: <br />
+                                @proj.projectDescription
+                            </p>
+                            <p class="card-text">
+                                Created: @proj.projectDate
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-page="ViewProjects" class="btn btn-purple" asp-route-projectid="@proj.projectID">View Project</a>
+                            <a asp-page="ViewRequests" class="btn btn-purple" asp-route-projectid="@proj.projectID">View Requests</a>
+                        </div>
+                    </div>
+                </div>
         }
-    </tbody>
-</table>
+    }
+
+</div>
+
+
+

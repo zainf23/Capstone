@@ -17,12 +17,26 @@ namespace Lab.Pages.Teams
         [BindProperty]
         public int projectID {get; set;}
 
+        public string username { get; set; }
+
+        public int userID { get; set; }
+
         public List<SelectListItem> Projects { get; set; }
 
         public IActionResult OnGet()
         {
+
+            username = HttpContext.Session.GetString("username");
+            string sqlQuery = "SELECT userID from [USER] WHERE username = '" + username + "'";
+            SqlDataReader userFinder = DBClass.GeneralReaderQuery(sqlQuery);
+            while (userFinder.Read())
+            {
+                userID = Int32.Parse(userFinder["userID"].ToString());
+            }
+            userFinder.Close();
+
             //populate the projectname select control
-            SqlDataReader projectReader = DBClass.GeneralReaderQuery("Select * from Project");
+            SqlDataReader projectReader = DBClass.GeneralReaderQuery("Select * from Project WHERE userID = " + userID);
             Projects = new List<SelectListItem>();
 
             while (projectReader.Read())
@@ -45,10 +59,8 @@ namespace Lab.Pages.Teams
         // creates new team
         public IActionResult OnPost()
         {
-            string insertQuery = "Insert Into Team (teamName,teamDescription,teamEmailAddress,projectID) VALUES (";
+            string insertQuery = "Insert Into Team (teamName,projectID) VALUES (";
             insertQuery += "'" + ProjectTeam.teamName + "',";
-            insertQuery += "'" + ProjectTeam.teamDescription + "',";
-            insertQuery += "'" + ProjectTeam.teamEmailAddress + "',";
             insertQuery += "'" + projectID + "')";
             //DBClass.InsertTeam(ProjectTeam);
             DBClass.InsertQuery(insertQuery);

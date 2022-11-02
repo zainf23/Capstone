@@ -8,7 +8,7 @@ namespace Lab.Pages.Projects
     {
         public IActionResult OnGet(int requestid)
         {
-            DBClass.UpdateRejectedRequest(requestid);
+            DBClass.DeleteRejectedRequest(requestid);
 
             return RedirectToPage("MyProjects");
         }

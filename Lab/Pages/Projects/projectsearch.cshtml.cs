@@ -40,7 +40,7 @@ namespace Lab.Pages.Projects
                     projectMissionStatement = projectsearch["projectMissionStatement"].ToString(),
                     projectDescription = projectsearch["projectDescription"].ToString(),
                     projectDate = projectsearch["projectDate"].ToString(),
-
+                    fileName = projectsearch["fileName"].ToString(),
                 });
             }
             projectsearch.Close();

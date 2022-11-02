@@ -1,0 +1,103 @@
+﻿@page
+@model Lab.Pages.Projects.ViewOtherProjectsModel
+@{
+}
+
+
+<br />
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <img src="/Images/@Model.fileName" alt="avatar"
+                     class="rounded-circle img-fluid" style="width: 150px;">
+                <br />
+                <br />
+
+
+                <h5 class="my-3">@Model.ProjectInfo.projectName</h5>
+                <p class="text-muted mb-1">Creation Date: @Model.ProjectInfo.projectDate</p>
+                <a asp-page="RequestJoin" class="btn btn-purple btn-sm" asp-route-teamid="@Model.ProjectToView.teamID">Request To Join</a>
+            </div>
+        </div>
+
+
+        <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+                <h5 class="my-1 align-items-lg-center p-3">Team Members</h5>
+                @{
+                    foreach (var prod in Model.UserList)
+                    {
+                        <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
+                                <p class="mb-0">@prod.firstName @prod.secondName</p>
+
+                                <hr>
+                            </li>
+                        </ul>
+                    }
+                }
+
+
+            </div>
+        </div>
+        <br />
+        <br />
+
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Project Owner</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">@Model.ProjectInfo.projectOwner</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Project Owner Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">@Model.ProjectInfo.projectOwnerEmail</p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        <div class="col-md-14">
+            <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                    <p class="mb-4">
+                        <h5 class="text-dark font-italic me-1">Project Description</h5>
+                    </p>
+                    <hr>
+                    <p>@Model.ProjectInfo.projectDescription</p>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-14">
+            <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                    <p class="mb-4">
+                        <h5 class="text-dark font-italic me-1">Mission Statement</h5>
+                    </p>
+                    <hr>
+                    <p>@Model.ProjectInfo.projectMissionStatement</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

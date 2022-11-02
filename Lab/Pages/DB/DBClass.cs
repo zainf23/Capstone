@@ -1,5 +1,6 @@
 ﻿using Lab.Pages.DataClasses;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing.Constraints;
 using System.Data.SqlClient;
 
 namespace Lab.Pages.DB
@@ -611,10 +612,23 @@ namespace Lab.Pages.DB
             cmdSkillRead.ExecuteNonQuery();
         }
 
-        public static void UpdateRejectedRequest(int requestid)
+        public static void DeleteRejectedRequest(int requestid)
         {
-            string sqlQuery = "UPDATE Request SET ";
-            sqlQuery += "accepted= -1" + "WHERE requestID =" + requestid;
+            string sqlQuery = "Delete FROM Request WHERE requestID =" + requestid;
+
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
+        }
+
+        public static void UpdateProjectPic(string fileName, int projectID)
+        {
+            string sqlQuery = "UPDATE Project SET ";
+
+            sqlQuery += "fileName='" + fileName + "' WHERE projectID=" + projectID;
 
             SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
             cmdSkillRead.Connection = new SqlConnection();
