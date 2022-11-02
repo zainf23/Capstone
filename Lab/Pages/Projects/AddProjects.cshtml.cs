@@ -15,6 +15,10 @@ namespace Lab.Pages.Projects
         public Project NewProject { get; set; }
 
         [BindProperty]
+        [Required]
+        public Team NewTeam { get; set; }
+
+        [BindProperty]
         public string username { get; set; }
 
         [BindProperty]
@@ -43,7 +47,7 @@ namespace Lab.Pages.Projects
 
             DBClass.InsertProject(NewProject);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("/Teams/AddTeams");
         }
 
         // populate button code

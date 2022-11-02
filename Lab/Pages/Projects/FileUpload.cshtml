@@ -1,0 +1,18 @@
+﻿@page
+@model Lab.Pages.Projects.FileUploadModel
+@{
+}
+
+<form method="post" enctype="multipart/form-data" asp-action="FileUpload">
+    <div class="form-group">
+        <div class="col-md-10">
+            <p>Choose File to Upload:</p>
+            <input asp-for="files" type="file" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload File" />
+        </div>
+    </div>
+</form>

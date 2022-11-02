@@ -6,22 +6,30 @@
 <form asp-page="AddProjects">
     <input type="hidden" asp-for="NewProject.userID" placeholder="userID" />
     <br />
+    <br />
     <input type="text" asp-for="NewProject.projectName" placeholder="Project Name" />
+    <br />
     <br />
     <input type="text" asp-for="NewProject.projectOwner" placeholder="Project Owner" />
     <br />
+    <br />
     <input type="text" asp-for="NewProject.projectOwnerEmail" placeholder="Project Owner Email" />
     <br />
-    <input type="text" asp-for="NewProject.projectMissionStatement" placeholder="Project Mission Statement" />
     <br />
-    <input type="text" asp-for="NewProject.projectDescription" placeholder="Project Description" />
+    <div class="form-group">
+        <label asp-for="@Model.NewProject.projectMissionStatement">Project Mission Statement</label>
+        <textarea class="form-control" asp-for="@Model.NewProject.projectMissionStatement" rows="3"></textarea>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="@Model.NewProject.projectDescription">Project Description</label>
+        <textarea class="form-control" asp-for="@Model.NewProject.projectDescription" rows="3"></textarea>
+    </div>
     <br />   
     <input type="date" asp-for="NewProject.projectDate" placeholder="Project Date" />
     <br />
     <br />
     <button type="submit">Create Project -> </button>
     <a asp-page="Index">Cancel</a>
-    @*<button class="btn btn-outline-primary" asp-page="AddProjects" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
-    <button class="btn btn-outline-primary" asp-page="AddProjects" asp-page-handler="ClearHandler" formnovalidate>Clear</button>*@
 
 </form>
