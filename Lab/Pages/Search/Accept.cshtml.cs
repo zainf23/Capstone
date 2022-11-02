@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace Lab.Pages.Projects
+namespace Lab.Pages.Search
 {
     public class AcceptModel : PageModel
     {
@@ -14,21 +14,18 @@ namespace Lab.Pages.Projects
         {
             RequestStatus = new Request();
         }
-        public IActionResult OnGet(int requestid)
+        public IActionResult OnGet(int requestIDTwo)
         {
-            DBClass.UpdateAcceptedRequest(requestid);
+            DBClass.UpdateAcceptedRequestTwo(requestIDTwo);
 
-            string sqlQuery = "Select userID,teamID from Request where requestID = " + requestid;
+            string sqlQuery = "Select userID,teamID from RequestTwo where requestIDTwo = " + requestIDTwo;
             SqlDataReader requestFinder = DBClass.GeneralReaderQuery(sqlQuery);
-
             while (requestFinder.Read())
             {
                 RequestStatus.userID = Int32.Parse(requestFinder["userID"].ToString());
                 RequestStatus.teamID = Int32.Parse(requestFinder["teamID"].ToString());
-
-
             }
-
+            
             string sqlQuery1 = "INSERT INTO TeamUser (userID, teamID) VALUES (" + RequestStatus.userID + "," + RequestStatus.teamID + ")";
             DBClass.InsertMemberQuery(sqlQuery1);
 

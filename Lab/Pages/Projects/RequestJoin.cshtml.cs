@@ -51,6 +51,8 @@ namespace Lab.Pages.Projects
 
         public IActionResult OnPost()
         {
+
+
             string sqlQuery = "INSERT INTO Request (userID, projectID, teamID, accepted, userPitch) VALUES (";
             sqlQuery += userID + ",";
             sqlQuery += projectID + ",";

@@ -1,0 +1,23 @@
+﻿@page
+@model Lab.Pages.Search.RequesToJoinProjectModel
+@{
+}
+
+<form asp-page="=RequesToJoinProject">
+    <br />
+    <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <br />
+    <select asp-for="projectID" asp-items="Model.Projects">
+        <option value="">Choose a Project</option>
+    </select>
+    <br />
+    <input type="hidden" asp-for="teamID" placeholder="Team ID" />
+    <br />
+    <p>Write about why they would be a great addition to the team!</p>
+    <input type="text" asp-for="@Model.userPitch" paceholder="User Pitch" />
+    <br />
+    <button type="submit">Request -> </button>
+    <a asp-page="Index">Cancel</a>
+</form>
+
+

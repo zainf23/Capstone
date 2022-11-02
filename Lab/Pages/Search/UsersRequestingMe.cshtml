@@ -1,0 +1,45 @@
+﻿@page
+@model Lab.Pages.Search.UsersRequestingMeModel
+@{
+}
+
+<h2 class="h2">Requests To Join Project Team:</h2>
+<table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
+    <thead class="table-dark">
+        <tr>
+            <th class="">Project Owner:</th>
+            <th class="">Project Name:</th>
+            <th class="">Project Description:</th>
+            <th class="">Team Name:</th>
+            <th class="">Pitch:</th>
+            <th class="">View Project Profile</th>
+            <th class="">Accept</th>
+            <th class="">Reject</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var prod in Model.MyRequestsList)
+            {
+                    <tr>
+
+                        <td>@prod.projectOwner</td>
+                        <td>@prod.projectName</td>
+                        <td>@prod.projectDescription</td>
+                        <td>@prod.teamName</td>
+                        <td>@prod.userPitchTwo</td>
+                        <td>
+                            <a asp-page="ViewUserRequest" class="btn btn-primary" asp-route-projectid="@prod.projectID">View Project Profile</a>
+                        </td>
+                    <td>
+                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestIDTwo="@prod.requestIDTwo">Accept</a>
+                    </td>
+                    <td>
+                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestIDTwo="@prod.requestIDTwo">Reject</a>
+                    </td>
+                    </tr>
+            }
+        }
+    </tbody>
+</table>

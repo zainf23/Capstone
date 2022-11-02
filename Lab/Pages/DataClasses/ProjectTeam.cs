@@ -26,6 +26,12 @@
 
         public string projectDate { get; set; }
 
+        public int requestIDTwo { get; set; }
+
+        public string userPitchTwo { get; set; }
+
+
+
 
     }
 }
