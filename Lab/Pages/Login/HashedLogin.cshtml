@@ -2,23 +2,16 @@
 @model Lab.Pages.Login.HashedLoginModel
 @{
 }
-<body style ="background-color: indigo">
+
 <form asp-page="HashedLogin">
-    <div align="center">
-        <img src="https://logos-world.net/wp-content/uploads/2020/11/KTM-Logo-1954-1958.png" width="250" height="150">
-    <input asp-for="username" class="form-control" placeholder="Enter Username" style="width:300px" >
-    <br/>
-    <input asp-for="passphrase" class="form-control" placeholder="Enter Password" type="password" style="width:300px" />
-    <br/>
-    <a class="btn btn-primary" asp-area="" type="submit">Sign in</a>
-    <hr size="2" width=30% />
-            <p style ="color:white">Are you new?</p>
-            <a class="btn btn-primary" asp-area="" asp-page="/Login/CreateHashedLogin">Create User</a>
+    <input asp-for="username" class="form-control" placeholder="Enter Username" />
+    <br />
+    <label>Enter Password:</label>
+    <input asp-for="passphrase" class="form-control" type="password" />
+    <br />
+    <input type="submit" class="btn btn-primary" />
 </form>
 <br />
-
-    </div>
-</body>
 @{
     if (HttpContext.Session.GetString("username") != null)
     {
