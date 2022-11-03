@@ -65,7 +65,7 @@ namespace Lab.Pages.Search
             //    return RedirectToPage("/Search/Index");
             //}
 
-            string sqlQuery = "SELECT u.userID, firstName, secondName, username, email, jmuType, interests, experience, gradYear, major, minor, jobtitle, department, moreInfo FROM [User] u, UserSkill us, UserSoftSkill uss, UserHobbies uh WHERE (u.userID = us.userID AND u.userID = uss.userID AND u.userID = uh.userID AND us.userID = uss.userID AND us.userID = uh.userID AND uss.userID = uh.userID) AND (firstName like '%";
+            string sqlQuery = "SELECT distinct u.userID, firstName, secondName, username, email, jmuType, interests, experience, gradYear, major, minor, jobtitle, department, moreInfo FROM [User] u, UserSkill us, UserSoftSkill uss, UserHobbies uh WHERE (u.userID = us.userID AND u.userID = uss.userID AND u.userID = uh.userID AND us.userID = uss.userID AND us.userID = uh.userID AND uss.userID = uh.userID) AND (firstName like '%";
             sqlQuery += SearchString + "%' OR secondName like '%";
             sqlQuery += SearchString + "%' OR email like '%";
             sqlQuery += SearchString + "%' OR jmuType like '%";
