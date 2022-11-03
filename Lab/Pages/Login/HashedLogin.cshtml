@@ -3,30 +3,42 @@
 @{
 }
 
+<body style="background-color: #3B1281 ">
 <form asp-page="HashedLogin">
-    <label>Enter Username:</label>
-    <input asp-for="username" class="form-control" placeholder="Username" />
-    <br />
-    <label>Enter Password:</label>
-    <input asp-for="passphrase" class="form-control" type="password" placeholder="Password" />
-    <br />
-    <input type="submit" class="btn btn-primary" />
+    <div align="center">
+       @* <img src="~/Images/MadisonConnectHubPurple.png" width="250" height="150">*@
+       <br />
+       <br />
+    <input asp-for="username" class="form-control" placeholder="Enter Username" style="width:300px" >
+    <br/>
+    <input asp-for="passphrase" class="form-control" placeholder="Enter Password" type="password" style="width:300px" />
+    <br/>
+            <input type="submit" value="Log in" class="btn btn-purple"/>
+    <hr size="2" width=30% />
+            <p style ="color:white">Are you new?</p>
+            <a class="btn btn-purple" asp-area="" asp-page="/Login/CreateHashedLogin">Create User</a>
 </form>
 <br />
+
+    </div>
+</body>
+
+
 @{
     if (HttpContext.Session.GetString("username") != null)
     {
-        <p class="text-success">@ViewData["LoginMessage"]</p>
+    <p class="text-success">@ViewData["LoginMessage"]</p>
     }
     else
     {
-        <p class="text-danger">@ViewData["LoginMessage"]</p>
+    <p class="text-danger">@ViewData["LoginMessage"]</p>
     }
 }
 
 @{
     if (ViewData["ErrorMessage"] != null)
     {
-        <p class="text-danger">@ViewData["ErrorMessage"].ToString()</p>
+    <p class="text-danger" align="center" >@ViewData["ErrorMessage"].ToString()</p>
     }
 }
+

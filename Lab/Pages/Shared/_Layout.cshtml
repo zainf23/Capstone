@@ -8,77 +8,77 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Lab.styles.css" asp-append-version="true" />
 </head>
-<body style="background-color: #CBB677">
-    <header>
-        <nav class="navbar navbar-light navbar-expand-sm" style="background-color: #450084">
-            <div class="container">
-                <img src="/Images/MadisonConnectHubLogo.png" alt="avatar"
-                     class="rounded-circle img-fluid" style="width: 150px;">
-                     <br />
-                @*<a class="navbar-brand ms-auto ms-auto mb-2 mb-lg-0" asp-area="" asp-page="/Index">Home</a>*@
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Users/ViewProfiles">My Profile</a>
-                        </li>
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-page="/Projects/projectsearch">Search for a Project</a></li>
-                                <li><a class="dropdown-item" asp-page="/Projects/AddProjects">Add a new Project</a></li>
-                                <li><a class="dropdown-item" asp-page="/Projects/MyProjects">View My Projects</a></li>
-                            </ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">User Search</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-page="/Search/Index">Search for Users</a></li>
-                                <li><a class="dropdown-item" asp-page="/Search/UsersRequestingMe">My Request</a></li>
-                            </ul>
-                        </li>
-                        @*<li class="nav-item">
+    <body style="background-color: #CBB677">
+
+        <header>
+            <nav class="navbar navbar-light navbar-expand-sm" style="background-color: #450084">
+                <div class="container">
+                    <img src="/Images/MadisonConnectHubLogo.png" alt="avatar"
+                         class="rounded-circle img-fluid" style="width: 150px;">
+                         <br />
+                    @*<a class="navbar-brand ms-auto ms-auto mb-2 mb-lg-0" asp-area="" asp-page="/Index">Home</a>*@
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Users/ViewProfiles">My Profile</a>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-page="/Projects/projectsearch">Search for a Project</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Projects/AddProjects">Add a new Project</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Projects/MyProjects">View My Projects</a></li>
+                                </ul>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">User Search</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-page="/Search/Index">Search for Users</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Search/UsersRequestingMe">My Requests</a></li>
+                                </ul>
+                            </li>
+                            @*<li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/Search/Index">User Skill Search</a>
                         </li>*@
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-page="/Login/CreateHashedLogin">Create Account</a>
-                        </li>
+                           
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-page="/Login/HashedLogin">Login</a></li>
-                                <li><a class="dropdown-item" asp-page="/Login/LandingPage">Logout</a></li>
-                            </ul>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-page="/Login/HashedLogin">Login</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Login/LandingPage">Logout</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Login/CreateHashedLogin">Create Account</a></li>
+                                </ul>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container" style="background-color: #CBB677">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted" style="background-color: #DACCE6">
-        <div class="container">
-            &copy; 2022 - Capstone Project - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </nav>
+        </header>
+        <div class="container" style="background-color: #CBB677">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <footer class="border-top footer text-muted" style="background-color: #DACCE6">
+            <div class="container">
+                &copy; 2022 - Capstone Project - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
 
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+    </html>
