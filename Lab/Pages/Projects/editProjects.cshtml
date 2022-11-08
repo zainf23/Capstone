@@ -5,6 +5,8 @@
 }
 
 <form asp-page="Edit">
+    <br />
+    <h2 style="color: #450084;">Edit Your Project</h2>
     <input type="hidden" asp-for="@Model.ProjectToUpdate.projectID" />
     <label asp-for="@Model.ProjectToUpdate.projectName">Project Name</label>
     <br />
@@ -25,7 +27,7 @@
     </div>
     <br />
     <div class="form-group">
-        <label asp-for="@Model.ProjectToUpdate.projectDescription">Project Mission Statement</label>
+        <label asp-for="@Model.ProjectToUpdate.projectDescription">Project Description</label>
         <textarea class="form-control" asp-for="@Model.ProjectToUpdate.projectDescription" rows="3"></textarea>
     </div>
     <br />
