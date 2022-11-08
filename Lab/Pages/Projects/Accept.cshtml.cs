@@ -32,7 +32,7 @@ namespace Lab.Pages.Projects
             string sqlQuery1 = "INSERT INTO TeamUser (userID, teamID) VALUES (" + RequestStatus.userID + "," + RequestStatus.teamID + ")";
             DBClass.InsertMemberQuery(sqlQuery1);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("MyProjects");
         }
     }
 }

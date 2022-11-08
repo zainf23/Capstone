@@ -34,7 +34,7 @@ namespace Lab.Pages.Search
             userFinder.Close();
 
             
-            string sqlQueryTwo = "SELECT rt.requestIDTwo, p.projectID, p.projectOwner, p.projectName, p.projectDescription, t.teamName, rt.userPitchTwo from Project p, Team t, RequestTwo rt WHERE (p.projectID = t.projectID AND t.teamID = rt.teamID AND p.projectID = rt.projectID) AND rt.userID =" + userID + "AND acceptedTwo = 0";
+            string sqlQueryTwo = "SELECT rt.requestIDTwo, p.projectID, p.projectOwner, p.projectName, p.projectDescription, p.fileName, t.teamName, rt.userPitchTwo from Project p, Team t, RequestTwo rt WHERE (p.projectID = t.projectID AND t.teamID = rt.teamID AND p.projectID = rt.projectID) AND rt.userID =" + userID + "AND acceptedTwo = 0";
             SqlDataReader requestFinder = DBClass.GeneralReaderQuery(sqlQueryTwo);
             while (requestFinder.Read())
             {
@@ -45,6 +45,7 @@ namespace Lab.Pages.Search
                     projectOwner = requestFinder["projectOwner"].ToString(),
                     projectName = requestFinder["projectName"].ToString(),
                     projectDescription = requestFinder["projectDescription"].ToString(),
+                    fileName = requestFinder["fileName"].ToString(),
                     teamName = requestFinder["teamName"].ToString(),
                     userPitchTwo = requestFinder["userPitchTwo"].ToString(),
 

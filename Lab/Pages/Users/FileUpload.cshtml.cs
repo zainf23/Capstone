@@ -36,9 +36,8 @@ namespace Lab.Pages.Users
                     }
                     fileName = formFile.FileName;
                 }
-                string sqlQuery = "INSERT INTO UserProfilePic ([fileName], userID) VALUES (";
-                sqlQuery += "'" + fileName + "',";
-                sqlQuery += "'" + HttpContext.Session.GetInt32("userID") + "')";
+                string sqlQuery = "Update UserProfilePic SET ";
+                sqlQuery += "[fileName] ='" + fileName + "' WHERE userID =" + HttpContext.Session.GetInt32("userID");
 
                 DBClass.InsertQuery(sqlQuery);
 

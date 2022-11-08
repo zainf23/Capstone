@@ -30,6 +30,8 @@
 
         public string userPitchTwo { get; set; }
 
+        public string fileName { get; set; }
+
 
 
 

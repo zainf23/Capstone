@@ -3,7 +3,7 @@
 @{
 }
 
-<h2 class="h2">Requests To Join Project Team:</h2>
+@*<h2 class="h2">Requests To Join Project Team:</h2>
 <table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
     <thead class="table-dark">
         <tr>
@@ -30,7 +30,7 @@
                         <td>@prod.teamName</td>
                         <td>@prod.userPitchTwo</td>
                         <td>
-                            <a asp-page="ViewUserRequest" class="btn btn-primary" asp-route-projectid="@prod.projectID">View Project Profile</a>
+                            <a asp-page="ViewProject" class="btn btn-primary" asp-route-projectid="@prod.projectID">View Project Profile</a>
                         </td>
                     <td>
                         <a asp-page="Accept" class="btn btn-primary" asp-route-requestIDTwo="@prod.requestIDTwo">Accept</a>
@@ -42,4 +42,36 @@
             }
         }
     </tbody>
-</table>
+</table>*@
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @{
+        foreach (var pro in Model.MyRequestsList)
+        {
+            <div class="col">
+                <div class="card">
+                    <img src="~/Images/@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@pro.projectName</h5>
+                        <p class="cardd-text">Team Name: @pro.teamName</p>
+                        <p class="card-text">Project Owner: @pro.projectOwner</p>
+
+                        <p class="card-text">
+                            Description: <br />
+                            @pro.projectDescription
+                        </p>
+                        <p class="card-text">
+                            Pitch: @pro.userPitchTwo
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-page="ViewProject" class="btn btn-primary" asp-route-projectid="@pro.projectID">View Project Profile</a>
+                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestIDTwo="@pro.requestIDTwo">Accept</a>
+                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestIDTwo="@pro.requestIDTwo">Reject</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>

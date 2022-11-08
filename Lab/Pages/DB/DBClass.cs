@@ -664,6 +664,19 @@ namespace Lab.Pages.DB
             cmdSkillRead.ExecuteNonQuery();
         }
 
+        public static void DataHolderForUPP(int userID)
+        {
+            string sqlQuery = "INSERT INTO UserProfilePic ([fileName],userID) VALUES (@fileName, @userID)";
+
+            SqlCommand cmdHobbyRead = new SqlCommand();
+            cmdHobbyRead.Connection = new SqlConnection();
+            cmdHobbyRead.Connection.ConnectionString = LabConnStr;
+            cmdHobbyRead.CommandText = sqlQuery;
+            cmdHobbyRead.Parameters.AddWithValue("@fileName", "PlaceHolder.jpg");
+            cmdHobbyRead.Parameters.AddWithValue("@userID", userID);
+            cmdHobbyRead.Connection.Open();
+            cmdHobbyRead.ExecuteNonQuery();
+        }
 
     }
 }

@@ -1,20 +1,16 @@
 using Lab.Pages.DataClasses;
 using Lab.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using System.Data.SqlClient;
 
-namespace Lab.Pages.Projects
+namespace Lab.Pages.Search
 {
-    public class ViewProjectsModel : PageModel
+    public class ViewProjectModel : PageModel
     {
         [BindProperty]
         public ProjectTeam ProjectToView { get; set; }
-
-        [BindProperty]
-        public int ProjectID { get; set; }
+        
         [BindProperty]
         public Project ProjectInfo { get; set; }
 
@@ -25,7 +21,7 @@ namespace Lab.Pages.Projects
         public List<User> UserList { get; set; }
 
 
-        public ViewProjectsModel()
+        public ViewProjectModel()
         {
             ProjectToView = new ProjectTeam();
             ProjectInfo = new Project();
@@ -33,18 +29,6 @@ namespace Lab.Pages.Projects
         }
         public IActionResult OnGet(int projectid)
         {
-            if (projectid == 0)
-            {
-                projectid = (int)HttpContext.Session.GetInt32("projectID");
-            }
-           
-            //if (HttpContext.Session.GetInt32("projectID") == null)
-            //{
-            //    return RedirectToPage("Index");
-
-            //}
-            //ProjectID = Int32.Parse(HttpContext.Session.GetInt32("projectID").ToString());
-
             SqlDataReader singleProject = DBClass.SingleProjectReader(projectid);
 
             string sqlQuery = "Select * from Team where projectID =" + projectid;
@@ -52,13 +36,13 @@ namespace Lab.Pages.Projects
 
             while (singleProject.Read())
             {
-                    ProjectInfo.projectID = Int32.Parse(singleProject["projectID"].ToString());
-                    ProjectInfo.projectName = singleProject["projectName"].ToString();
-                    ProjectInfo.projectOwner = singleProject["projectOwner"].ToString();
-                    ProjectInfo.projectOwnerEmail = singleProject["projectOwnerEmail"].ToString();
-                    ProjectInfo.projectMissionStatement = singleProject["projectMissionStatement"].ToString();
-                    ProjectInfo.projectDescription = singleProject["projectDescription"].ToString();
-                    ProjectInfo.projectDate = singleProject["projectDate"].ToString();
+                ProjectInfo.projectID = Int32.Parse(singleProject["projectID"].ToString());
+                ProjectInfo.projectName = singleProject["projectName"].ToString();
+                ProjectInfo.projectOwner = singleProject["projectOwner"].ToString();
+                ProjectInfo.projectOwnerEmail = singleProject["projectOwnerEmail"].ToString();
+                ProjectInfo.projectMissionStatement = singleProject["projectMissionStatement"].ToString();
+                ProjectInfo.projectDescription = singleProject["projectDescription"].ToString();
+                ProjectInfo.projectDate = singleProject["projectDate"].ToString();
             }
 
             singleProject.Close();

@@ -1,7 +1,7 @@
 ﻿@page
 @using System.Data.SqlClient
 @using Lab.Pages.DB
-@model Lab.Pages.Search.ViewProfileModel
+@model Lab.Pages.Projects.ViewOtherUserModel
 @{
     ViewData["Title"] = @Model.UserProfile.firstName + "'s Profile";
 }
@@ -21,8 +21,6 @@
                          class="rounded-circle img-fluid" style="width: 150px;">
                         <br />
                         <br />
-                        <a asp-page="RequesToJoinProject" class="btn btn-outline-secondary btn-sm" asp-route-userid="@Model.UserProfile.userID">Invite to Project</a>
-                        <a asp-page="BookmarkUser" class="btn btn-outline-secondary btn-sm" asp-route-userid="@Model.UserProfile.userID">Bookmark User</a>
                         <h5 class="my-3">@Model.UserProfile.firstName @Model.UserProfile.secondName</h5>
                         <p class="text-muted mb-1">@Model.UserProfile.jmuType</p>
                         <p class="text-muted mb-4">James Madison University @Model.UserProfile.gradYear</p>
@@ -180,7 +178,6 @@
                         <br />
                         <br />
                         <a asp-page="RequesToJoinProject" class="btn btn-outline-secondary btn-sm" asp-route-userid="@Model.UserProfile.userID">Invite to Project</a>
-                        <a asp-page="BookmarkUser" class="btn btn-outline-secondary btn-sm" asp-route-userid="@Model.UserProfile.userID">Bookmark User</a>
                         <h5 class="my-3">@Model.UserProfile.firstName @Model.UserProfile.secondName</h5>
                         <p class="text-muted mb-1">@Model.UserProfile.jobTitle at James Madison University</p>
                         <p class="text-muted mb-1">@Model.UserProfile.department Department</p>

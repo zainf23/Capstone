@@ -2,6 +2,7 @@ using Lab.Pages.DataClasses;
 using Lab.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.WebUtilities;
 using System.Data.SqlClient;
 
 namespace Lab.Pages.Projects
@@ -27,7 +28,7 @@ namespace Lab.Pages.Projects
 
         public void OnGet(int projectid)
         {
-            string sqlQuery = "SELECT u.firstName, u.secondName,u.userID FROM [User] u, Request r WHERE u.userID = r.userID AND r.accepted = 0 AND r.projectID = " + projectid;
+            string sqlQuery = "SELECT r.requestID, u.userID, u.firstName, u.secondName, u.email, u.jmuType, r.userPitch, u.interests, upp.fileName FROM [User] u, Request r, UserProfilePic upp WHERE u.userID = upp.userID AND u.userID = r.userID AND r.accepted = 0 AND r.projectID = " + projectid;
             SqlDataReader requestFinder = DBClass.GeneralReaderQuery(sqlQuery);
 
 
@@ -38,13 +39,19 @@ namespace Lab.Pages.Projects
             {
                 MyRequestsList.Add(new UserRequest
                 {
+                    requestID = Int32.Parse(requestFinder["requestID"].ToString()),
                     userID = Int32.Parse(requestFinder["userID"].ToString()),
                     firstName = requestFinder["firstName"].ToString(),
                     secondName = requestFinder["secondName"].ToString(),
-
+                    email = requestFinder["email"].ToString(),
+                    jmuType = requestFinder["jmuType"].ToString(),
+                    userPitch = requestFinder["userPitch"].ToString(),
+                    interests = requestFinder["interests"].ToString(),
+                    fileName = requestFinder["fileName"].ToString(),
                 });
             }
             requestFinder.Close();
+
         }
     }
 }

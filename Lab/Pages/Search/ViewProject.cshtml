@@ -1,7 +1,7 @@
 ﻿@page
 @using System.Data.SqlClient
 @using Lab.Pages.DB
-@model Lab.Pages.Projects.ViewProjectsModel
+@model Lab.Pages.Search.ViewProjectModel
 @{
     ViewData["Title"] = @Model.ProjectToView.projectName;
 }
@@ -16,13 +16,9 @@
                      class="rounded-circle img-fluid" style="width: 150px;">
                 <br />
                 <br />
-                <a asp-page="FileUpload" class="btn btn-outline-secondary btn-sm" asp-route-projectid="@Model.ProjectInfo.projectID">Upload Profile Picture</a>
-
-
                 <h5 class="my-3">@Model.ProjectInfo.projectName</h5>
                 <p class="text-muted mb-1">Creation Date: @Model.ProjectInfo.projectDate</p>
             </div>
-            <a asp-page="editProjects" class="btn btn-purple btn-sm" asp-route-projectid="@Model.ProjectInfo.projectID">Edit Project</a>
         </div>
 
 
@@ -35,7 +31,7 @@
                         <ul class="list-group list-group-flush rounded-3">
                             <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
                                 <p class="mb-0">@prod.firstName @prod.secondName</p>
-                                <a asp-page="ViewOtherUser" class="btn btn-purple btn-sm" asp-route-userid="@prod.userID">View Profile</a>
+                                <a asp-page="/Projects/ViewOtherUser" class="btn btn-purple btn-sm" asp-route-userid="@prod.userID">View Profile</a>
                                 <hr>
                             </li>
                         </ul>
@@ -101,53 +97,3 @@
 
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

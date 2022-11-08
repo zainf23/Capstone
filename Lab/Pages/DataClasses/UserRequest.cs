@@ -39,6 +39,8 @@
 
         public string moreInfo { get; set; }
 
+        public string fileName { get; set; }
+
 
 
     }
