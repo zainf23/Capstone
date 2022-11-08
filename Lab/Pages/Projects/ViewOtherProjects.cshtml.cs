@@ -71,13 +71,14 @@ namespace Lab.Pages.Projects
             }
             singleTeam.Close();
 
-            string sqlQuery1 = "SELECT firstName, secondName FROM [User] u, TeamUser tu WHERE u.userID = tu.userID AND tu.teamID =" + ProjectToView.teamID;
+            string sqlQuery1 = "SELECT u.userID, firstName, secondName FROM [User] u, TeamUser tu WHERE u.userID = tu.userID AND tu.teamID =" + ProjectToView.teamID;
             SqlDataReader teamMembers = DBClass.GeneralReaderQuery(sqlQuery1);
 
             while (teamMembers.Read())
             {
                 UserList.Add(new User
                 {
+                    userID = Int32.Parse(teamMembers["userID"].ToString()),
                     firstName = teamMembers["firstName"].ToString(),
                     secondName = teamMembers["secondName"].ToString(),
                 });

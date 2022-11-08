@@ -3,12 +3,17 @@
 @{
 }
 
-<h2 class="h2">Requests To Join Project Team:</h2>
+@*<h2 class="h2">Requests To Join Project Team:</h2>
 <table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
     <thead class="table-dark">
         <tr>
             <th class="">Name:</th>
-            <th class="">View Request:</th>
+            <th class="">Email:</th>
+            <th class="">User Type:</th>
+            <th class="">User Pitch:</th>
+            <th class="">View Profile:</th>
+            <th class="">Accept:</th>
+            <th class="">Reject:</th>
 
         </tr>
     </thead>
@@ -20,12 +25,55 @@
                 <tr>
 
                     <td>@prod.firstName @prod.secondName</td>
+                    <td>@prod.email</td>
+                    <td>@prod.jmuType</td>
+                    <td>@prod.userPitch</td>
                     <td>
-                        <a asp-page="ViewUserRequest" class="btn btn-primary" asp-route-userid="@prod.userID">View Request</a>
+                        <a asp-page="ViewOtherUser" class="btn btn-primary" asp-route-userid="@prod.userID">View Profile</a>
+                    </td>
+                    <td>
+                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestid="@prod.requestID">Accept</a>
+                    </td>
+                    <td>
+                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestid="@prod.requestID">Reject</a>
                     </td>
 
                 </tr>
             }
         }
     </tbody>
-</table>
+</table>*@
+
+
+<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @{
+        foreach (var pro in Model.MyRequestsList)
+        {
+            <div class="col">
+                <div class="card">
+                    <img src="~/Images/@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@pro.firstName @pro.secondName</h5>
+                        <p class="cardd-text">User Type: @pro.jmuType</p>
+                        <p class="card-text">Email: @pro.email</p>
+
+                        <p class="card-text">
+                            Description: <br />
+                            @pro.userPitch
+                        </p>
+                        <p class="card-text">
+                            Interests: @pro.interests
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-page="ViewOtherUser" class="btn btn-primary" asp-route-userid="@pro.userID">View Profile</a>
+                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestid="@pro.requestID">Accept</a>
+                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestid="@pro.requestID">Reject</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>

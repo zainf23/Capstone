@@ -1,0 +1,17 @@
+﻿@page
+@model Lab.Pages.Search.BookmarkUserModel
+@{
+}
+
+<form asp-page="=BookmarkUser">
+    <br />
+    <input type="hidden" asp-for="mainUserID" placeholder="User ID" />
+    <br />
+    <input type="hidden" asp-for="otherUserID" placeholder="Other User ID" />
+    <br />
+    <p>Write about why you bookmarked this User!</p>
+    <input type="text" asp-for="reason" paceholder="Reason for BookMarking" />
+    <br />
+    <button type="submit"> Bookmark -> </button>
+    <a asp-page="Index">Cancel</a>
+</form>

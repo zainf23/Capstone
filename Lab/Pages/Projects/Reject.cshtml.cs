@@ -10,7 +10,7 @@ namespace Lab.Pages.Projects
         {
             DBClass.DeleteRejectedRequest(requestid);
 
-            return RedirectToPage("MyProjects");
+            return RedirectToPage("/Projects/MyProjects");
         }
     }
 }
