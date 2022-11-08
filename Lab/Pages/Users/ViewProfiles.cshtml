@@ -176,6 +176,38 @@
                                     
                                 </div>
     </div>
+
+        <h2 class="h2">My Friends:</h2>
+        <table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
+            <thead class="table-dark">
+                <tr>
+                    <th class="">Name:</th>
+                    <th class="">Jmu Type:</th>
+                    <th class="">Grad Year:</th>
+                    <th class="">File Name:</th>
+                    <th class="">View Profile:</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    foreach (var prod in Model.MyBookMarks)
+                    {
+                        <tr>
+
+                            <td>@prod.firstName @prod.secondName</td>
+                            <td>@prod.jmuType</td>
+                            <td>@prod.gradYear</td>
+                            <td>@prod.fileName</td>
+                            <td>
+                                <a asp-page="/Projects/ViewOtherUser" class="btn btn-primary" asp-route-userid="@prod.userID">View Profile</a>
+                            </td>
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
                             
        
 

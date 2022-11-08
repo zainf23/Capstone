@@ -20,7 +20,7 @@ namespace Lab.Pages.Users
 
         [BindProperty]
         public User UserProfile { get; set; }
-       
+
         [BindProperty]
         public string username { get; set; }
 
@@ -30,12 +30,16 @@ namespace Lab.Pages.Users
         [BindProperty]
         public string fileName { get; set; }
 
+        [BindProperty]
+        public List<UserBookmark> MyBookMarks { get; set; }
+
         public ViewProfilesModel()
         {
             UserToView = new User_Skill();
             SkillList = new List<User_Skill>();
             SoftSkillList = new List<User_Skill>();
             HobbyList = new List<User_Skill>();
+            MyBookMarks = new List<UserBookmark>();
             UserProfile = new User();
         }
         public IActionResult OnGet()
@@ -125,7 +129,23 @@ namespace Lab.Pages.Users
                 fileName = picReader["fileName"].ToString();
             }
 
+            String sqlQueryTwo = "Select u.userID, u.firstName, u.secondName, u.jmuType, u.gradYear, upp.fileName from [User] u, UserProfilePic upp, Bookmark b WHERE (u.userID = upp.userID AND u.userID = b.otherUserID) AND b.userID =" + UserProfile.userID;
+            SqlDataReader BookmarkReader = DBClass.GeneralReaderQuery(sqlQueryTwo);
+            
+            while (BookmarkReader.Read())
+            {
+                MyBookMarks.Add(new UserBookmark
+                {
+                    userID = Int32.Parse(BookmarkReader["userID"].ToString()),
+                    firstName = BookmarkReader["firstName"].ToString(),
+                    secondName = BookmarkReader["SecondName"].ToString(),
+                    jmuType = BookmarkReader["jmuType"].ToString(),
+                    gradYear = BookmarkReader["gradYear"].ToString(),
+                    fileName = BookmarkReader["firstName"].ToString(),
 
+                });
+            }
+            BookmarkReader.Close();
 
             if (HttpContext.Session.GetString("username") == null)
             {
