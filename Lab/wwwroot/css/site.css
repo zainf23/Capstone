@@ -41,6 +41,12 @@ body {
     border-color: #000000;
 }
 
+.btn-purple1 {
+    color: #FFFFFF;
+    background-color: #450084;
+    border-color: #000000;
+}
+
 
 @media (min-width: 576px) {
     .card-group.card-group-scroll {
