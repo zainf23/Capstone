@@ -424,11 +424,12 @@ namespace Lab.Pages.DB
             return (tempReader);
         }
         //method to update skill
-        public static void UpdateTheSkill(User_Skill s)
+        public static void UpdateTheSkill(User_Skill s, String skillPlaceHolder)
         {
             string sqlQuery = "UPDATE UserSkill SET ";
 
-            sqlQuery += "skillLevel='" + s.skillLevel + "' WHERE skill= '" + s.skill + "'AND userID=" + s.userID;
+            sqlQuery += "skill='" + s.skill;
+            sqlQuery += "',skillLevel= '" + s.skillLevel + "'WHERE skill= '" + skillPlaceHolder + "'AND userID=" + s.userID;
 
             SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
             cmdSkillRead.Connection = new SqlConnection();

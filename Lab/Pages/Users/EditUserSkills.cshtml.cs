@@ -15,6 +15,9 @@ namespace Lab.Pages.Users
         [BindProperty]
         public int userID { get; set; }
 
+        [BindProperty]
+        public string skillPlaceHolder { get; set; }
+
         public EditUserSkillsModel()
         {
             UserSkillToUpdate = new User_Skill();
@@ -38,6 +41,8 @@ namespace Lab.Pages.Users
             }
             singleSkill.Close();
 
+            skillPlaceHolder = UserSkillToUpdate.skill;
+
             if (HttpContext.Session.GetString("username") == null)
             {
                 return RedirectToPage("/Login/HashedLogin");
@@ -48,7 +53,8 @@ namespace Lab.Pages.Users
         // updates skill
         public IActionResult OnPost()
         {
-            DBClass.UpdateTheSkill(UserSkillToUpdate);
+
+            DBClass.UpdateTheSkill(UserSkillToUpdate, skillPlaceHolder);
 
             return RedirectToPage("ViewProfiles");
         }
