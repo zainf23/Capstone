@@ -7,7 +7,7 @@
     <br />
     <input type="hidden" asp-for="userID" placeholder="User ID" />
     <br />
-    <select asp-for="projectID" asp-items="Model.Projects">
+    <select asp-for="projectID" asp-items="Model.Projects" required> 
         <option value="">Choose a Project</option>
     </select>
     <br />
