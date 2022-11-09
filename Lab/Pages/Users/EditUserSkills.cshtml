@@ -9,8 +9,9 @@
 
 <form asp-page="Edit">
     <input type="hidden" asp-for="@Model.UserSkillToUpdate.userID"/>
-   @* <label asp-for="@Model.UserSkillToUpdate.skill">Skill</label>*@
-    <input type="hidden" asp-for="@Model.UserSkillToUpdate.skill" />
+    <input type="hidden" asp-for="@Model.skillPlaceHolder" />
+    <label asp-for="@Model.UserSkillToUpdate.skill">Skill</label>
+    <input type="text" asp-for="@Model.UserSkillToUpdate.skill" />
     <br />
     <label asp-for="@Model.UserSkillToUpdate.skillLevel">Skill Level</label>
     <input type="text" asp-for="@Model.UserSkillToUpdate.skillLevel" />

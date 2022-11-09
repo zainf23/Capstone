@@ -49,6 +49,11 @@ namespace Lab.Pages.Login
             }
             DBClass.DataHolderForUPP(userID);
 
+            DBClass.InsertHobby("Place Holder", userID);
+            DBClass.InsertSkill("Place Holder", "Starter", userID);
+            DBClass.InsertSoftSkill("Place Holder", userID);
+
+
             // Perform actual logic to check if user was successfully
             //  added in your projects but for demo purposes we can say:
 
