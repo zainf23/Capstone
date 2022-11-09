@@ -129,7 +129,7 @@ namespace Lab.Pages.Users
                 fileName = picReader["fileName"].ToString();
             }
 
-            String sqlQueryTwo = "Select u.userID, u.firstName, u.secondName, u.jmuType, u.gradYear, upp.fileName from [User] u, UserProfilePic upp, Bookmark b WHERE (u.userID = upp.userID AND u.userID = b.otherUserID) AND b.userID =" + UserProfile.userID;
+            String sqlQueryTwo = "Select Distinct u.userID, u.firstName, u.secondName, u.jmuType, u.gradYear, u.major, u.minor, u.jobtitle, u.department, upp.fileName from [User] u, UserProfilePic upp, Bookmark b WHERE (u.userID = upp.userID AND u.userID = b.otherUserID) AND b.userID =" + UserProfile.userID;
             SqlDataReader BookmarkReader = DBClass.GeneralReaderQuery(sqlQueryTwo);
             
             while (BookmarkReader.Read())
@@ -141,7 +141,11 @@ namespace Lab.Pages.Users
                     secondName = BookmarkReader["SecondName"].ToString(),
                     jmuType = BookmarkReader["jmuType"].ToString(),
                     gradYear = BookmarkReader["gradYear"].ToString(),
-                    fileName = BookmarkReader["firstName"].ToString(),
+                    major = BookmarkReader["major"].ToString(),
+                    minor = BookmarkReader["minor"].ToString(),
+                    jobTitle = BookmarkReader["jobtitle"].ToString(),
+                    department = BookmarkReader["department"].ToString(),
+                    fileName = BookmarkReader["fileName"].ToString(),
 
                 });
             }
