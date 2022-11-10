@@ -59,3 +59,11 @@ body {
     flex-basis: 35%;
 }
 
+.first-item {
+    padding-right: 10px;
+}
+
+.dropdown-items {
+    padding-left: 8px;
+    padding-right: 10px;
+}
