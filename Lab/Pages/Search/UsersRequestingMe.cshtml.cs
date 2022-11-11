@@ -21,7 +21,7 @@ namespace Lab.Pages.Search
         {
             MyRequestsList = new List<ProjectTeam>();
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
             username = HttpContext.Session.GetString("username");
             
@@ -52,6 +52,13 @@ namespace Lab.Pages.Search
                 });
             }
             requestFinder.Close();
+
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToPage("/Login/HashedLogin");
+            }
+
+            return Page();
 
 
         }
