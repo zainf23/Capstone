@@ -1,6 +1,7 @@
 using Lab.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data.SqlClient;
 
 namespace Lab.Pages.Login
 {
@@ -10,6 +11,8 @@ namespace Lab.Pages.Login
         public string username { get; set; }
         [BindProperty]
         public string passphrase { get; set; }
+
+        public int userID { get; set; }
 
         public IActionResult OnGet(string logout)
         {
@@ -34,6 +37,16 @@ namespace Lab.Pages.Login
             if (DBClass.HashedParameterLogin(username, passphrase))
             {
                 HttpContext.Session.SetString("username", username);
+
+                string sqlQuery = "SELECT userID FROM [User] WHERE username='" + username + "'";
+                SqlDataReader userReader = DBClass.GeneralReaderQuery(sqlQuery);
+                while (userReader.Read())
+                {
+                    userID = Int32.Parse(userReader["userID"].ToString());
+                }
+                HttpContext.Session.SetInt32("userID", userID);
+
+
                 ViewData["LoginMessage"] = "Login Successful!";
                 return RedirectToPage("LandingPage");
             }
