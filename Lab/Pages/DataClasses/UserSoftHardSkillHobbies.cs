@@ -38,5 +38,6 @@
 
         public string hobby { get; set; }
 
+        public string fileName { get; set; }
     }
 }

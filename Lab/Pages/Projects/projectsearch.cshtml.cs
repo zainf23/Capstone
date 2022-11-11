@@ -18,8 +18,14 @@ namespace Lab.Pages.Projects
         {
             ProjectSearchList = new List<Project>();
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToPage("/Login/HashedLogin");
+            }
+
+            return Page();
 
         }
 
