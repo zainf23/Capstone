@@ -28,6 +28,9 @@
                 <li class="nav-item">
                     <a href="#completedmeetings" class="nav-link btn btn-purple" data-bs-toggle="tab">Past Meetings</a>
                 </li>
+                <li class="nav-item">
+                    <a href="#projectchatroom" class="nav-link btn btn-purple" data-bs-toggle="tab">Project Message Board</a>
+                </li>
             </ul>
         </div>
         <div class="card-body" style="background-color: #DACCE6">
@@ -197,6 +200,41 @@
                     </div>
                     <br />
                 </div>
+
+                <div class="tab-pane fade" style="background-color: #DACCE6" id="projectchatroom">
+                    <h2 style="color: #450084;">Project Message Board</h2>
+                    <br />
+
+                    <div class="container-fluid mt-100">
+                        @{
+                            foreach (var pro in Model.ProjectMessageList)
+                            {
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <div class="media flex-wrap w-100 align-items-center">
+                                                    <img src="/Images/@pro.fileName" class="rounded-circle img-fluid" style="width: 150px;">
+                                                    <div class="media-body ml-3">
+                                                        <p>From: @pro.sender</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Subject: @pro.subject</p>
+                                                <p>To: @pro.recipient</p>
+                                                <p>Message: @pro.messageInfo </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <br />
+                    <a asp-page="AddMessageTwo" class="btn btn-purple btn-lg" asp-route-projectid="@Model.ProjectInfo.projectID" asp-route-userid="@Model.userID">Send a Message</a>
+                </div>
+
             </div>
         </div>
     </div>

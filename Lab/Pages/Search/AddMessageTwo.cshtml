@@ -1,0 +1,29 @@
+﻿@page
+@model Lab.Pages.Search.AddMessageTwoModel
+@{
+}
+
+<form asp-page="AddMessageTwo">
+    <br />
+    <h2 style="color: #450084;">Send a Message</h2>
+    <input type="text" asp-for="subject" placeholder="Subject" />
+    <br />
+    <br />
+    <input type="text" asp-for="recipient" placeholder="Recipient" />
+    <br />
+    <br />
+    <div class="form-group">
+        <textarea class="form-control" asp-for="messageInfo" rows="3" placeholder="Message"></textarea>
+    </div>
+    <br />
+    <button type="submit">Send Message -> </button>
+    <a asp-page="/Search/ViewProject" asp-route-projectid="@Model.projectID">Cancel</a>
+    <input type="hidden" asp-for="projectID" placeholder="Project ID" />
+    <br />
+    <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <br />
+    <input type="hidden" asp-for="fullName" placeholder="Sender" />
+    <br />
+
+
+</form>

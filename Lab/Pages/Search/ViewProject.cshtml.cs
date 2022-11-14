@@ -26,6 +26,15 @@ namespace Lab.Pages.Search
         [BindProperty]
         public List<TeamMeeting> CompletedMeetingList { get; set; }
 
+        [BindProperty]
+        public string username { get; set; }
+
+        [BindProperty]
+        public int userID { get; set; }
+
+        [BindProperty]
+        public List<ProjectChatroom> ProjectMessageList { get; set; }
+
 
         public ViewProjectModel()
         {
@@ -34,9 +43,16 @@ namespace Lab.Pages.Search
             UserList = new List<User>();
             MeetingList = new List<TeamMeeting>();
             CompletedMeetingList = new List<TeamMeeting>();
+            ProjectMessageList = new List<ProjectChatroom>();
         }
         public IActionResult OnGet(int projectid)
         {
+            HttpContext.Session.SetInt32("projectid", projectid);
+            if (projectid == 0)
+            {
+                projectid = (int)HttpContext.Session.GetInt32("projectID");
+            }
+
             SqlDataReader singleProject = DBClass.SingleProjectReader(projectid);
 
             string sqlQuery = "Select * from Team where projectID =" + projectid;
@@ -131,7 +147,35 @@ namespace Lab.Pages.Search
             }
             meetings2.Close();
 
+            username = HttpContext.Session.GetString("username");
 
+            string sqlQuery5 = "SELECT userID from [USER] WHERE username = '" + username + "'";
+            SqlDataReader userFinder = DBClass.GeneralReaderQuery(sqlQuery5);
+            while (userFinder.Read())
+            {
+                userID = Int32.Parse(userFinder["userID"].ToString());
+            }
+            userFinder.Close();
+
+            String sqlQuery6 = "Select p.messageID, p.userID, p.projectID, p.subject, p.sender, p.recipient, p.messageInfo, upp.fileName from ProjectChatRoom p, UserProfilePic upp WHERE p.userID = upp.userID AND projectID = " + ProjectInfo.projectID + " Order by messageID DESC";
+            SqlDataReader messageFinder = DBClass.GeneralReaderQuery(sqlQuery6);
+            while (messageFinder.Read())
+            {
+                ProjectMessageList.Add(new ProjectChatroom
+                {
+                    messageID = Int32.Parse(messageFinder["messageID"].ToString()),
+                    userID = Int32.Parse(messageFinder["userID"].ToString()),
+                    projectID = Int32.Parse(messageFinder["projectID"].ToString()),
+                    subject = messageFinder["subject"].ToString(),
+                    sender = messageFinder["sender"].ToString(),
+                    recipient = messageFinder["recipient"].ToString(),
+                    messageInfo = messageFinder["messageInfo"].ToString(),
+                    fileName = messageFinder["fileName"].ToString(),
+
+
+                });
+            }
+            messageFinder.Close();
 
 
             if (HttpContext.Session.GetString("username") == null)
