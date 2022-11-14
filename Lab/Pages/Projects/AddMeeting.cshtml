@@ -1,0 +1,37 @@
+﻿@page
+@model Lab.Pages.Projects.AddMeetingModel
+@{
+}
+
+
+
+<form asp-page="AddMeeting">
+    <br />
+    <h2 style="color: #450084;">Create a Meeting</h2>
+    <input type="hidden" asp-for="@Model.projectID" placeholder="userID" />
+    <label asp-for="@Model.meetingTitle">Meeting Title</label>
+    <br />
+    <input type="text" asp-for="@Model.meetingTitle" placeholder="Meeting Title" />
+    <br />
+    <label asp-for="@Model.meetingDate">Meeting Date</label>
+    <br />
+    <input type="date" asp-for="@Model.meetingDate" placeholder="Meeting Date" />
+    <br />
+    <label asp-for="@Model.meetingTime">Meeting Time</label>
+    <br />
+    <input type="text" asp-for="@Model.meetingTime" placeholder="Meeting Time" />
+    <br />
+    <label asp-for="@Model.meetingLocation">Meeting Locaton</label>
+    <br />
+    <input type="text" asp-for="@Model.meetingLocation" placeholder="Meeting Location" />
+    <br />
+    <br />
+    <div class="form-group">
+        <label asp-for="@Model.meetingPlan">Meeting Plan</label>
+        <textarea class="form-control" asp-for="@Model.meetingPlan" rows="3"></textarea>
+    </div>
+    <br />
+    <button type="submit">Create Meeting -> </button>
+    <a asp-page="ViewProjects" asp-route-projectid="@Model.projectID">Cancel</a>
+
+</form>

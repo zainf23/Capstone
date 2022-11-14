@@ -24,26 +24,30 @@ namespace Lab.Pages.Projects
         [BindProperty]
         public List<User> UserList { get; set; }
 
+        [BindProperty]
+        public List<TeamMeeting> MeetingList { get; set; }
+
+        [BindProperty]
+        public List<TeamMeeting> CompletedMeetingList { get; set; }
+
 
         public ViewProjectsModel()
         {
             ProjectToView = new ProjectTeam();
             ProjectInfo = new Project();
             UserList = new List<User>();
+            MeetingList = new List<TeamMeeting>();
+            CompletedMeetingList = new List<TeamMeeting>();
         }
         public IActionResult OnGet(int projectid)
+
         {
+            HttpContext.Session.SetInt32("projectid", projectid);
             if (projectid == 0)
             {
                 projectid = (int)HttpContext.Session.GetInt32("projectID");
             }
            
-            //if (HttpContext.Session.GetInt32("projectID") == null)
-            //{
-            //    return RedirectToPage("Index");
-
-            //}
-            //ProjectID = Int32.Parse(HttpContext.Session.GetInt32("projectID").ToString());
 
             SqlDataReader singleProject = DBClass.SingleProjectReader(projectid);
 
@@ -96,6 +100,48 @@ namespace Lab.Pages.Projects
             {
                 fileName = picReader["fileName"].ToString();
             }
+            picReader.Close();
+
+            string sqlQuery3 = "SELECT teamMeetingID, projectID, meetingTitle,meetingDate,meetingTime,meetingPlan,attended,meetingLocation FROM TeamMeeting WHERE attended is null AND projectID =" + ProjectInfo.projectID;
+            SqlDataReader meetings = DBClass.GeneralReaderQuery(sqlQuery3);
+
+            while (meetings.Read())
+            {
+                MeetingList.Add(new TeamMeeting
+                {
+                    teamMeetingID = Int32.Parse(meetings["teamMeetingID"].ToString()),
+                    projectID = Int32.Parse(meetings["projectID"].ToString()),
+                    meetingTitle = meetings["meetingTitle"].ToString(),
+                    meetingDate = meetings["meetingDate"].ToString(),
+                    meetingTime = meetings["meetingTime"].ToString(),
+                    meetingPlan = meetings["meetingPlan"].ToString(),
+                    meetingLocation = meetings["meetingLocation"].ToString(),
+
+                });
+
+            }
+            meetings.Close();
+
+            string sqlQuery4 = "SELECT teamMeetingID, projectID, meetingTitle,meetingDate,meetingTime,meetingPlan,attended,meetingLocation,meetingSummary FROM TeamMeeting WHERE attended = 1 AND projectID =" + ProjectInfo.projectID;
+            SqlDataReader meetings2 = DBClass.GeneralReaderQuery(sqlQuery4);
+
+            while (meetings2.Read())
+            {
+                CompletedMeetingList.Add(new TeamMeeting
+                {
+                    teamMeetingID = Int32.Parse(meetings2["teamMeetingID"].ToString()),
+                    projectID = Int32.Parse(meetings2["projectID"].ToString()),
+                    meetingTitle = meetings2["meetingTitle"].ToString(),
+                    meetingDate = meetings2["meetingDate"].ToString(),
+                    meetingTime = meetings2["meetingTime"].ToString(),
+                    meetingPlan = meetings2["meetingPlan"].ToString(),
+                    meetingSummary = meetings2["meetingSummary"].ToString(),
+                    meetingLocation = meetings2["meetingLocation"].ToString(),
+
+                });
+
+            }
+            meetings2.Close();
 
 
 
