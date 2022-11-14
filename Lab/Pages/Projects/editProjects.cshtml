@@ -32,7 +32,7 @@
     </div>
     <br />
     <label asp-for="@Model.ProjectToUpdate.projectDate">Project Date</label>
-    <input type="text" asp-for="@Model.ProjectToUpdate.projectDate" />
+    <input type="date" asp-for="@Model.ProjectToUpdate.projectDate" />
     <input type="submit" class="btn btn-success" asp-page="EditSkills" />
-    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    <a asp-page="ViewProjects" asp-route-projectid="@Model.ProjectToUpdate.projectID">Cancel</a>
 </form>
