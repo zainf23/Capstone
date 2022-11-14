@@ -16,7 +16,31 @@ p {
     font-family: 'Archivo', sans-serif;
 }
 
+a {
+    font-family: 'Archivo', sans-serif;
+}
+
+input[type="text"] {
+    font-family: 'Archivo', sans-serif;
+}
+
+span {
+    font-family: 'Archivo', sans-serif;
+}
+
 label {
+    font-family: 'Archivo', sans-serif;
+}
+
+::placeholder {
+    font-family: 'Archivo', sans-serif;
+}
+
+input[type="date"], input[type="time"] {
+    font-family: 'Archivo', sans-serif;
+}
+
+date {
     font-family: 'Archivo', sans-serif;
 }
 

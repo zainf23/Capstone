@@ -2,6 +2,7 @@
 @using System.Data.SqlClient
 @using Lab.Pages.DB
 @model Lab.Pages.Search.ViewProfileModel
+
 @{
     ViewData["Title"] = @Model.UserProfile.firstName + "'s Profile";
 }
@@ -9,6 +10,7 @@
 @{
     if (@Model.UserProfile.jmuType == "Student")
     {
+
 
 
 
@@ -152,7 +154,7 @@
                     <div class="card mb-4 mb-md-0">
                         <div class="card-body">
                             <p class="mb-4">
-                                <h5 class="text-dark font-italic me-1">Experience</h5>
+                                <h5 class="text-dark font-italic me-1" style="font-family: 'Archivo'">Experience</h5>
                             </p>
                             <hr>
                             <p>@Model.UserProfile.experience</p>
@@ -169,6 +171,7 @@
     }
     else
     {
+
 
         <br />
         <div class="row">
@@ -293,7 +296,7 @@
                     <div class="card mb-4 mb-md-0">
                         <div class="card-body">
                             <p class="mb-4">
-                                <span class="text-dark font-italic me-1">Experience</span>
+                                <span class="text-dark font-italic me-1" style= "font-family: 'Archivo'">Experience</span>
                             </p>
                             <hr>
                             <p>@Model.UserProfile.experience</p>
