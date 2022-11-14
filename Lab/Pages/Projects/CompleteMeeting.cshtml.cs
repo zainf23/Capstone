@@ -18,6 +18,7 @@ namespace Lab.Pages.Projects
 
         public IActionResult OnGet(int teammeetingid, int projectid)
         {
+            HttpContext.Session.SetInt32("projectID", projectid);
             projectID = projectid;
             teamMeetingID = teammeetingid;
             if (HttpContext.Session.GetString("username") == null)
@@ -32,7 +33,7 @@ namespace Lab.Pages.Projects
         {
             DBClass.UpdateMeeting(meetingSummary, teamMeetingID);
 
-            return RedirectToPage("MyProjects");
+            return RedirectToPage("ViewProjects");
         }
     }
 }

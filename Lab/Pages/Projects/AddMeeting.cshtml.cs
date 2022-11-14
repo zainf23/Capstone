@@ -32,6 +32,7 @@ namespace Lab.Pages.Projects
 
         public IActionResult OnGet(int projectid)
         {
+            HttpContext.Session.SetInt32("projectID", projectid);
             projectID = projectid;
 
             if (HttpContext.Session.GetString("username") == null)
@@ -47,7 +48,7 @@ namespace Lab.Pages.Projects
             DBClass.InsertMeeting(projectID,meetingTitle,meetingDate,meetingTime,meetingPlan,meetingLocation);
 
 
-            return RedirectToPage("MyProjects");
+            return RedirectToPage("ViewProjects");
         }
 
 
