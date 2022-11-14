@@ -19,6 +19,7 @@ namespace Lab.Pages.Projects
         // get method that reads project info into model
         public IActionResult OnGet(int projectid)
         {
+            HttpContext.Session.SetInt32("projectID", projectid);
             SqlDataReader singleProject = DBClass.SingleProjectReader(projectid);
 
             while (singleProject.Read())
@@ -46,7 +47,7 @@ namespace Lab.Pages.Projects
         {
             DBClass.UpdateProject(ProjectToUpdate);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("ViewProjects");
         }
     }
 }
