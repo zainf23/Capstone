@@ -34,7 +34,7 @@ namespace Lab.Pages.Projects
             MemberProjectList = new List<Project>();
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
             username = HttpContext.Session.GetString("username");
             string sqlQuery = "SELECT userID from [USER] WHERE username = '" + username + "'";
@@ -90,6 +90,13 @@ namespace Lab.Pages.Projects
                 });
             }
             otherFinder.Close();
+
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToPage("/Login/HashedLogin");
+            }
+
+            return Page();
 
         }
     }

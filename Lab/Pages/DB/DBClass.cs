@@ -679,5 +679,71 @@ namespace Lab.Pages.DB
             cmdHobbyRead.ExecuteNonQuery();
         }
 
+        public static void InsertMeeting(int projectID, string meetingTitle, string meetingDate, string meetingTime, string meetingPlan, string meetingLocation)
+        {
+            string sqlQuery = "INSERT INTO TeamMeeting (projectID,meetingTitle,meetingDate,meetingTime,meetingPlan,meetingLocation) VALUES (@projectID, @meetingTitle, @meetingDate, @meetingTime, @meetingPlan, @meetingLocation)";
+
+            SqlCommand cmdUserRead = new SqlCommand();
+            cmdUserRead.Connection = new SqlConnection();
+            cmdUserRead.Connection.ConnectionString = LabConnStr;
+            cmdUserRead.CommandText = sqlQuery;
+            cmdUserRead.Parameters.AddWithValue("@projectID", projectID);
+            cmdUserRead.Parameters.AddWithValue("@meetingTitle", meetingTitle);
+            cmdUserRead.Parameters.AddWithValue("@meetingDate", meetingDate);
+            cmdUserRead.Parameters.AddWithValue("@meetingTime", meetingTime);
+            cmdUserRead.Parameters.AddWithValue("@meetingPlan", meetingPlan);
+            cmdUserRead.Parameters.AddWithValue("@meetingLocation", meetingLocation);
+            cmdUserRead.Connection.Open();
+            cmdUserRead.ExecuteNonQuery();
+
+        }
+
+
+        public static void UpdateMeeting(string meetingSummary, int teamMeetingID)
+        {
+            string sqlQuery = "UPDATE TeamMeeting SET ";
+            sqlQuery += "attended= 1" + ",";
+            sqlQuery += "meetingSummary='" + meetingSummary + "' WHERE teamMeetingID = " + teamMeetingID;
+
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
+        }
+
+        public static void UpdateMeeting(TeamMeeting m)
+        {
+            string sqlQuery = "UPDATE TeamMeeting SET ";
+
+            sqlQuery += "meetingTitle='" + m.meetingTitle + "',";
+            sqlQuery += "meetingDate='" + m.meetingDate + "',";
+            sqlQuery += "meetingTime='" + m.meetingTime + "',";
+            sqlQuery += "meetingLocation='" + m.meetingLocation + "',";
+            sqlQuery += "meetingPLan='" + m.meetingPlan + "' WHERE teamMeetingID=" + m.teamMeetingID;
+
+            SqlCommand cmdUserRead = new SqlCommand(sqlQuery);
+            cmdUserRead.Connection = new SqlConnection();
+            cmdUserRead.Connection.ConnectionString = LabConnStr;
+            cmdUserRead.CommandText = sqlQuery;
+            cmdUserRead.Connection.Open();
+            cmdUserRead.ExecuteNonQuery();
+        }
+
+        public static SqlDataReader SingleMeetingReader(int teamMeetingID)
+        {
+            SqlCommand cmdUserRead = new SqlCommand();
+            cmdUserRead.Connection = new SqlConnection();
+            cmdUserRead.Connection.ConnectionString = LabConnStr;
+            cmdUserRead.CommandText = "SELECT * FROM TeamMeeting WHERE teamMeetingID = " + teamMeetingID;
+            cmdUserRead.Connection.Open();
+            SqlDataReader tempReader = cmdUserRead.ExecuteReader();
+
+            return (tempReader);
+        }
+
+
+
     }
 }

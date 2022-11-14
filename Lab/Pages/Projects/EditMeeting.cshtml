@@ -1,0 +1,35 @@
+﻿@page
+@model Lab.Pages.Projects.EditMeetingModel
+@{
+}
+
+
+<form asp-page="Edit">
+    <br />
+    <h2 style="color: #450084;">Edit Meeting</h2>
+    <input type="hidden" asp-for="@Model.MeetingToUpdate.teamMeetingID" />
+    <label asp-for="@Model.MeetingToUpdate.meetingTitle">Meeting Title</label>
+    <br />
+    <input type="text" asp-for="@Model.MeetingToUpdate.meetingTitle" />
+    <br />
+    <label asp-for="@Model.MeetingToUpdate.meetingDate">Meeting Date</label>
+    <br />
+    <input type="date" asp-for="@Model.MeetingToUpdate.meetingDate" />
+    <br />
+    <label asp-for="@Model.MeetingToUpdate.meetingTime">Meeting Time</label>
+    <br />
+    <input type="text" asp-for="@Model.MeetingToUpdate.meetingTime" />
+    <br />
+    <label asp-for="@Model.MeetingToUpdate.meetingLocation">Meeting Location</label>
+    <br />
+    <input type="text" asp-for="@Model.MeetingToUpdate.meetingLocation" />
+    <br />
+    <br />
+    <div class="form-group">
+        <label asp-for="@Model.MeetingToUpdate.meetingPlan">Meeting Plan</label>
+        <textarea class="form-control" asp-for="@Model.MeetingToUpdate.meetingPlan" rows="3"></textarea>
+    </div>
+    <br />
+    <input type="submit" class="btn btn-purple" asp-page="EditMeeting" />
+    <a asp-page="ViewProjects" class="btn btn-secondary">Cancel</a>
+</form>

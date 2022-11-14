@@ -46,7 +46,7 @@ namespace Lab.Pages.Projects
         {
             DBClass.UpdateProject(ProjectToUpdate);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("MyProjects");
         }
     }
 }

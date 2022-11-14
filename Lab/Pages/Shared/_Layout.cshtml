@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Data.SqlClient
+@using Lab.Pages.DB
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,57 +13,80 @@
     <body style="background-color: #CBB677">
 
         <header>
-            <nav class="navbar navbar-light navbar-expand-sm" style="background-color: #450084">
+            <nav class="navbar navbar-light navbar-expand-sm fs-3" style="background-color: #450084">
                 <div class="container">
-                    <img src="/Images/MadisonConnectHubLogo.png" alt="avatar"
-                         class="rounded-circle img-fluid" style="width: 150px;">
-                         <br />
-                    @*<a class="navbar-brand ms-auto ms-auto mb-2 mb-lg-0" asp-area="" asp-page="/Index">Home</a>*@
+                    <img src="/Images/MadisonConnectHubLogo.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                    <br />
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
+
+                            <li class="nav-item first-item">
                                 <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-page="/Users/ViewProfiles">My Profile</a>
-                            </li>
-                            
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
+                           
+                            <li class="nav-item dropdown dropdown-items">
+                                <a class="nav-link dropdown-toggle text-white secondary-items" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" asp-page="/Projects/projectsearch">Search for a Project</a></li>
                                     <li><a class="dropdown-item" asp-page="/Projects/AddProjects">Add a new Project</a></li>
                                     <li><a class="dropdown-item" asp-page="/Projects/MyProjects">View My Projects</a></li>
                                 </ul>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">User Search</a>
+                            <li/>
+
+                            <li class="nav-item dropdown dropdown-items">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Search</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" asp-page="/Search/Index">Search for Users</a></li>
-                                    <li><a class="dropdown-item" asp-page="/Search/UsersRequestingMe">My Requests</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Projects/projectsearch">Search for a Project</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Search/Index">Search for a User</a></li>
                                 </ul>
-                            </li>
-                            @*<li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Search/Index">User Skill Search</a>
-                        </li>*@
-
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-page="/Login/CreateHashedLogin">Create Account</a></li>
-                                <li><a class="dropdown-item" asp-page="/Login/HashedLogin">Login</a></li>
-                                <li><a class="dropdown-item" asp-page="/Login/LandingPage">Logout</a></li>
-                                
-                            </ul>
-                        </li>
-
+                            <li />
 
                         </ul>
                     </div>
+
+                    @{
+                        if (Context.Session.GetString("username") != null) 
+                        {
+                            string fileName = "";
+                            string sqlQuery = "Select [fileName] FROM UserProfilePic WHERE userID =" + Context.Session.GetInt32("userID");
+                            SqlDataReader picReader = DBClass.GeneralReaderQuery(sqlQuery);
+                            while (picReader.Read())
+                            {
+                                fileName = picReader["fileName"].ToString();
+                            }
+
+                        <div class="text-end">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Search/UsersRequestingMe">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                                </svg>
+                            </a>
+                        </div>
+
+                            <div class="dropdown text-end">
+                                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="/Images/@fileName" alt="mdo" width="60" height="60" class="rounded-circle">
+                                </a>
+                                <ul class="dropdown-menu text-small">
+                                    <li><a class="dropdown-item" asp-page="/Users/ViewProfiles">View Profile</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Users/EditUsers" asp-route-userid=@Context.Session.GetInt32("userID")>Edit Profile</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-page="/Login/LandingPage">Sign out</a></li>
+                                </ul>
+                            </div>
+                        }
+                        else 
+                        {
+                            <div class="text-end">
+                                <a asp-page="/Login/HashedLogin"><input type="button" class="btn btn-outline-light me-2" value="Login"></a>
+                                <a asp-page="/Login/CreateHashedLogin"><input type="button" class="btn btn-warning" value="Sign-up"></a>
+                            </div>
+                        }
+                     }
+
                 </div>
             </nav>
         </header>
