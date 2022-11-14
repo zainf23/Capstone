@@ -2,8 +2,16 @@
 @model Lab.Pages.Projects.projectsearchModel
 @{
 }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
 
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 <br />
+<h2 style="color: #450084;">Project Search</h2>
 <form asp-page="projectsearch">
     <div class="input-group">
         <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Project" aria-label="Search" aria-describedby="search-addon" />
@@ -16,8 +24,7 @@
     if (Model.SearchString != null)
     {
 
-
-
+      
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @{
                 foreach (var pro in Model.ProjectSearchList)

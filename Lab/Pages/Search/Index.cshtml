@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Search Projects";
 }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 @*<form asp-action="Index">
     <p>Choose a Skill to Search</p>
@@ -13,6 +21,7 @@
 </form>*@
 
 <br />
+<h2 style="color: #450084;">User Search</h2>
 <form asp-page="Index">
     <div class="input-group">
         <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Users by Name, Skills, Hobbies, Interest, Experience, and More!" aria-label="Search" aria-describedby="search-addon" />

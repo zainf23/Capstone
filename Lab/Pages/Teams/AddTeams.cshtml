@@ -3,9 +3,18 @@
 @{
     ViewData["Title"] = "Add Teams";
 }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 <form asp-page="AddTeams">
     <br />
+    <h2 style="color: #450084;">Create Team</h2>
     <input type="text" asp-for="ProjectTeam.teamName" placeholder="Team Name" />
     <br />
     <select asp-for="projectID" asp-items="Model.Projects">
