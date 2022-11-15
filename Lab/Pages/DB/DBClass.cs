@@ -8,10 +8,19 @@ namespace Lab.Pages.DB
     public class DBClass
     {
         private static readonly string LabConnStr
-            = @"Server=Localhost;Database=Capstone;Trusted_Connection=True";
+            = @"Server=capstone.cjzu3rtz5sjd.us-east-1.rds.amazonaws.com;
+                    Database=Capstone;uid=adminuser;password=Swoopes1";
 
         private static readonly string AuthConnStr
-           = @"Server=Localhost;Database=AUTH;Trusted_Connection=True";
+            = @"Server=capstone.cjzu3rtz5sjd.us-east-1.rds.amazonaws.com;
+                    Database=Auth;uid=adminuser;password=Swoopes1";
+
+        //private static readonly string LabConnStr
+        //    = @"Server=Localhost;Database=Capstone;Trusted_Connection=True";
+
+        //private static readonly string AuthConnStr
+        //   = @"Server=Localhost;Database=AUTH;Trusted_Connection=True";
+
         // method to read data from user file
         public static SqlDataReader UserReader(string username)
         {
