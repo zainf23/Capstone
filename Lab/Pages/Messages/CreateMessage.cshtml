@@ -1,0 +1,40 @@
+﻿@page
+@model Lab.Pages.Messages.CreateMessageModel
+@{
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
+
+
+
+<form asp-page="CreateMessage">
+    <br />
+    <h2 style="color: #450084;">Send a Message</h2>
+    <input type="hidden" asp-for="@Model.userID" placeholder="userID" />
+    
+    <div class="input-group">
+        <span class="input-group-text">First and last name</span>
+        <input type="text" asp-for="@Model.firstName" required aria-label="First name" class="form-control">
+        <input type="text" asp-for="@Model.lastName" required aria-label="Last name" class="form-control">
+    </div>
+
+    <label asp-for="@Model.subject">Subject</label>
+    <br />
+    <input type="text" asp-for="@Model.subject" required placeholder="Subject" />
+    <br />
+    <div class="form-group">
+        <label asp-for="@Model.message">Message</label>
+        <textarea class="form-control" asp-for="@Model.message" required rows="3"></textarea>
+    </div>
+    <br />
+    <button type="submit">Send Message -> </button>
+    <a asp-page="Index" asp-route-userid="@Model.userID">Cancel</a>
+
+</form>

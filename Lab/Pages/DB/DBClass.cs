@@ -743,6 +743,37 @@ namespace Lab.Pages.DB
             return (tempReader);
         }
 
+        public static void SendMessage(int userID, int otherUserID, string subject, string message,string senderName)
+        {
+            string sqlQuery = "INSERT INTO Messages (userID,otherUserID,subject,message,senderName) VALUES (@userID, @otherUserID, @subject, @message, @senderName)";
+
+            SqlCommand cmdUserRead = new SqlCommand();
+            cmdUserRead.Connection = new SqlConnection();
+            cmdUserRead.Connection.ConnectionString = LabConnStr;
+            cmdUserRead.CommandText = sqlQuery;
+            cmdUserRead.Parameters.AddWithValue("@userID", userID);
+            cmdUserRead.Parameters.AddWithValue("@otherUserID", otherUserID);
+            cmdUserRead.Parameters.AddWithValue("@subject", subject);
+            cmdUserRead.Parameters.AddWithValue("@message", message);
+            cmdUserRead.Parameters.AddWithValue("@senderName", senderName);
+            cmdUserRead.Connection.Open();
+            cmdUserRead.ExecuteNonQuery();
+
+        }
+
+        public static void MessageRead(int messageid)
+        {
+            string sqlQuery = "UPDATE Messages SET ";
+            sqlQuery += "readMessage= 1" + "WHERE messageID =" + messageid;
+
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
+        }
+
 
 
     }

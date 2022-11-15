@@ -128,6 +128,7 @@ namespace Lab.Pages.Users
             {
                 fileName = picReader["fileName"].ToString();
             }
+            picReader.Close();
 
             String sqlQueryTwo = "Select Distinct u.userID, u.firstName, u.secondName, u.jmuType, u.gradYear, u.major, u.minor, u.jobtitle, u.department, upp.fileName from [User] u, UserProfilePic upp, Bookmark b WHERE (u.userID = upp.userID AND u.userID = b.otherUserID) AND b.userID =" + UserProfile.userID;
             SqlDataReader BookmarkReader = DBClass.GeneralReaderQuery(sqlQueryTwo);
