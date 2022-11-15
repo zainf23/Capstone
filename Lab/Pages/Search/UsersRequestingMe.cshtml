@@ -51,7 +51,7 @@
         }
     </tbody>
 </table>*@
-<br />
+@*<br />
 <h2 style="color: #450084;">Projects Requesting Me to Join</h2>
 <br />
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -84,4 +84,55 @@
         }
     }
 
+</div>*@
+
+<div class="m-4">
+    <div class="card">
+
+        <div class="card-header" style="background-color: #DACCE6">
+            <ul class="nav nav-pills card-header-pills btn btn-purple1">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active btn btn-purple" data-bs-toggle="tab">Projects Requesting Me to Join</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body" style="background-color: #DACCE6">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" style="background-color:  #DACCE6" id="home">
+                    <h2 class="text-center " style="color: #450084;">Projects Requesting Me to Join</h2>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        @{
+                            foreach (var pro in Model.MyRequestsList)
+                            {
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="~/Images/@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">@pro.projectName</h5>
+                                            <p class="cardd-text">Team Name: @pro.teamName</p>
+                                            <p class="card-text">Project Owner: @pro.projectOwner</p>
+
+                                            <p class="card-text">
+                                                Description: <br />
+                                                @pro.projectDescription
+                                            </p>
+                                            <p class="card-text">
+                                                Pitch: @pro.userPitchTwo
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a asp-page="ViewProject" class="btn btn-primary" asp-route-projectid="@pro.projectID">View Project Profile</a>
+                                            <a asp-page="Accept" class="btn btn-primary" asp-route-requestIDTwo="@pro.requestIDTwo">Accept</a>
+                                            <a asp-page="Reject" class="btn btn-primary" asp-route-requestIDTwo="@pro.requestIDTwo">Reject</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+            </div>
+        </div>
+    </div>
 </div>

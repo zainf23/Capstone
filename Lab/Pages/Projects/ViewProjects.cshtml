@@ -33,37 +33,37 @@
                 </li>
             </ul>
         </div>
-       
+
         <div class="card-body" style="background-color: #DACCE6">
 
             <div class="tab-content">
 
 
                 <div class="tab-pane fade show active" style="background-color: #DACCE6" id="home">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <img src="/Images/@Model.fileName" alt="avatar"
-                                 class="rounded-circle img-fluid" style="width: 150px;">
-                            <br />
-                            <br />
-                            <a asp-page="FileUpload" class="btn btn-outline-secondary btn-sm" asp-route-projectid="@Model.ProjectInfo.projectID">Upload Profile Picture</a>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-body text-center">
+                                    <img src="/Images/@Model.fileName" alt="avatar"
+                                         class="rounded-circle img-fluid" style="width: 150px;">
+                                    <br />
+                                    <br />
+                                    <a asp-page="FileUpload" class="btn btn-outline-secondary btn-sm" asp-route-projectid="@Model.ProjectInfo.projectID">Upload Profile Picture</a>
 
 
-                            <h5 class="my-3">@Model.ProjectInfo.projectName</h5>
-                            <p class="text-muted mb-1">Creation Date: @Model.ProjectInfo.projectDate</p>
-                        </div>
-                        <a asp-page="editProjects" class="btn btn-purple btn-sm" asp-route-projectid="@Model.ProjectInfo.projectID">Edit Project</a>
-                    </div>
+                                    <h5 class="my-3">@Model.ProjectInfo.projectName</h5>
+                                    <p class="text-muted mb-1">Creation Date: @Model.ProjectInfo.projectDate</p>
+                                </div>
+                                <a asp-page="editProjects" class="btn btn-purple btn-sm" asp-route-projectid="@Model.ProjectInfo.projectID">Edit Project</a>
+                            </div>
 
 
-                    <div class="card mb-4 mb-lg-0">
-                        <div class="card-body p-0">
-                            <h5 class="my-1 align-items-lg-center p-3">Team Members</h5>
-                            @{
-                                foreach (var prod in Model.UserList)
-                                {
+                            <div class="card mb-4 mb-lg-0">
+                                <div class="card-body p-0">
+                                    <h5 class="my-1 align-items-lg-center p-3">Team Members</h5>
+                                    @{
+                                        foreach (var prod in Model.UserList)
+                                        {
                                             <ul class="list-group list-group-flush rounded-3">
                                                 <li class="list-group-item d-flex justify-content-between align-items-lg-start p-3">
                                                     <p class="mb-0">@prod.firstName @prod.secondName</p>
@@ -71,74 +71,74 @@
                                                     <hr>
                                                 </li>
                                             </ul>
-                                }
-                            }
+                                        }
+                                    }
 
+
+                                </div>
+                            </div>
+                            <br />
+                            <br />
 
                         </div>
-                    </div>
-                    <br />
-                    <br />
 
+                        <div class="col-lg-8">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Project Owner</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">@Model.ProjectInfo.projectOwner</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Project Owner Email</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">@Model.ProjectInfo.projectOwnerEmail</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-14">
+                                <div class="card mb-4 mb-md-0">
+                                    <div class="card-body">
+                                        <p class="mb-4">
+                                            <h5 class="text-dark font-italic me-1">Project Description</h5>
+                                        </p>
+                                        <hr>
+                                        <p>@Model.ProjectInfo.projectDescription</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-md-14">
+                                <div class="card mb-4 mb-md-0">
+                                    <div class="card-body">
+                                        <p class="mb-4">
+                                            <h5 class="text-dark font-italic me-1">Mission Statement</h5>
+                                        </p>
+                                        <hr>
+                                        <p>@Model.ProjectInfo.projectMissionStatement</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-
-                <div class="col-lg-8">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Project Owner</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@Model.ProjectInfo.projectOwner</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Project Owner Email</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@Model.ProjectInfo.projectOwnerEmail</p>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-14">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4">
-                                    <h5 class="text-dark font-italic me-1">Project Description</h5>
-                                </p>
-                                <hr>
-                                <p>@Model.ProjectInfo.projectDescription</p>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="col-md-14">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4">
-                                    <h5 class="text-dark font-italic me-1">Mission Statement</h5>
-                                </p>
-                                <hr>
-                                <p>@Model.ProjectInfo.projectMissionStatement</p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-
-                </div>
-            </div>
 
                 <div class="tab-pane fade" style="background-color: #DACCE6" id="meetings">
-                    <h2 class="text-center" style="color: #450084;">Upcoming Meetings</h2>              
+                    <h2 class="text-center" style="color: #450084;">Upcoming Meetings</h2>
                     <div class="text-center">
-                    <a asp-page="AddMeeting" class="btn btn-purple btn-lg text-align:ceter;" asp-route-projectid="@Model.ProjectInfo.projectID">Create a Meeting</a>
+                        <a asp-page="AddMeeting" class="btn btn-purple btn-lg text-align:ceter;" asp-route-projectid="@Model.ProjectInfo.projectID">Create a Meeting</a>
                     </div>
                     <br />
 
@@ -147,26 +147,26 @@
                         @{
                             foreach (var pro in Model.MeetingList)
                             {
-                                        <div class="col">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">@pro.meetingTitle</h5>
-                                                    <p class="cardd-text">@pro.meetingDate at @pro.meetingTime</p>
-                                                    <p class="card-text">Location: @pro.meetingLocation</p>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@pro.meetingTitle</h5>
+                                            <p class="cardd-text">@pro.meetingDate at @pro.meetingTime</p>
+                                            <p class="card-text">Location: @pro.meetingLocation</p>
 
-                                                    <p class="card-text">
-                                                        Meeting Plan: @pro.meetingPlan
-                                                    </p>
-                                                    <div class="card-footer text-center">
-                                                        <a asp-page="CompleteMeeting" class="btn btn-purple btn-sm" asp-route-teammeetingid="@pro.teamMeetingID" asp-route-projectid="@pro.projectID">Completed</a>
-                                                        <a asp-page="EditMeeting" class="btn btn-purple btn-sm" asp-route-teammeetingid="@pro.teamMeetingID">Edit Meeting</a>
+                                            <p class="card-text">
+                                                Meeting Plan: @pro.meetingPlan
+                                            </p>
+                                            <div class="card-footer text-center">
+                                                <a asp-page="CompleteMeeting" class="btn btn-purple btn-sm" asp-route-teammeetingid="@pro.teamMeetingID" asp-route-projectid="@pro.projectID">Completed</a>
+                                                <a asp-page="EditMeeting" class="btn btn-purple btn-sm" asp-route-teammeetingid="@pro.teamMeetingID">Edit Meeting</a>
 
-                                                       
 
-                                                    </div>
-                                                </div>
+
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
                             }
                         }
 
@@ -183,22 +183,22 @@
                         @{
                             foreach (var pro in Model.CompletedMeetingList)
                             {
-                                        <div class="col">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">@pro.meetingTitle</h5>
-                                                    <p class="cardd-text">@pro.meetingDate at @pro.meetingTime</p>
-                                                    <p class="card-text">Location: @pro.meetingLocation</p>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@pro.meetingTitle</h5>
+                                            <p class="cardd-text">@pro.meetingDate at @pro.meetingTime</p>
+                                            <p class="card-text">Location: @pro.meetingLocation</p>
 
-                                                    <p class="card-text">
-                                                        Meeting Plan: @pro.meetingPlan
-                                                    </p>
-                                                    <p class="card-text">
-                                                        Meeting Summary: @pro.meetingSummary
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            <p class="card-text">
+                                                Meeting Plan: @pro.meetingPlan
+                                            </p>
+                                            <p class="card-text">
+                                                Meeting Summary: @pro.meetingSummary
+                                            </p>
+                                        </div>
                                     </div>
+                                </div>
                             }
                         }
 
@@ -207,9 +207,9 @@
                 </div>
 
                 <div class="tab-pane fade" style="background-color: #DACCE6" id="projectchatroom">
-                    <h2 class= "text-center" style="color: #450084;">Project Message Board</h2>
-                    <div class= "text-center">
-                    <a asp-page="AddMessage" class="btn btn-purple btn-lg" asp-route-projectid="@Model.ProjectInfo.projectID" asp-route-userid="@Model.userID">Send a Message</a>
+                    <h2 class="text-center" style="color: #450084;">Project Message Board</h2>
+                    <div class="text-center">
+                        <a asp-page="AddMessage" class="btn btn-purple btn-lg" asp-route-projectid="@Model.ProjectInfo.projectID" asp-route-userid="@Model.userID">Send a Message</a>
                     </div>
                     <br />
                     <div class="container-fluid mt-100">
