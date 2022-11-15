@@ -1,0 +1,77 @@
+﻿@page
+@model Lab.Pages.Messages.UserSearchModel
+@{
+}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
+
+@*<form asp-action="Index">
+    <p>Choose a Skill to Search</p>
+    <select asp-for="Skill" asp-items="Model.SkillNames">
+        <option value="">Choose a Skill</option>
+    </select>
+    <input type="submit" class="btn btn-purple" />
+</form>*@
+
+<br />
+<h2 style="color: #450084;">Search for Recipient</h2>
+<form asp-page="UserSearch">
+    <div class="input-group">
+        <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Users by name!" aria-label="Search" aria-describedby="search-addon" />
+        <button type="submit" class="btn btn-purple">search</button>
+    </div>
+</form>
+<br />
+
+@{
+    if (Model.SearchString != null)
+    {
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @{
+                foreach (var pro in Model.UserSearchList)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <img src="~/Images/@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
+                            <div class="card-body">
+                                <h5 class="card-title align-items-center d-flex justify-content-center">@pro.firstName @pro.secondName</h5>
+                                @{
+                                    if (pro.jmuType == "Student")
+                                    {
+                                        <p class="cardd-text align-items-center d-flex justify-content-center">@pro.jmuType</p>
+                                        <p class="cardd-text align-items-center d-flex justify-content-center">James Madison University @pro.gradYear</p>
+
+
+                                    }
+                                    else
+                                    {
+                                        <p class="cardd-text align-items-center d-flex justify-content-center">@pro.jobTitle at James Madison University</p>
+                                        <p class="cardd-text align-items-center d-flex justify-content-center">@pro.department Department</p>
+
+                                    }
+                                }
+                                <div class="card-footer text-center">
+                                    <a asp-page="/Messages/CreateMessage" class="btn btn-purple" asp-route-username="@pro.username" asp-route-userid="@Model.userID">Send a Message</a>
+                                    <a asp-page="/Search/ViewProfile" class="btn btn-purple" asp-route-userid="@pro.userID">View Profile</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    }
+
+}

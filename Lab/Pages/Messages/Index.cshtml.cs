@@ -42,7 +42,7 @@ namespace Lab.Pages.Messages
             HttpContext.Session.SetInt32("userid", UserData.userID);
 
 
-            string sqlQuery = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.time, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage is null AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID;
+            string sqlQuery = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.time, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage is null AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID + "Order by messageID desc";
             
             SqlDataReader messageReader = DBClass.GeneralReaderQuery(sqlQuery);
 
@@ -66,7 +66,7 @@ namespace Lab.Pages.Messages
             messageReader.Close();
 
 
-            string sqlQuery1 = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.time, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage = 1 AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID;
+            string sqlQuery1 = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.time, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage = 1 AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID + "Order by messageID desc";
 
             SqlDataReader readReader = DBClass.GeneralReaderQuery(sqlQuery1);
 

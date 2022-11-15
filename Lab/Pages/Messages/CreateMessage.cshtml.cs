@@ -45,19 +45,34 @@ namespace Lab.Pages.Messages
         [BindProperty]
         public string lName { get; set; }
 
+        [BindProperty]
+        public string userName { get; set; }
 
 
 
-        public IActionResult OnGet(int userid)
+
+        public IActionResult OnGet(string username, int userid)
         {
 
-            HttpContext.Session.SetInt32("userID", userid);
+
             userID = userid;
+            userName = username;
 
             if (HttpContext.Session.GetString("username") == null)
             {
                 return RedirectToPage("/Login/HashedLogin");
             }
+
+            String sqlQuery = "Select userID,firstName,secondName from [User] WHERE username ='" + userName + "'";
+            SqlDataReader userReader = DBClass.GeneralReaderQuery(sqlQuery);
+
+            while (userReader.Read())
+            {
+                otherUserID = Int32.Parse(userReader["userID"].ToString());
+                firstName = userReader["firstName"].ToString();
+                lastName = userReader["secondName"].ToString();
+            }
+            userReader.Close();
 
             return Page();
         }
