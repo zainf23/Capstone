@@ -12,14 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 <br />
 
-<a asp-page="CreateMessage" class="btn btn-purple btn-lg" style="float: right;" asp-route-userid="@Model.UserData.userID">Send a New Message</a>
+<a asp-page="UserSearch" class="btn btn-purple btn-lg" style="float: right;" asp-route-userid="@Model.UserData.userID">Send a New Message</a>
 <br />
 <br />
 <br />
-
-
-
-
 
 
 
@@ -83,6 +79,7 @@
 <div class="tab-pane fade" style="background-color: #DACCE6" id="read">
     <br />
     <h2 class="text-center" style="color: #450084;">My Read Inbox</h2>
+    <br />
     @{
         foreach (var m in Model.MyReadMessages)
         {
