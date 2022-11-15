@@ -1,0 +1,124 @@
+﻿@page
+@model Lab.Pages.Messages.IndexModel
+@{
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
+<br />
+
+<a asp-page="CreateMessage" class="btn btn-purple btn-lg" style="float: right;" asp-route-userid="@Model.UserData.userID">Send a New Message</a>
+<br />
+<br />
+<br />
+
+
+
+
+
+
+
+<div class="card-header" style="background-color: #DACCE6">
+    <ul class="nav nav-pills card-header-pills btn btn-purple1">
+        <li class="nav-item">
+            <a href="#unread" class="nav-link active btn btn-purple" data-bs-toggle="tab">Unread Messages</a>
+        </li>
+        <li class="nav-item">
+            <a href="#read" class="nav-link btn btn-purple" data-bs-toggle="tab">Read Messages</a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content">
+
+
+
+<div class="tab-pane fade show active" style="background-color: #DACCE6" id="unread">
+    <br />
+    <h2 class="text-center" style="color: #450084;">My Inbox</h2>
+    <br />
+    @{
+        foreach (var m in Model.MyMessages)
+        {
+
+            <br />
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="media flex-wrap w-100 align-items-center">
+                                <img src="/Images/@m.fileName" class="rounded-circle img-fluid" style="width: 100px;" alt="avatar">
+                                <div class="media-body ml-3">
+                                    <br />
+                                    <p>From: @m.senderName</p>
+                                    <hr>
+                                    <h5>Subject: @m.subject</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                @m.message
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-page="Reply" class="btn btn-purple" style="float: right;" asp-route-userid="@m.userID" asp-route-subject="@m.subject" asp-route-otheruserid="@m.otherUserID">Reply</a>
+                            <a asp-page="Mark" class="btn btn-purple" style="float: right;" asp-route-messageid="@m.messageID">Mark as Read</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div class="tab-pane fade" style="background-color: #DACCE6" id="read">
+    <br />
+    <h2 class="text-center" style="color: #450084;">My Read Inbox</h2>
+    @{
+        foreach (var m in Model.MyReadMessages)
+        {
+
+            <br />
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="media flex-wrap w-100 align-items-center">
+                                <img src="/Images/@m.fileName" class="rounded-circle img-fluid" style="width: 100px;" alt="avatar">
+                                <div class="media-body ml-3">
+                                    <br />
+                                    <p>From: @m.senderName</p>
+                                    <hr>
+                                    <h5>Subject: @m.subject</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                @m.message
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-page="Reply" class="btn btn-purple" style="float: right;" asp-route-userid="@m.userID" asp-route-subject="@m.subject" asp-route-otheruserid="@m.otherUserID">Reply</a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+</div>
+

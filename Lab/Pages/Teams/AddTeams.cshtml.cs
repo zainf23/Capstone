@@ -64,7 +64,7 @@ namespace Lab.Pages.Teams
             insertQuery += "'" + projectID + "')";
             //DBClass.InsertTeam(ProjectTeam);
             DBClass.InsertQuery(insertQuery);
-            return RedirectToPage("Index");
+            return RedirectToPage("/Projects/MyProjects");
 
 
         }
