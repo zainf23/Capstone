@@ -1,19 +1,33 @@
 ﻿@page
 @model Lab.Pages.Projects.AddMessageModel
 @{
+    ViewData["Title"] = "Send a Message";
 }
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 <form asp-page="AddMessage">
     <br />
     <h2 style="color: #450084;">Send a Message</h2>
-    <input type="text" asp-for="subject" placeholder="Subject" />
+    <label asp-for="subject">Subject</label>
     <br />
+    <input type="text" asp-for="subject" required placeholder="Subject" />
+    <br />
+    <label asp-for="recipient">Recipient</label>
     <br />
     <input type="text" asp-for="recipient" placeholder="Recipient" />
     <br />
+    <label asp-for="messageInfo">Message</label>
     <br />
     <div class="form-group">
-        <textarea class="form-control" asp-for="messageInfo" rows="3" placeholder="Message"></textarea>
+        <textarea class="form-control" asp-for="messageInfo" required rows="3" placeholder="Message"></textarea>
     </div>
     <br />
     <button type="submit">Send Message -> </button>
