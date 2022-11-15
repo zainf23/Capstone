@@ -163,7 +163,7 @@ namespace Lab.Pages.Projects
             }
             userFinder.Close();
 
-            String sqlQuery6 = "Select p.messageID, p.userID, p.projectID, p.subject, p.sender, p.recipient, p.messageInfo, upp.fileName from ProjectChatRoom p, UserProfilePic upp WHERE p.userID = upp.userID AND projectID = " + ProjectInfo.projectID + " Order by messageID DESC";
+            String sqlQuery6 = "Select distinct p.messageID, p.userID, p.projectID, p.subject, p.sender, p.recipient, p.messageInfo, upp.fileName from ProjectChatRoom p, UserProfilePic upp WHERE p.userID = upp.userID AND projectID = " + ProjectInfo.projectID + " Order by messageID DESC";
             SqlDataReader messageFinder = DBClass.GeneralReaderQuery(sqlQuery6);
             while (messageFinder.Read())
             {
