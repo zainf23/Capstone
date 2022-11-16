@@ -32,7 +32,7 @@
         <br />
         <label asp-for="@Model.UserToUpdate.email">Email</label>
         <br />
-        <input type="text" asp-for="@Model.UserToUpdate.email" required/>
+        <input type="text" asp-for="@Model.UserToUpdate.email"/>
         <br />
         <label asp-for="@Model.UserToUpdate.jmuType">User Type</label>
         <br />
@@ -78,11 +78,11 @@
             <input type="hidden" asp-for="@Model.UserToUpdate.userID" />
             <label asp-for="@Model.UserToUpdate.firstName">First Name</label>
             <br />
-            <input type="text" asp-for="@Model.UserToUpdate.firstName" />
+            <input type="text" required asp-for="@Model.UserToUpdate.firstName" />
             <br />
             <label asp-for="@Model.UserToUpdate.secondName">Second Name</label>
             <br />
-            <input type="text" asp-for="@Model.UserToUpdate.secondName" />
+            <input type="text" required asp-for="@Model.UserToUpdate.secondName" />
             <br />
             <label asp-for="@Model.UserToUpdate.email">Email</label>
             <br />
@@ -90,7 +90,7 @@
             <br />
             <label asp-for="@Model.UserToUpdate.jmuType">User Type</label>
             <br />
-            <input type="text" asp-for="@Model.UserToUpdate.jmuType" />
+            <input type="text" required asp-for="@Model.UserToUpdate.jmuType" />
             <br />
             <br />
             <div class="form-group">
