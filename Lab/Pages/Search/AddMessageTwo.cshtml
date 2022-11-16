@@ -1,23 +1,37 @@
 ﻿@page
 @model Lab.Pages.Search.AddMessageTwoModel
 @{
+    ViewData["Title"] = "Send a Message";
 }
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 <form asp-page="AddMessageTwo">
     <br />
     <h2 style="color: #450084;">Send a Message</h2>
-    <input type="text" asp-for="subject" placeholder="Subject" />
+    <label asp-for="subject">Subject</label>
     <br />
+    <input type="text" asp-for="subject" required placeholder="Subject" />
     <br />
-    <input type="text" asp-for="recipient" placeholder="Recipient" />
+    <label asp-for="recipient">Recipient</label>
     <br />
+    <input type="text" asp-for="recipient" required placeholder="Recipient" />
+    <br />
+    <label asp-for="messageInfo">Message</label>
     <br />
     <div class="form-group">
-        <textarea class="form-control" asp-for="messageInfo" rows="3" placeholder="Message"></textarea>
+        <textarea class="form-control" asp-for="messageInfo" rows="3" required placeholder="Message"></textarea>
     </div>
     <br />
-    <button type="submit">Send Message -> </button>
-    <a asp-page="/Search/ViewProject" asp-route-projectid="@Model.projectID">Cancel</a>
+    <button type="submit" class="btn btn-purple">Send Message -> </button>
+    <a asp-page="/Search/ViewProject" class="btn btn-warning" asp-route-projectid="@Model.projectID">Cancel</a>
     <input type="hidden" asp-for="projectID" placeholder="Project ID" />
     <br />
     <input type="hidden" asp-for="userID" placeholder="User ID" />

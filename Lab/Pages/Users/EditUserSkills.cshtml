@@ -16,14 +16,18 @@
 <p>@ViewData["test"]</p>
 
 <form asp-page="Edit">
+    <h2 style="color: #450084;">Edit Skill</h2>
     <input type="hidden" asp-for="@Model.UserSkillToUpdate.userID"/>
     <input type="hidden" asp-for="@Model.skillPlaceHolder" />
     <label asp-for="@Model.UserSkillToUpdate.skill">Skill</label>
+    <br />
     <input type="text" asp-for="@Model.UserSkillToUpdate.skill" />
     <br />
     <label asp-for="@Model.UserSkillToUpdate.skillLevel">Skill Level</label>
+    <br />
     <input type="text" asp-for="@Model.UserSkillToUpdate.skillLevel" />
     <br />
+    <br />
     <input type="submit" class="btn btn-purple" asp-route-userid="@HttpContext.Session.GetInt32("userid")" asp-page="ViewProfile" />
-    <a asp-page="ViewProfiles" class="btn btn-secondary" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+    <a asp-page="ViewProfiles" class="btn btn-warning" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
 </form>

@@ -1,6 +1,7 @@
 ﻿@page
 @model Lab.Pages.Projects.ViewRequestsModel
 @{
+    ViewData["Title"] = "View My Requests";
 }
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,81 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
-@*<h2 class="h2">Requests To Join Project Team:</h2>
-<table class="table table-bordered table-resposnive table triped table-hover" style="background-color:#FFFFFF">
-    <thead class="table-dark">
-        <tr>
-            <th class="">Name:</th>
-            <th class="">Email:</th>
-            <th class="">User Type:</th>
-            <th class="">User Pitch:</th>
-            <th class="">View Profile:</th>
-            <th class="">Accept:</th>
-            <th class="">Reject:</th>
 
-        </tr>
-    </thead>
-    <tbody>
-
-        @{
-            foreach (var prod in Model.MyRequestsList)
-            {
-                <tr>
-
-                    <td>@prod.firstName @prod.secondName</td>
-                    <td>@prod.email</td>
-                    <td>@prod.jmuType</td>
-                    <td>@prod.userPitch</td>
-                    <td>
-                        <a asp-page="ViewOtherUser" class="btn btn-primary" asp-route-userid="@prod.userID">View Profile</a>
-                    </td>
-                    <td>
-                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestid="@prod.requestID">Accept</a>
-                    </td>
-                    <td>
-                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestid="@prod.requestID">Reject</a>
-                    </td>
-
-                </tr>
-            }
-        }
-    </tbody>
-</table>*@
-
-@*<br />
-<h2 style="color: #450084;">Users Requesting to Join My Project</h2>
-<br />
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    @{
-        foreach (var pro in Model.MyRequestsList)
-        {
-            <div class="col">
-                <div class="card">
-                    <img src="~/Images/@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
-                    <div class="card-body">
-                        <h5 class="card-title">@pro.firstName @pro.secondName</h5>
-                        <p class="cardd-text">User Type: @pro.jmuType</p>
-                        <p class="card-text">Email: @pro.email</p>
-
-                        <p class="card-text">
-                            Description: <br />
-                            @pro.userPitch
-                        </p>
-                        <p class="card-text">
-                            Interests: @pro.interests
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a asp-page="ViewOtherUser" class="btn btn-primary" asp-route-userid="@pro.userID">View Profile</a>
-                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestid="@pro.requestID">Accept</a>
-                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestid="@pro.requestID">Reject</a>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-
-</div>*@
 
 <div class="m-4">
     <div class="card">
@@ -93,7 +20,7 @@
         <div class="card-header" style="background-color: #DACCE6">
             <ul class="nav nav-pills card-header-pills btn btn-purple1">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link active btn btn-purple" data-bs-toggle="tab">Users Requesting to Join My Project</a>
+                    <a href="#home" class="nav-link btn btn-purple" data-bs-toggle="tab"></a>
                 </li>
             </ul>
         </div>
@@ -103,11 +30,12 @@
             <div class="tab-content">
                 <div class=" tab-pane fade show active" style="background-color:  #DACCE6" id="home">
                     <h2 class="text-center" style="color: #450084;">Users Requesting to Join My Project</h2>
+                    <br />
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                     @{
                         foreach (var pro in Model.MyRequestsList)
                         {
-                            <div class="col">
+                            <div class="card-group col">
                                 <div class="card">
                                     <img src="~/Images/@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
                                     <div class="card-body">
@@ -123,10 +51,10 @@
                                             Interests: @pro.interests
                                         </p>
                                     </div>
-                                    <div class="card-footer">
-                                        <a asp-page="ViewOtherUser" class="btn btn-primary" asp-route-userid="@pro.userID">View Profile</a>
-                                        <a asp-page="Accept" class="btn btn-primary" asp-route-requestid="@pro.requestID">Accept</a>
-                                        <a asp-page="Reject" class="btn btn-primary" asp-route-requestid="@pro.requestID">Reject</a>
+                                    <div class="card-footer text-center">
+                                        <a asp-page="ViewOtherUser" class="btn btn-purple" asp-route-userid="@pro.userID">View Profile</a>
+                                        <a asp-page="Accept" class="btn btn-purple" asp-route-requestid="@pro.requestID">Accept</a>
+                                        <a asp-page="Reject" class="btn btn-purple" asp-route-requestid="@pro.requestID">Reject</a>
                                     </div>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@
 @using Lab.Pages.DB
 @model Lab.Pages.Projects.ViewProjectsModel
 @{
-    ViewData["Title"] = @Model.ProjectToView.projectName;
+    ViewData["Title"] = @Model.ProjectInfo.projectName;
 }
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -138,7 +138,7 @@
                 <div class="tab-pane fade" style="background-color: #DACCE6" id="meetings">
                     <h2 class="text-center" style="color: #450084;">Upcoming Meetings</h2>
                     <div class="text-center">
-                        <a asp-page="AddMeeting" class="btn btn-purple btn-lg text-align:ceter;" asp-route-projectid="@Model.ProjectInfo.projectID">Create a Meeting</a>
+                        <a asp-page="AddMeeting" class="btn btn-purple text-align:ceter;" asp-route-projectid="@Model.ProjectInfo.projectID">Create a Meeting</a>
                     </div>
                     <br />
 
@@ -147,7 +147,7 @@
                         @{
                             foreach (var pro in Model.MeetingList)
                             {
-                                <div class="col">
+                                <div class="card-group col">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">@pro.meetingTitle</h5>
@@ -157,14 +157,12 @@
                                             <p class="card-text">
                                                 Meeting Plan: @pro.meetingPlan
                                             </p>
+                                        </div>
                                             <div class="card-footer text-center">
                                                 <a asp-page="CompleteMeeting" class="btn btn-purple btn-sm" asp-route-teammeetingid="@pro.teamMeetingID" asp-route-projectid="@pro.projectID">Completed</a>
-                                                <a asp-page="EditMeeting" class="btn btn-purple btn-sm" asp-route-teammeetingid="@pro.teamMeetingID">Edit Meeting</a>
-
-
-
+                                                <a asp-page="EditMeeting" class="btn btn-purple btn-sm" asp-route-teammeetingid="@pro.teamMeetingID" asp-route-projectid="@pro.projectID">Edit Meeting</a>
                                             </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             }
@@ -183,7 +181,7 @@
                         @{
                             foreach (var pro in Model.CompletedMeetingList)
                             {
-                                <div class="col">
+                                <div class="card-group col">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">@pro.meetingTitle</h5>

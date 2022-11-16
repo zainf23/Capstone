@@ -13,13 +13,14 @@
 
 <form asp-page="=BookmarkUser">
     <br />
+    <h2 style="color: #450084;">Bookmark User</h2>
     <input type="hidden" asp-for="mainUserID" placeholder="User ID" />
-    <br />
     <input type="hidden" asp-for="otherUserID" placeholder="Other User ID" />
+    <div class="form-group">
+        <label asp-for="reason">Reason for Bookmarking</label>
+        <textarea class="form-control" asp-for="reason" required rows="3"></textarea>
+    </div>
     <br />
-    <p>Write about why you bookmarked this User!</p>
-    <input type="text" asp-for="reason" paceholder="Reason for BookMarking" />
-    <br />
-    <button type="submit"> Bookmark -> </button>
-    <a asp-page="Index">Cancel</a>
+    <button type="submit" class="btn btn-purple"> Bookmark -> </button>
+    <a asp-page="Index" class="btn btn-warning">Cancel</a>
 </form>

@@ -13,19 +13,26 @@
 
 <form asp-page="=RequesToJoinProject">
     <br />
+    <h2 style="color: #450084;">Invite To Project</h2>
+   
     <input type="hidden" asp-for="userID" placeholder="User ID" />
+    
+    <label asp-for="projectID">Subject</label>
     <br />
     <select asp-for="projectID" asp-items="Model.Projects" required> 
         <option value="">Choose a Project</option>
     </select>
     <br />
     <input type="hidden" asp-for="teamID" placeholder="Team ID" />
+
+    <div class="form-group">
+        <label asp-for="@Model.userPitch">Write about why they should join your Project!</label>
+        <textarea class="form-control" asp-for="@Model.userPitch" required rows="3"></textarea>
+    </div>
+
     <br />
-    <p>Write about why they would be a great addition to the team!</p>
-    <input type="text" asp-for="@Model.userPitch" paceholder="User Pitch" />
-    <br />
-    <button type="submit">Request -> </button>
-    <a asp-page="Index">Cancel</a>
+    <button type="submit" class="btn btn-purple">Request -> </button>
+    <a asp-page="Index" class="btn btn-warning">Cancel</a>
 </form>
 
 

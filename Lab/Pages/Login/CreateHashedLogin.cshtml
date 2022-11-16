@@ -14,27 +14,27 @@
 
 <form asp-page="CreateHashedLogin">
     <label>Enter New Username:</label>
-    <input asp-for="username" class="form-control" placeholder="Enter Username" />
+    <input asp-for="username" class="form-control" required placeholder="Enter Username" />
 
     <br />
    
     <label>Enter New User's Password:</label>
-    <input asp-for="passphrase" class="form-control" type="password" />
+    <input asp-for="passphrase" class="form-control" required type="password" />
    
     <br />
 
     <label>First Name:</label>
-    <input asp-for="firstName" class="form-control" placeholder="Enter First Name" />
+    <input asp-for="firstName" class="form-control" required placeholder="Enter First Name" />
 
     <br />
 
     <label>Second Name:</label>
-    <input asp-for="secondName" class="form-control" placeholder="Enter Second Name" />
+    <input asp-for="secondName" class="form-control" required placeholder="Enter Second Name" />
 
     <br />
     
     <label for="jmuType">Choose Your JMU Affiliation:</label>
-    <select asp-for="jmuType">
+    <select asp-for="jmuType" required>
         <option value="Student">Student</option>
         <option value="Faculty">Faculty</option>
     </select>

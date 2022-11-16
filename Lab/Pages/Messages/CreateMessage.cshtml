@@ -34,7 +34,7 @@
         <textarea class="form-control" asp-for="@Model.message" required rows="3"></textarea>
     </div>
     <br />
-    <button type="submit">Send Message -> </button>
-    <a asp-page="UserSearch" asp-route-userid="@Model.userID">Cancel</a>
+    <button type="submit" class="btn btn-purple">Send Message -> </button>
+    <a asp-page="Index" class="btn btn-warning" asp-route-userid="@Model.userID">Cancel</a>
 
 </form>

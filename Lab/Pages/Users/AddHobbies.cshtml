@@ -14,11 +14,15 @@
 
 
 <form asp-page="AddHobbies">
+    <br />
+    <h2 style="color: #450084;">Add Hobbies</h2>
     <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <label asp-for="hobby">Enter Hobby</label>
     <br />
     <input type="text" asp-for="hobby" placeholder="Hobby" />
     <br />
-    <button type="submit">Add Hobby -> </button>
-    <a asp-page="ViewProfiles" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+    <br />
+    <button type="submit" class="btn btn-purple">Add Hobby -> </button>
+    <a asp-page="ViewProfiles" class="btn btn-warning" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
 
 </form>

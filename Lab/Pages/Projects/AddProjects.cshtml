@@ -13,30 +13,33 @@
     <br />
     <h2 style="color: #450084;">Create a Project</h2>
     <input type="hidden" asp-for="NewProject.userID" placeholder="userID" />
+    <label asp-for="@Model.NewProject.projectName">Project Name</label>
     <br />
-    <input type="text" asp-for="NewProject.projectName" placeholder="Project Name" />
+    <input type="text" asp-for="NewProject.projectName" required placeholder="Project Name" />
     <br />
+    <label asp-for="@Model.NewProject.projectOwner">Project Owner</label>
     <br />
-    <input type="text" asp-for="NewProject.projectOwner" placeholder="Project Owner" />
+    <input type="text" asp-for="NewProject.projectOwner" required placeholder="Project Owner" />
     <br />
+    <label asp-for="@Model.NewProject.projectOwnerEmail">Project Owner Email</label>
     <br />
-    <input type="text" asp-for="NewProject.projectOwnerEmail" placeholder="Project Owner Email" />
+    <input type="text" asp-for="NewProject.projectOwnerEmail" required placeholder="Project Owner Email" />
     <br />
     <br />
     <div class="form-group">
         <label asp-for="@Model.NewProject.projectMissionStatement">Project Mission Statement</label>
-        <textarea class="form-control" asp-for="@Model.NewProject.projectMissionStatement" rows="3"></textarea>
+        <textarea class="form-control" asp-for="@Model.NewProject.projectMissionStatement" required rows="3"></textarea>
     </div>
     <br />
     <div class="form-group">
         <label asp-for="@Model.NewProject.projectDescription">Project Description</label>
-        <textarea class="form-control" asp-for="@Model.NewProject.projectDescription" rows="3"></textarea>
+        <textarea class="form-control" asp-for="@Model.NewProject.projectDescription" required rows="3"></textarea>
     </div>
     <br />   
-    <input type="date" asp-for="NewProject.projectDate" placeholder="Project Date" />
+    <input type="date" asp-for="NewProject.projectDate" required placeholder="Project Date" />
     <br />
     <br />
-    <button type="submit">Create Project -> </button>
-    <a asp-page="Index">Cancel</a>
+    <button type="submit" class="btn btn-purple">Create Project -> </button>
+    <a asp-page="MyProjects" class="btn btn-warning">Cancel</a>
 
 </form>

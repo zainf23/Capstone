@@ -22,7 +22,7 @@
     <br />
     <label asp-for="recipient">Recipient</label>
     <br />
-    <input type="text" asp-for="recipient" placeholder="Recipient" />
+    <input type="text" asp-for="recipient" required placeholder="Recipient" />
     <br />
     <label asp-for="messageInfo">Message</label>
     <br />
@@ -30,8 +30,8 @@
         <textarea class="form-control" asp-for="messageInfo" required rows="3" placeholder="Message"></textarea>
     </div>
     <br />
-    <button type="submit">Send Message -> </button>
-    <a asp-page="ViewProjects" asp-route-projectid="@Model.projectID">Cancel</a>
+    <button type="submit" class="btn btn-purple">Send Message -> </button>
+    <a asp-page="ViewProjects" class="btn btn-warning" asp-route-projectid="@Model.projectID">Cancel</a>
     <input type="hidden" asp-for="projectID" placeholder="Project ID" />
     <br />
     <input type="hidden" asp-for="userID" placeholder="User ID" />

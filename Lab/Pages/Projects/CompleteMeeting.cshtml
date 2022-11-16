@@ -15,12 +15,12 @@
     <br />
     <h2 style="color: #450084;">Complete Team Meeting</h2>
     <div class="form-group">
-        <input type="hidden" asp-for="@Model.teamMeetingID" placeholder="userID" />
+        <input type="hidden" asp-for="@Model.teamMeetingID" placeholder="userID"/>
         <label asp-for="@Model.meetingSummary">Write about what team discussed!</label>
-        <textarea class="form-control required" asp-for="@Model.meetingSummary" rows="3"></textarea>
+        <textarea class="form-control required" asp-for="@Model.meetingSummary" required rows="3"></textarea>
     </div>
     <br />
-    <button type="submit">Complete Meeting -> </button>
-    <a asp-page="ViewProjects" asp-route-projectid="@Model.projectID">Cancel</a>
+    <button type="submit" class="btn btn-purple">Complete Meeting -> </button>
+    <a asp-page="ViewProjects" class="btn btn-warning" asp-route-projectid="@Model.projectID">Cancel</a>
 
 </form>
