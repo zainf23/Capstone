@@ -18,29 +18,32 @@
     <input type="hidden" asp-for="@Model.ProjectToUpdate.projectID" />
     <label asp-for="@Model.ProjectToUpdate.projectName">Project Name</label>
     <br />
-    <input type="text" asp-for="@Model.ProjectToUpdate.projectName" />
+    <input type="text" asp-for="@Model.ProjectToUpdate.projectName" required/>
     <br />
     <label asp-for="@Model.ProjectToUpdate.projectOwner">Project Owner</label>
     <br />
-    <input type="text" asp-for="@Model.ProjectToUpdate.projectOwner" />
+    <input type="text" asp-for="@Model.ProjectToUpdate.projectOwner" required />
     <br />
     <label asp-for="@Model.ProjectToUpdate.projectOwnerEmail">Project Owner Email</label>
     <br />
-    <input type="text" asp-for="@Model.ProjectToUpdate.projectOwnerEmail" />
+    <input type="text" asp-for="@Model.ProjectToUpdate.projectOwnerEmail" required/>
     <br />
     <br />
     <div class="form-group">
         <label asp-for="@Model.ProjectToUpdate.projectMissionStatement">Project Mission Statement</label>
-        <textarea class="form-control" asp-for="@Model.ProjectToUpdate.projectMissionStatement" rows="3"></textarea>
+        <textarea class="form-control" asp-for="@Model.ProjectToUpdate.projectMissionStatement" required rows="3"></textarea>
     </div>
     <br />
     <div class="form-group">
         <label asp-for="@Model.ProjectToUpdate.projectDescription">Project Description</label>
-        <textarea class="form-control" asp-for="@Model.ProjectToUpdate.projectDescription" rows="3"></textarea>
+        <textarea class="form-control" asp-for="@Model.ProjectToUpdate.projectDescription" required rows="3"></textarea>
     </div>
     <br />
     <label asp-for="@Model.ProjectToUpdate.projectDate">Project Date</label>
-    <input type="date" asp-for="@Model.ProjectToUpdate.projectDate" />
-    <input type="submit" class="btn btn-success" asp-page="EditSkills" />
-    <a asp-page="ViewProjects" asp-route-projectid="@Model.ProjectToUpdate.projectID">Cancel</a>
+    <br />
+    <input type="date" asp-for="@Model.ProjectToUpdate.projectDate" required/>
+    <br />
+    <br />
+    <input type="submit" class="btn btn-purple" asp-page="EditSkills" />
+    <a asp-page="ViewProjects" class="btn btn-warning" asp-route-projectid="@Model.ProjectToUpdate.projectID">Cancel</a>
 </form>

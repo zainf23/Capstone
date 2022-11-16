@@ -12,13 +12,18 @@ namespace Lab.Pages.Projects
         [BindProperty]
         public TeamMeeting MeetingToUpdate { get; set; }
 
+        [BindProperty]
+        public int projectID {get; set;}
+
         public EditMeetingModel()
         {
             MeetingToUpdate = new TeamMeeting();
         }
 
-        public void OnGet(int teammeetingid)
+        public void OnGet(int teammeetingid,int projectid)
         {
+            HttpContext.Session.SetInt32("projectID", projectid);
+            projectID = projectid;
             SqlDataReader singleUser = DBClass.SingleMeetingReader(teammeetingid);
 
             while (singleUser.Read())
@@ -38,7 +43,7 @@ namespace Lab.Pages.Projects
         {
             DBClass.UpdateMeeting(MeetingToUpdate);
 
-            return RedirectToPage("MyProjects");
+            return RedirectToPage("ViewProjects");
         }
     }
 }

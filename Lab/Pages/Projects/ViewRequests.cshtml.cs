@@ -28,7 +28,7 @@ namespace Lab.Pages.Projects
 
         public void OnGet(int projectid)
         {
-            string sqlQuery = "SELECT r.requestID, u.userID, u.firstName, u.secondName, u.email, u.jmuType, r.userPitch, u.interests, upp.fileName FROM [User] u, Request r, UserProfilePic upp WHERE u.userID = upp.userID AND u.userID = r.userID AND r.accepted = 0 AND r.projectID = " + projectid;
+            string sqlQuery = "SELECT distinct r.requestID, u.userID, u.firstName, u.secondName, u.email, u.jmuType, r.userPitch, u.interests, upp.fileName FROM [User] u, Request r, UserProfilePic upp WHERE u.userID = upp.userID AND u.userID = r.userID AND r.accepted = 0 AND r.projectID = " + projectid;
             SqlDataReader requestFinder = DBClass.GeneralReaderQuery(sqlQuery);
 
 

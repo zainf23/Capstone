@@ -12,11 +12,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 <form asp-page="AddSoftSkills">
+    <br />
+    <h2 style="color: #450084;">Edit Profile</h2>
     <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <label asp-for="softSkill">Soft Skill</label>
     <br />
-    <input type="text" asp-for="softSkill" placeholder="Soft Skill" />
+    <input type="text" asp-for="softSkill" required placeholder="Soft Skill" />
     <br />
-    <button type="submit">Add Soft Skill -> </button>
-    <a asp-page="ViewProfiles" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+    <br />
+    <button type="submit" class="btn btn-purple">Add Soft Skill -> </button>
+    <a asp-page="ViewProfiles" class="btn btn-warning" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
 
 </form>

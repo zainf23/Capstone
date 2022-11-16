@@ -12,15 +12,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 <form method="post" enctype="multipart/form-data" asp-action="FileUpload">
+    <h2 style="color: #450084;">Upload Profile Picture</h2>
     <div class="form-group">
         <div class="col-md-10">
-            <p>Choose File to Upload:</p>
+            <label asp-for="files">Choose a File to Upload:</label>
+            <br />
             <input asp-for="files" type="file" />
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            <input type="submit" value="Upload File" />
+            <br />
+            <input type="submit" class="btn btn-purple" value="Upload File" />
+            <a asp-page="ViewProfiles" class="btn btn-warning">Cancel</a>
         </div>
     </div>
 </form>

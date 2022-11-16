@@ -14,27 +14,27 @@
 <form asp-page="AddMeeting">
     <br />
     <h2 style="color: #450084;">Create a Meeting</h2>
-    <input type="hidden" asp-for="@Model.projectID" placeholder="userID" />
+    <input type="hidden" asp-for="@Model.projectID" required placeholder="userID" />
     <label asp-for="@Model.meetingTitle">Meeting Title</label>
     <br />
-    <input type="text" asp-for="@Model.meetingTitle" placeholder="Meeting Title" />
+    <input type="text" asp-for="@Model.meetingTitle" required placeholder="Meeting Title" />
     <br />
     <label asp-for="@Model.meetingDate">Meeting Date</label>
     <br />
-    <input type="date" asp-for="@Model.meetingDate" placeholder="Meeting Date" />
+    <input type="date" asp-for="@Model.meetingDate" required placeholder="Meeting Date" />
     <br />
     <label asp-for="@Model.meetingTime">Meeting Time</label>
     <br />
-    <input type="text" asp-for="@Model.meetingTime" placeholder="Meeting Time" />
+    <input type="text" asp-for="@Model.meetingTime" required placeholder="Meeting Time" />
     <br />
     <label asp-for="@Model.meetingLocation">Meeting Locaton</label>
     <br />
-    <input type="text" asp-for="@Model.meetingLocation" placeholder="Meeting Location" />
+    <input type="text" asp-for="@Model.meetingLocation" required placeholder="Meeting Location" />
     <br />
     <br />
     <div class="form-group">
         <label asp-for="@Model.meetingPlan">Meeting Plan</label>
-        <textarea class="form-control" asp-for="@Model.meetingPlan" rows="3"></textarea>
+        <textarea class="form-control" asp-for="@Model.meetingPlan" required rows="3"></textarea>
     </div>
     <br />
     <button type="submit">Create Meeting -> </button>

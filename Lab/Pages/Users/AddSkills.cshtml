@@ -12,14 +12,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 <form asp-page="AddSkills">
+    <br />
+    <h2 style="color: #450084;">Add Skill</h2>
     <input type="hidden" asp-for="userID" placeholder="User ID" />
+    <label asp-for="skill">Skill</label>
     <br />
-    <input type="text" asp-for="skill" placeholder="Skill" />
+    <input type="text" asp-for="skill" required placeholder="Skill" />
     <br />
-    <input type="text" asp-for="skillLevel" placeholder="Skill Level" />
+    <label asp-for="skillLevel">Skill Level</label>
     <br />
-    <button type="submit">Add Skill -> </button>
-    <a asp-page="ViewProfiles" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
+    <input type="text" asp-for="skillLevel" required placeholder="Skill Level" />
+    <br />
+    <br />
+    <button type="submit" class="btn btn-purple">Add Skill -> </button>
+    <a asp-page="ViewProfiles" class="btn btn-warning" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
    @* <button class="btn btn-outline-primary" asp-page="AddSkills" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
     <button class="btn btn-outline-primary" asp-page="AddSkills" asp-page-handler="ClearHandler" formnovalidate>Clear</button>*@
 

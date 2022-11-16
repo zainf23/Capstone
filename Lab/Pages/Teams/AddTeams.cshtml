@@ -15,15 +15,18 @@
 <form asp-page="AddTeams">
     <br />
     <h2 style="color: #450084;">Create Team</h2>
-    <input type="text" asp-for="ProjectTeam.teamName" placeholder="Team Name" />
+    <label asp-for="@Model.ProjectTeam.teamName">Team Name</label>
     <br />
-    <select asp-for="projectID" asp-items="Model.Projects">
+    <input type="text" asp-for="ProjectTeam.teamName" required placeholder="Team Name" />
+    <br />
+    <label asp-for="@Model.ProjectTeam.teamName">Choose a Project</label>
+    <br />
+    <select asp-for="projectID" asp-items="Model.Projects" required>
         <option value="">Choose a Project</option>
     </select>
     <br />
     <br />
-    <button type="submit">Create Team -> </button>
-    <a asp-page="Index">Cancel</a>
+    <button type="submit" class="btn btn-purple">Create Team -> </button>
     @*<button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
     <button class="btn btn-outline-primary" asp-page="AddTeams" asp-page-handler="ClearHandler" formnovalidate>Clear</button>*@
 

@@ -12,13 +12,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 <form asp-page="RequestJoin">
+    <h2 style="color: #450084;">Request To Join a Project</h2>
     <input type="hidden" asp-for="@Model.userID" placeholder="userID" />
     <input type="hidden" asp-for="@Model.projectID" placeholder="projectID" />
     <input type="hidden" asp-for="@Model.teamID" placeholder="teamID" />
-    <p>Write about why you would be a great addition to the team!</p>
-    <input type="text" asp-for="@Model.userPitch" paceholder="teamID" />
+    <div class="form-group">
+        <label asp-for="@Model.userPitch">Write about why you would make a great addition to the Project</label>
+        <textarea class="form-control" asp-for="@Model.userPitch" required rows="3"></textarea>
+    </div>
     <br />
-    <button type="submit">Request -> </button>
-    <a asp-page="Index">Cancel</a>
+    <button type="submit" class="btn btn-purple">Request -> </button>
+    <a asp-page="projectsearch" class="btn btn-warning">Cancel</a>
 
 </form>

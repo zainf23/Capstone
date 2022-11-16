@@ -19,22 +19,24 @@
             
 
         <form asp-page="Edit">
+                <br />
+                <h2 style="color: #450084;">Edit Profile</h2>
             <input type="hidden" asp-for="@Model.UserToUpdate.userID" />
         <label asp-for="@Model.UserToUpdate.firstName">First Name</label>
         <br />
-        <input type="text" asp-for="@Model.UserToUpdate.firstName" />
+        <input type="text" asp-for="@Model.UserToUpdate.firstName" required/>
         <br />
         <label asp-for="@Model.UserToUpdate.secondName">Second Name</label>
         <br />
-        <input type="text" asp-for="@Model.UserToUpdate.secondName" />
+        <input type="text" asp-for="@Model.UserToUpdate.secondName" required/>
         <br />
         <label asp-for="@Model.UserToUpdate.email">Email</label>
         <br />
-        <input type="text" asp-for="@Model.UserToUpdate.email" />
+        <input type="text" asp-for="@Model.UserToUpdate.email" required/>
         <br />
         <label asp-for="@Model.UserToUpdate.jmuType">User Type</label>
         <br />
-        <input type="text" asp-for="@Model.UserToUpdate.jmuType" />
+        <input type="text" asp-for="@Model.UserToUpdate.jmuType" required/>
         <br />
         <br />
         <div class="form-group">
@@ -65,12 +67,14 @@
         <br />
         <br />
         <input type="submit" class="btn btn-purple" asp-page="EditUsers" />
-        <a asp-page="ViewProfiles" class="btn btn-secondary">Cancel</a>
+        <a asp-page="ViewProfiles" class="btn btn-warning">Cancel</a>
     </form>
         </body>
     }
     else {
         <form asp-page="Edit">
+            <br />
+            <h2 style="color: #450084;">Edit Profile</h2>
             <input type="hidden" asp-for="@Model.UserToUpdate.userID" />
             <label asp-for="@Model.UserToUpdate.firstName">First Name</label>
             <br />
@@ -113,7 +117,7 @@
             <br />
             <br />
             <input type="submit" class="btn btn-purple" asp-page="EditUsers" />
-            <a asp-page="ViewProfiles" class="btn btn-secondary">Cancel</a>
+            <a asp-page="ViewProfiles" class="btn btn-warning">Cancel</a>
         </form>
 
     }
