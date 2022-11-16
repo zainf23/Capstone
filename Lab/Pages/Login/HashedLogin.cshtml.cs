@@ -48,7 +48,7 @@ namespace Lab.Pages.Login
 
 
                 ViewData["LoginMessage"] = "Login Successful!";
-                return RedirectToPage("LandingPage");
+                return RedirectToPage("/Index");
             }
             else
             {
