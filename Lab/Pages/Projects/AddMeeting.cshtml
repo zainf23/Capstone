@@ -37,7 +37,7 @@
         <textarea class="form-control" asp-for="@Model.meetingPlan" required rows="3"></textarea>
     </div>
     <br />
-    <button type="submit">Create Meeting -> </button>
-    <a asp-page="ViewProjects" asp-route-projectid="@Model.projectID">Cancel</a>
+    <button type="submit" class="btn btn-purple">Create Meeting -> </button>
+    <a asp-page="ViewProjects" class="btn btn-warning" asp-route-projectid="@Model.projectID">Cancel</a>
 
 </form>
