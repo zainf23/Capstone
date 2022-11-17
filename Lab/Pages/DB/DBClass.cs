@@ -13,7 +13,7 @@ namespace Lab.Pages.DB
 
         //private static readonly string AuthConnStr
         //    = @"Server=capstone.cjzu3rtz5sjd.us-east-1.rds.amazonaws.com;
-        //            Database=Auth;uid=adminuser;password=Swoopes1";
+        //            Database=AUTH;uid=adminuser;password=Swoopes1";
 
         private static readonly string LabConnStr
             = @"Server=Localhost;Database=Capstone;Trusted_Connection=True";
