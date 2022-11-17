@@ -625,19 +625,19 @@ namespace Lab.Pages.DB
             cmdSkillRead.ExecuteNonQuery();
         }
 
-        public static void UpdateProjectPic(string fileName, int projectID)
-        {
-            string sqlQuery = "UPDATE Project SET ";
+        //public static void UpdateProjectPic(string fileName, int projectID)
+        //{
+        //    string sqlQuery = "UPDATE Project SET ";
 
-            sqlQuery += "fileName='" + fileName + "' WHERE projectID=" + projectID;
+        //    sqlQuery += "fileName='" + fileName + "' WHERE projectID=" + projectID;
 
-            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
-            cmdSkillRead.Connection = new SqlConnection();
-            cmdSkillRead.Connection.ConnectionString = LabConnStr;
-            cmdSkillRead.CommandText = sqlQuery;
-            cmdSkillRead.Connection.Open();
-            cmdSkillRead.ExecuteNonQuery();
-        }
+        //    SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+        //    cmdSkillRead.Connection = new SqlConnection();
+        //    cmdSkillRead.Connection.ConnectionString = LabConnStr;
+        //    cmdSkillRead.CommandText = sqlQuery;
+        //    cmdSkillRead.Connection.Open();
+        //    cmdSkillRead.ExecuteNonQuery();
+        //}
 
         public static void UpdateAcceptedRequestTwo(int requestIDTwo)
         {
@@ -677,6 +677,22 @@ namespace Lab.Pages.DB
             cmdHobbyRead.Parameters.AddWithValue("@userID", userID);
             cmdHobbyRead.Connection.Open();
             cmdHobbyRead.ExecuteNonQuery();
+        }
+
+        public static void UpdateProjectPic(string fileName, int projectID)
+        {
+            string sqlQuery = "UPDATE Project SET ";
+
+            sqlQuery += "fileName = @fileName WHERE projectID = @projectID";
+
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Parameters.AddWithValue("@fileName", fileName);
+            cmdSkillRead.Parameters.AddWithValue("@projectID", projectID);
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
         }
 
         public static void InsertMeeting(int projectID, string meetingTitle, string meetingDate, string meetingTime, string meetingPlan, string meetingLocation)
@@ -758,6 +774,8 @@ namespace Lab.Pages.DB
             cmdUserRead.Parameters.AddWithValue("@senderName", senderName);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
+
+
 
         }
 
