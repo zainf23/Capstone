@@ -682,7 +682,7 @@ namespace Lab.Pages.DB
             cmdHobbyRead.Connection = new SqlConnection();
             cmdHobbyRead.Connection.ConnectionString = LabConnStr;
             cmdHobbyRead.CommandText = sqlQuery;
-            cmdHobbyRead.Parameters.AddWithValue("@fileName", "PlaceHolder.jpg");
+            cmdHobbyRead.Parameters.AddWithValue("@fileName", "blankpic.jpg");
             cmdHobbyRead.Parameters.AddWithValue("@userID", userID);
             cmdHobbyRead.Connection.Open();
             cmdHobbyRead.ExecuteNonQuery();
