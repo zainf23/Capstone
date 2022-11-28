@@ -21,16 +21,78 @@
 </form>*@
 
 <br />
-<h2 style="color: #450084;">User Search</h2>
-<form asp-page="Index">
-    <div class="input-group">
-        <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Users by Name, Skills, Hobbies, Interest, Experience, and More!" aria-label="Search" aria-describedby="search-addon" />
-        <button type="submit" class="btn btn-purple">search</button>
+<div class="m-4">
+    <div class="card">
+        <div class="card-header" style="background-color: #DACCE6">
+            <ul class="nav nav-pills card-header-pills btn btn-purple1">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link btn btn-purple" data-bs-toggle="tab"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body" style="background-color: #DACCE6">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" style="background-color: #DACCE6" id="home">
+                    <div class="row">
+                        <h2 class="text-center" style="color: #450084;">User Search</h2>
+                        <form asp-page="Index">
+                            <div class="input-group">
+                                <input type="search" asp-for="SearchString" class="form-control rounded" placeholder="Search for Users by Name, Skills, Hobbies, Interest, Experience, and More!" aria-label="Search" aria-describedby="search-addon" />
+                                <button type="submit" class="btn btn-purple">search</button>
+                            </div>
+                        </form>
+                        @{
+                            if (Model.SearchString != null)
+                            {
+
+                                <div class="row row-cols-1 row-cols-md-3 g-4">
+                                    @{
+                                        foreach (var pro in Model.UserSearchList)
+                                        {
+                                            <div class="col">
+                                                <div class="card">
+                                                    <img src="~/Images/@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
+                                                    <div class="card-body">
+                                                        <h5 class="card-title align-items-center d-flex justify-content-center">@pro.firstName @pro.secondName</h5>
+                                                        @{
+                                                            if (pro.jmuType == "Student")
+                                                            {
+                                                                <p class="cardd-text align-items-center d-flex justify-content-center">@pro.jmuType</p>
+                                                                <p class="cardd-text align-items-center d-flex justify-content-center">James Madison University @pro.gradYear</p>
+
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <p class="cardd-text align-items-center d-flex justify-content-center">@pro.jobTitle at James Madison University</p>
+                                                                <p class="cardd-text align-items-center d-flex justify-content-center">@pro.department Department</p>
+
+                                                            }
+                                                        }
+                                                        <div class="card-footer">
+                                                            <a asp-page="/Search/ViewProfile" class="btn btn-purple align-items-center d-flex justify-content-center" asp-route-userid="@pro.userID">View Profile</a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</div>
 <br />
 
-@{
+@*@{
     if (Model.SearchString != null)
     {
 
@@ -72,4 +134,4 @@
         </div>
     }
 
-}
+}*@
