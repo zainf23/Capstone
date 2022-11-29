@@ -12,17 +12,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
 
 
+<div class="m-4">
+    <div class="card">
+        <div class="card-header" style="background-color: #DACCE6">
+            <ul class="nav nav-pills card-header-pills btn btn-purple1">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link btn btn-purple" data-bs-toggle="tab"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body" style="background-color: #DACCE6">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" style="background-color: #DACCE6" id="home">
+                    <div class="row">
+                        <form asp-page="AddHobbies">
+                            <br />
+                            <h2 class="text-center" style="color: #450084;">Add a Hobby</h2>
+                            <input type="hidden" asp-for="userID" placeholder="User ID" />
+                            <label asp-for="hobby">Enter Hobby</label>
+                            <br />
+                            <input type="text" asp-for="hobby" placeholder="Hobby" />
+                            <br />
+                            <br />
+                            <button type="submit" class="btn btn-purple">Add Hobby -> </button>
+                            <a asp-page="ViewProfiles" class="btn btn-warning" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
 
-<form asp-page="AddHobbies">
-    <br />
-    <h2 style="color: #450084;">Add Hobbies</h2>
-    <input type="hidden" asp-for="userID" placeholder="User ID" />
-    <label asp-for="hobby">Enter Hobby</label>
-    <br />
-    <input type="text" asp-for="hobby" placeholder="Hobby" />
-    <br />
-    <br />
-    <button type="submit" class="btn btn-purple">Add Hobby -> </button>
-    <a asp-page="ViewProfiles" class="btn btn-warning" asp-route-userid="@HttpContext.Session.GetInt32("userid")">Cancel</a>
-
-</form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
