@@ -31,6 +31,9 @@ namespace Lab.Pages.Projects
         [BindProperty]
         public string messageInfo { get; set; }
 
+        [BindProperty]
+        public string date { get; set; }
+
         public void OnGet(int projectid, int userid)
         {
             projectID = projectid;
@@ -62,7 +65,9 @@ namespace Lab.Pages.Projects
             //sqlQuery += "'" + recipient + "',";
             //sqlQuery += "'" + messageInfo + "')";
 
-            DBClass.ProjectChatRoomQuery(userID, projectID, subject, fullName, recipient, messageInfo);
+            date = System.DateTime.Now.ToString("F");
+
+            DBClass.ProjectChatRoomQuery(userID, projectID, subject, fullName, recipient, messageInfo,date);
             return RedirectToPage("ViewProjects");
         }
     }

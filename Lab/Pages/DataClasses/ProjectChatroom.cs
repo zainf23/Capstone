@@ -16,6 +16,8 @@
 
         public string messageInfo { get; set; }
 
+        public string date { get; set; }
+
         public string fileName { get; set; }
 
 
