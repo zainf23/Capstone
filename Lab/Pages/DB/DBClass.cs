@@ -561,6 +561,7 @@ namespace Lab.Pages.DB
 
         }
 
+
         public static void InsertHobby(string hobby, int userID)
         {
             string sqlQuery = "INSERT INTO UserHobbies (userID,hobby) VALUES (@userid, @hobby)";
@@ -738,6 +739,23 @@ namespace Lab.Pages.DB
             cmdUserRead.Parameters.AddWithValue("@meetingPlan", m.meetingPlan);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
+        }
+
+        public static void UpdateHashedUser(string username, string passphrase)
+        {
+            string loginQuery ="Update HashedCredentials SET ";
+            loginQuery += "passphrase = @passphrase WHERE username = @username";
+
+            SqlCommand cmdLogin = new SqlCommand();
+            cmdLogin.Connection = new SqlConnection();
+            cmdLogin.Connection.ConnectionString = AuthConnStr;
+
+            cmdLogin.CommandText = loginQuery;
+            cmdLogin.Parameters.AddWithValue("@username", username);
+            cmdLogin.Parameters.AddWithValue("@passphrase", PasswordHash.HashPassword(passphrase));
+            cmdLogin.Connection.Open();
+            cmdLogin.ExecuteNonQuery();
+
         }
 
         public static void UpdateProjectPic(string fileName, int projectID)

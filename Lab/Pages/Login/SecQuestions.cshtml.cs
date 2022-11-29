@@ -2,21 +2,16 @@ using Lab.Pages.DataClasses;
 using Lab.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.SignalR.Protocol;
-using System.ComponentModel.Design;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using System.Diagnostics.Eventing.Reader;
-using System.Xml.Linq;
 
 namespace Lab.Pages.Login
 {
-    public class ChangePasswordModel : PageModel
+    public class SecQuestionsModel : PageModel
     {
         [BindProperty]
         public string answer { get; set; }
         [BindProperty]
-        public string secQuestion { get; set;}
+        public string secQuestion { get; set; }
         [BindProperty]
         public string secQuestionMom { get; set; }
         [BindProperty]
@@ -26,20 +21,18 @@ namespace Lab.Pages.Login
         [BindProperty]
         public int userID { get; set; }
         [BindProperty]
-        public string username { get; set; }
+        public string enteredusername { get; set; }
 
-        public void OnGet(int userid)
+        public void OnGet(string enteredusername)
         {
 
-            userID = userid;
-
-            //String usernameQuery = "SELECT userID FROM [User] WHERE username = '" + username + "'";
-            //SqlDataReader idReader = DBClass.GeneralReaderQuery(usernameQuery);
-            //while (idReader.Read())
-            //{
-            //    userID = Int32.Parse(idReader["userID"].ToString());
-            //}
-            //idReader.Close();
+            String usernameQuery = "SELECT userID FROM [User] WHERE username = '" + enteredusername + "'";
+            SqlDataReader idReader = DBClass.GeneralReaderQuery(usernameQuery);
+            while (idReader.Read())
+            {
+                userID = Int32.Parse(idReader["userID"].ToString());
+            }
+            idReader.Close();
 
 
             HttpContext.Session.SetInt32("userID", userID);
@@ -95,11 +88,11 @@ namespace Lab.Pages.Login
                 {
                     return RedirectToPage("PasswordChange");
                 }
-            }          
-                ViewData["ErrorMessage"] = "Security Question Incorrect";
-                return Page();
-            
-            
+            }
+            ViewData["ErrorMessage"] = "Security Question Incorrect";
+            return Page();
+
+
         }
 
     }
