@@ -61,13 +61,16 @@ namespace Lab.Pages.DB
 
         }
 
-        public static void InsertType(string jmuType, string firstName, string secondName,string username)
+        public static void InsertType(string jmuType, string firstName, string secondName,string username, string secQuestionMom, string secQuestionPet, string secQuestionParents)
         {
-            string sqlQuery = "INSERT INTO [User] (firstName,secondName,username,jmuType) VALUES (";
+            string sqlQuery = "INSERT INTO [User] (firstName,secondName,username,jmuType,secQuestionMom,secQuestionPet,secQuestionParents) VALUES (";
             sqlQuery += "'" + firstName + "',";
             sqlQuery += "'" + secondName + "',";
             sqlQuery += "'" + username + "',";
-            sqlQuery += "'" + jmuType + "')";
+            sqlQuery += "'" + jmuType + "',";
+            sqlQuery += "'" + secQuestionMom + "',";
+            sqlQuery += "'" + secQuestionPet + "',";
+            sqlQuery += "'" + secQuestionParents + "')";
 
             SqlCommand cmdUserRead = new SqlCommand();
             cmdUserRead.Connection = new SqlConnection();
@@ -634,19 +637,7 @@ namespace Lab.Pages.DB
             cmdSkillRead.ExecuteNonQuery();
         }
 
-        //public static void UpdateProjectPic(string fileName, int projectID)
-        //{
-        //    string sqlQuery = "UPDATE Project SET ";
-
-        //    sqlQuery += "fileName='" + fileName + "' WHERE projectID=" + projectID;
-
-        //    SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
-        //    cmdSkillRead.Connection = new SqlConnection();
-        //    cmdSkillRead.Connection.ConnectionString = LabConnStr;
-        //    cmdSkillRead.CommandText = sqlQuery;
-        //    cmdSkillRead.Connection.Open();
-        //    cmdSkillRead.ExecuteNonQuery();
-        //}
+        
 
         public static void UpdateAcceptedRequestTwo(int requestIDTwo)
         {
@@ -688,21 +679,6 @@ namespace Lab.Pages.DB
             cmdHobbyRead.ExecuteNonQuery();
         }
 
-        public static void UpdateProjectPic(string fileName, int projectID)
-        {
-            string sqlQuery = "UPDATE Project SET ";
-
-            sqlQuery += "fileName = @fileName WHERE projectID = @projectID";
-
-            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
-            cmdSkillRead.Connection = new SqlConnection();
-            cmdSkillRead.Connection.ConnectionString = LabConnStr;
-            cmdSkillRead.CommandText = sqlQuery;
-            cmdSkillRead.Parameters.AddWithValue("@fileName", fileName);
-            cmdSkillRead.Parameters.AddWithValue("@projectID", projectID);
-            cmdSkillRead.Connection.Open();
-            cmdSkillRead.ExecuteNonQuery();
-        }
 
         public static void InsertMeeting(int projectID, string meetingTitle, string meetingDate, string meetingTime, string meetingPlan, string meetingLocation)
         {
@@ -727,13 +703,15 @@ namespace Lab.Pages.DB
         public static void UpdateMeeting(string meetingSummary, int teamMeetingID)
         {
             string sqlQuery = "UPDATE TeamMeeting SET ";
-            sqlQuery += "attended= 1" + ",";
-            sqlQuery += "meetingSummary='" + meetingSummary + "' WHERE teamMeetingID = " + teamMeetingID;
+            sqlQuery += "attended= 1,";
+            sqlQuery += "meetingSummary = @meetingSummary WHERE teamMeetingID = @teamMeetingID";
 
             SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
             cmdSkillRead.Connection = new SqlConnection();
             cmdSkillRead.Connection.ConnectionString = LabConnStr;
             cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Parameters.AddWithValue("@meetingSummary", meetingSummary);
+            cmdSkillRead.Parameters.AddWithValue("@teamMeetingID", teamMeetingID);
             cmdSkillRead.Connection.Open();
             cmdSkillRead.ExecuteNonQuery();
         }
@@ -742,18 +720,40 @@ namespace Lab.Pages.DB
         {
             string sqlQuery = "UPDATE TeamMeeting SET ";
 
-            sqlQuery += "meetingTitle='" + m.meetingTitle + "',";
-            sqlQuery += "meetingDate='" + m.meetingDate + "',";
-            sqlQuery += "meetingTime='" + m.meetingTime + "',";
-            sqlQuery += "meetingLocation='" + m.meetingLocation + "',";
-            sqlQuery += "meetingPLan='" + m.meetingPlan + "' WHERE teamMeetingID=" + m.teamMeetingID;
+            sqlQuery += "meetingTitle = @meetingTitle,";
+            sqlQuery += "meetingDate = @meetingDate,";
+            sqlQuery += "meetingTime = @meetingTime,";
+            sqlQuery += "meetingLocation = @meetingLocation,"; 
+            sqlQuery += "meetingPLan = @meetingPlan WHERE teamMeetingID = @teamMeetingID";
 
             SqlCommand cmdUserRead = new SqlCommand(sqlQuery);
             cmdUserRead.Connection = new SqlConnection();
             cmdUserRead.Connection.ConnectionString = LabConnStr;
             cmdUserRead.CommandText = sqlQuery;
+            cmdUserRead.Parameters.AddWithValue("@teammeetingID", m.teamMeetingID);
+            cmdUserRead.Parameters.AddWithValue("@meetingTitle", m.meetingTitle);
+            cmdUserRead.Parameters.AddWithValue("@meetingTime", m.meetingTime);
+            cmdUserRead.Parameters.AddWithValue("@meetingDate", m.meetingDate);
+            cmdUserRead.Parameters.AddWithValue("@meetingLocation", m.meetingLocation);
+            cmdUserRead.Parameters.AddWithValue("@meetingPlan", m.meetingPlan);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
+        }
+
+        public static void UpdateProjectPic(string fileName, int projectID)
+        {
+            string sqlQuery = "UPDATE Project SET ";
+
+            sqlQuery += "fileName = @fileName WHERE projectID = @projectID";
+
+            SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
+            cmdSkillRead.Connection = new SqlConnection();
+            cmdSkillRead.Connection.ConnectionString = LabConnStr;
+            cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Parameters.AddWithValue("@fileName", fileName);
+            cmdSkillRead.Parameters.AddWithValue("@projectID", projectID);
+            cmdSkillRead.Connection.Open();
+            cmdSkillRead.ExecuteNonQuery();
         }
 
         public static SqlDataReader SingleMeetingReader(int teamMeetingID)
@@ -768,9 +768,9 @@ namespace Lab.Pages.DB
             return (tempReader);
         }
 
-        public static void SendMessage(int userID, int otherUserID, string subject, string message,string senderName)
+        public static void SendMessage(int userID, int otherUserID, string subject, string message,string senderName,string date)
         {
-            string sqlQuery = "INSERT INTO Messages (userID,otherUserID,subject,message,senderName) VALUES (@userID, @otherUserID, @subject, @message, @senderName)";
+            string sqlQuery = "INSERT INTO Messages (userID,otherUserID,subject,message,senderName,date) VALUES (@userID, @otherUserID, @subject, @message, @senderName, @date)";
 
             SqlCommand cmdUserRead = new SqlCommand();
             cmdUserRead.Connection = new SqlConnection();
@@ -781,6 +781,7 @@ namespace Lab.Pages.DB
             cmdUserRead.Parameters.AddWithValue("@subject", subject);
             cmdUserRead.Parameters.AddWithValue("@message", message);
             cmdUserRead.Parameters.AddWithValue("@senderName", senderName);
+            cmdUserRead.Parameters.AddWithValue("@date", date);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
 
@@ -800,6 +801,8 @@ namespace Lab.Pages.DB
             cmdSkillRead.Connection.Open();
             cmdSkillRead.ExecuteNonQuery();
         }
+
+        
 
 
 

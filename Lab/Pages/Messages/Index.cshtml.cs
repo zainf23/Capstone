@@ -42,7 +42,7 @@ namespace Lab.Pages.Messages
             HttpContext.Session.SetInt32("userid", UserData.userID);
 
 
-            string sqlQuery = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.time, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage is null AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID + "Order by messageID desc";
+            string sqlQuery = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage is null AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID + "Order by messageID desc";
             
             SqlDataReader messageReader = DBClass.GeneralReaderQuery(sqlQuery);
 
@@ -56,7 +56,6 @@ namespace Lab.Pages.Messages
                     subject = messageReader["subject"].ToString(),
                     message = messageReader["message"].ToString(),
                     date = messageReader["date"].ToString(),
-                    time = messageReader["time"].ToString(),
                     senderName = messageReader["senderName"].ToString(),
                     fileName = messageReader["fileName"].ToString(),
 
@@ -66,7 +65,7 @@ namespace Lab.Pages.Messages
             messageReader.Close();
 
 
-            string sqlQuery1 = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.time, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage = 1 AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID + "Order by messageID desc";
+            string sqlQuery1 = "Select distinct m.messageID, m.userID, m.otherUserID, m.subject, m.message, m.readMessage, m.date, m.senderName, upp.fileName from Messages m, UserProfilePic upp WHERE readMessage = 1 AND m.userID = upp.userID AND m.otherUserID = " + UserData.userID + "Order by messageID desc";
 
             SqlDataReader readReader = DBClass.GeneralReaderQuery(sqlQuery1);
 
@@ -80,7 +79,6 @@ namespace Lab.Pages.Messages
                     subject = readReader["subject"].ToString(),
                     message = readReader["message"].ToString(),
                     date = readReader["date"].ToString(),
-                    time = readReader["time"].ToString(),
                     senderName = readReader["senderName"].ToString(),
                     fileName = readReader["fileName"].ToString(),
 

@@ -31,9 +31,6 @@ namespace Lab.Pages.Messages
         public string date { get; set; }
 
         [BindProperty]
-        public string time { get; set; }
-
-        [BindProperty]
         public User UserData { get; set; }
 
         [BindProperty]
@@ -101,8 +98,10 @@ namespace Lab.Pages.Messages
 
             senderName = fName + " " + lName;
 
+            date = System.DateTime.Now.ToString("F");
 
-            DBClass.SendMessage(userID,otherUserID,subject,message,senderName);
+
+            DBClass.SendMessage(userID,otherUserID,subject,message,senderName,date);
 
 
             return RedirectToPage("Index");
