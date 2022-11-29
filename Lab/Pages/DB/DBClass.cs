@@ -590,16 +590,18 @@ namespace Lab.Pages.DB
 
         }
 
-        public static void ProjectChatRoomQuery(int userID, int projectID, string subject, string fullName, string recipient, string messageInfo)
+        public static void ProjectChatRoomQuery(int userID, int projectID, string subject, string fullName, string recipient, string messageInfo, string date)
         {
 
-            string sqlQuery = "INSERT INTO ProjectChatRoom (userID, projectID, subject, sender, recipient, messageInfo) VALUES (";
+            string sqlQuery = "INSERT INTO ProjectChatRoom (userID, projectID, subject, sender, recipient, messageInfo, date) VALUES (";
             sqlQuery += "@userID,";
             sqlQuery += "@projectID,";
             sqlQuery += "@subject,";
             sqlQuery += "@fullName,";
             sqlQuery += "@recipient,";
-            sqlQuery += "@messageInfo)";
+            sqlQuery += "@messageInfo,";
+            sqlQuery += "@date)";
+
 
             SqlCommand cmdProductRead = new SqlCommand();
             cmdProductRead.Connection = new SqlConnection();
@@ -611,6 +613,7 @@ namespace Lab.Pages.DB
             cmdProductRead.Parameters.AddWithValue("@fullName", fullName);
             cmdProductRead.Parameters.AddWithValue("@recipient", recipient);
             cmdProductRead.Parameters.AddWithValue("@messageInfo", messageInfo);
+            cmdProductRead.Parameters.AddWithValue("@date", date);
             cmdProductRead.Connection.Open();
             cmdProductRead.ExecuteNonQuery();
 
