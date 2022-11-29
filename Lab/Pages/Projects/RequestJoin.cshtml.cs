@@ -54,14 +54,14 @@ namespace Lab.Pages.Projects
         {
 
 
-            string sqlQuery = "INSERT INTO Request (userID, projectID, teamID, accepted, userPitch) VALUES (";
-            sqlQuery += userID + ",";
-            sqlQuery += projectID + ",";
-            sqlQuery += teamID + ",";
-            sqlQuery += 0 + ",'";
-            sqlQuery += userPitch + "')";
+            //string sqlQuery = "INSERT INTO Request (userID, projectID, teamID, accepted, userPitch) VALUES (";
+            //sqlQuery += userID + ",";
+            //sqlQuery += projectID + ",";
+            //sqlQuery += teamID + ",";
+            //sqlQuery += 0 + ",'";
+            //sqlQuery += userPitch + "')";
 
-            DBClass.InsertQuery(sqlQuery);
+            DBClass.RequestJoinQuery(userID, projectID, teamID, userPitch);
             HttpContext.Session.SetInt32("projectID", projectID);
             return RedirectToPage("ViewOtherProjects");
         }

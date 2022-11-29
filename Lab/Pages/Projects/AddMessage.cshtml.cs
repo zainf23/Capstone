@@ -54,15 +54,15 @@ namespace Lab.Pages.Projects
 
         public IActionResult OnPost()
         {
-            string sqlQuery = "INSERT INTO ProjectChatRoom (userID, projectID, subject, sender, recipient, messageInfo) VALUES (";
-            sqlQuery += userID + ",";
-            sqlQuery += projectID + ",";
-            sqlQuery += "'" + subject + "',";
-            sqlQuery += "'" + fullName + "',";
-            sqlQuery += "'" + recipient + "',";
-            sqlQuery += "'" + messageInfo + "')";
+            //string sqlQuery = "INSERT INTO ProjectChatRoom (userID, projectID, subject, sender, recipient, messageInfo) VALUES (";
+            //sqlQuery += userID + ",";
+            //sqlQuery += projectID + ",";
+            //sqlQuery += "'" + subject + "',";
+            //sqlQuery += "'" + fullName + "',";
+            //sqlQuery += "'" + recipient + "',";
+            //sqlQuery += "'" + messageInfo + "')";
 
-            DBClass.InsertQuery(sqlQuery);
+            DBClass.ProjectChatRoomQuery(userID, projectID, subject, fullName, recipient, messageInfo);
             return RedirectToPage("ViewProjects");
         }
     }
