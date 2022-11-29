@@ -1,0 +1,43 @@
+﻿@page
+@model Lab.Pages.Login.SecQuestionsModel
+@{
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Arvo&display=swap" rel="stylesheet">
+
+
+<form asp-page="ChangePassword">
+    <br />
+    <h2 style="color: #450084;">Security Questions</h2>
+
+
+    <label for="secQuestion">Choose which Security Question to Answer</label>
+    <br />
+    <select asp-for="secQuestion" required>
+        <option value="secQuestionMom">What is your Mother's Maiden Name?</option>
+        <option value="secQuestionPet">What was the name of your first pet?</option>
+        <option value="secQuestionParents">What city did your Parents meet in?</option>
+    </select>
+    <br />
+    <br />
+    <label asp-for="@Model.answer">Answer the Question you selected</label>
+    <br />
+    <input type="text" asp-for="@Model.answer" required placeholder="Enter Answer" />
+    <br />
+    <br />
+    <input type="submit" class="btn btn-purple" />
+</form>
+
+@{
+    if (ViewData["ErrorMessage"] != null)
+    {
+        <p class="text-danger" align="center">@ViewData["ErrorMessage"].ToString()</p>
+    }
+}

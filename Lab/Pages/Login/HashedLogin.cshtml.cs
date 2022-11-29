@@ -12,6 +12,9 @@ namespace Lab.Pages.Login
         [BindProperty]
         public string passphrase { get; set; }
 
+        [BindProperty]
+        public string enteredUsername { get; set; }
+
         public int userID { get; set; }
 
         public IActionResult OnGet(string logout)

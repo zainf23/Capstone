@@ -64,8 +64,11 @@
                             </p>
                         </div>
                         <div class="card-footer">
+                        <div>
+                                <p class="align-text-bottom right">@m.date</p>
                             <a asp-page="Reply" class="btn btn-purple" style="float: right;" asp-route-userid="@m.userID" asp-route-subject="@m.subject" asp-route-otheruserid="@m.otherUserID">Reply</a>
                             <a asp-page="Mark" class="btn btn-purple" style="float: right;" asp-route-messageid="@m.messageID">Mark as Read</a>
+                            </div>
                         </div>
 
 
@@ -106,6 +109,7 @@
                             </p>
                         </div>
                         <div class="card-footer">
+                                <p class="align-text-bottom right">@m.date</p>
                             <a asp-page="Reply" class="btn btn-purple" style="float: right;" asp-route-userid="@m.userID" asp-route-subject="@m.subject" asp-route-otheruserid="@m.otherUserID">Reply</a>
 
                         </div>
