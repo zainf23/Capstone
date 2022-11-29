@@ -13,6 +13,8 @@
 
 
 <form asp-page="CreateHashedLogin">
+    <br />
+    <h2 style="color: #450084;">Create Account</h2>
     <label>Enter New Username:</label>
     <input asp-for="username" class="form-control" required placeholder="Enter Username" />
 
@@ -38,6 +40,20 @@
         <option value="Student">Student</option>
         <option value="Faculty">Faculty</option>
     </select>
+    <br />
+    <br />
+    <h2 style="color: #450084;">Security Questions</h2>
+    <label asp-for="@Model.secQuestionMom">What is your Mother's Maiden Name?</label>
+    <br />
+    <input type="text" asp-for="@Model.secQuestionMom" required placeholder="Enter Answer" />
+    <br />
+    <label asp-for="@Model.secQuestionPet">What was the name of your first pet?</label>
+    <br />
+    <input type="text" asp-for="@Model.secQuestionPet" required placeholder="Enter Answer" />
+    <br />
+    <label asp-for="@Model.secQuestionParents">What city did your Parents meet in?</label>
+    <br />
+    <input type="text" asp-for="@Model.secQuestionParents" required placeholder="Enter Answer" />
     <br />
     <br />
     <input type="submit" class="btn btn-purple" />

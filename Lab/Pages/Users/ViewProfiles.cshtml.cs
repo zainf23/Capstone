@@ -3,6 +3,7 @@ using Lab.Pages.DB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 
 namespace Lab.Pages.Users
@@ -32,6 +33,16 @@ namespace Lab.Pages.Users
 
         [BindProperty]
         public List<UserBookmark> MyBookMarks { get; set; }
+
+        [BindProperty]
+        [Required]
+        public UserSkill NewSkill { get; set; }
+
+        [BindProperty]
+        public string skill { get; set; }
+
+        [BindProperty]
+        public string skillLevel { get; set; }
 
         public ViewProfilesModel()
         {
@@ -158,6 +169,13 @@ namespace Lab.Pages.Users
             }
 
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            DBClass.InsertSkill(skill, skillLevel, userID);
+
+            return RedirectToPage("ViewProfiles");
         }
 
     }

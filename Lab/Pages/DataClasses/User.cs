@@ -32,5 +32,11 @@
         public string fileName { get; set; }
 
         public int otherUserID { get; set; }
+
+        public string secQuestionMom { get; set; }
+
+        public string secQuestionPet { get; set; }
+
+        public string secQuestionParents { get; set; }
     }
 }

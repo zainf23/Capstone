@@ -23,6 +23,15 @@ namespace Lab.Pages.Login
         public string secondName { get; set; }
 
         [BindProperty]
+        public string secQuestionMom { get; set; }
+
+        [BindProperty]
+        public string secQuestionPet { get; set; }
+
+        [BindProperty]
+        public string secQuestionParents { get; set; }
+
+        [BindProperty]
         public int userID { get; set; }
 
         public void OnGet()
@@ -35,7 +44,7 @@ namespace Lab.Pages.Login
             // then...
 
             DBClass.CreateHashedUser(username, passphrase);
-            DBClass.InsertType(jmuType,firstName,secondName,username);
+            DBClass.InsertType(jmuType,firstName,secondName,username,secQuestionMom, secQuestionPet, secQuestionParents);
             
             String SqlQuery = "Select userID from [User] where username ='";
             SqlQuery += username + "' and jmuType ='";
