@@ -37,25 +37,38 @@ namespace Lab.Pages.DB
         public static void InsertUser(User u)
         {
             string sqlQuery = "INSERT INTO [User] (firstName,secondName,username,email,jmuType,interests,experience,gradYear,major,minor,jobtitle,department,moreInfo) VALUES (";
-            sqlQuery += "'" + u.firstName + "',";
-            sqlQuery += "'" + u.secondName + "',";
-            sqlQuery += "'" + u.username + "',";
+            sqlQuery += "@firstName,";
+            sqlQuery += "@secondName,";
+            sqlQuery += "@username,";
             //sqlQuery += "'" + u.passphrase + "',";
-            sqlQuery += "'" + u.email + "',";
-            sqlQuery += "'" + u.jmuType + "',";
-            sqlQuery += "'" + u.interests + "',";
-            sqlQuery += "'" + u.experience + "',";
-            sqlQuery += "'" + u.gradYear + "',";
-            sqlQuery += "'" + u.major + "',";
-            sqlQuery += "'" + u.minor + "',";
-            sqlQuery += "'" + u.jobTitle + "',";
-            sqlQuery += "'" + u.department + "',";
-            sqlQuery += "'" + u.moreInfo + "')";
+            sqlQuery += "@email,";
+            sqlQuery += "@jmuType,";
+            sqlQuery += "@interests,";
+            sqlQuery += "@experience,";
+            sqlQuery += "@gradYear,";
+            sqlQuery += "@major,";
+            sqlQuery += "@minor,";
+            sqlQuery += "@jobTitle,";
+            sqlQuery += "@department,";
+            sqlQuery += "@moreInfo)";
 
             SqlCommand cmdUserRead = new SqlCommand();
             cmdUserRead.Connection = new SqlConnection();
             cmdUserRead.Connection.ConnectionString = LabConnStr;
             cmdUserRead.CommandText = sqlQuery;
+            cmdUserRead.Parameters.AddWithValue("@firstName", u.firstName);
+            cmdUserRead.Parameters.AddWithValue("@secondName", u.secondName);
+            cmdUserRead.Parameters.AddWithValue("@username", u.username);
+            cmdUserRead.Parameters.AddWithValue("@email", u.email);
+            cmdUserRead.Parameters.AddWithValue("@jmuType", u.jmuType);
+            cmdUserRead.Parameters.AddWithValue("@interests", u.interests);
+            cmdUserRead.Parameters.AddWithValue("@experience", u.experience);
+            cmdUserRead.Parameters.AddWithValue("@gradYear", u.gradYear);
+            cmdUserRead.Parameters.AddWithValue("@major", u.major);
+            cmdUserRead.Parameters.AddWithValue("@minor", u.minor);
+            cmdUserRead.Parameters.AddWithValue("@jobTitle", u.jobTitle);
+            cmdUserRead.Parameters.AddWithValue("@department", u.department);
+            cmdUserRead.Parameters.AddWithValue("@moreInfo", u.moreInfo);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
 
@@ -97,23 +110,36 @@ namespace Lab.Pages.DB
         {
             string sqlQuery = "UPDATE [User] SET ";
 
-            sqlQuery += "firstName='" + u.firstName + "',";
-            sqlQuery += "secondName='" + u.secondName + "',";
-            sqlQuery += "email='" + u.email + "',";
-            sqlQuery += "jmuType='" + u.jmuType + "',";
-            sqlQuery += "interests='" + u.interests + "',";
-            sqlQuery += "experience='" + u.experience + "',";
-            sqlQuery += "gradYear='" + u.gradYear + "',";
-            sqlQuery += "major='" + u.major + "',";
-            sqlQuery += "minor='" + u.minor + "',";
-            sqlQuery += "jobTitle='" + u.jobTitle + "',";
-            sqlQuery += "department='" + u.department + "',";
-            sqlQuery += "moreInfo='" + u.moreInfo + "' WHERE userID=" + u.userID;
+            sqlQuery += "firstName= @firstName,";
+            sqlQuery += "secondName= @secondName,";
+            sqlQuery += "email= @email,";
+            sqlQuery += "jmuType= @jmuType,";
+            sqlQuery += "interests= @interests,";
+            sqlQuery += "experience= @experience,";
+            sqlQuery += "gradYear= @gradYear,";
+            sqlQuery += "major= @major,";
+            sqlQuery += "minor= @minor,";
+            sqlQuery += "jobTitle= @jobTitle,";
+            sqlQuery += "department= @department,";
+            sqlQuery += "moreInfo= @moreInfo WHERE userID= @userID";
 
             SqlCommand cmdUserRead = new SqlCommand(sqlQuery);
             cmdUserRead.Connection = new SqlConnection();
             cmdUserRead.Connection.ConnectionString = LabConnStr;
             cmdUserRead.CommandText = sqlQuery;
+            cmdUserRead.Parameters.AddWithValue("@userID", u.userID);
+            cmdUserRead.Parameters.AddWithValue("@firstName", u.firstName);
+            cmdUserRead.Parameters.AddWithValue("@secondName", u.secondName);
+            cmdUserRead.Parameters.AddWithValue("@email", u.email);
+            cmdUserRead.Parameters.AddWithValue("@jmuType", u.jmuType);
+            cmdUserRead.Parameters.AddWithValue("@interests", u.interests);
+            cmdUserRead.Parameters.AddWithValue("@experience", u.experience);
+            cmdUserRead.Parameters.AddWithValue("@gradYear", u.gradYear);
+            cmdUserRead.Parameters.AddWithValue("@major", u.major);
+            cmdUserRead.Parameters.AddWithValue("@minor", u.minor);
+            cmdUserRead.Parameters.AddWithValue("@jobTitle", u.jobTitle);
+            cmdUserRead.Parameters.AddWithValue("@department", u.department);
+            cmdUserRead.Parameters.AddWithValue("@moreInfo", u.moreInfo);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
         }
@@ -173,14 +199,17 @@ namespace Lab.Pages.DB
         public static void InsertSkill(string skill,string skillLevel,int userID)
         {
             string sqlQuery = "INSERT INTO UserSkill (userID,skill,skillLevel) VALUES (";
-            sqlQuery += userID + ",";
-            sqlQuery += "'" + skill + "',";
-            sqlQuery += "'" + skillLevel + "')";
+            sqlQuery += "@userID,";
+            sqlQuery += "@skill,";
+            sqlQuery += "@skillLevel)";
 
             SqlCommand cmdSkillRead = new SqlCommand();
             cmdSkillRead.Connection = new SqlConnection();
             cmdSkillRead.Connection.ConnectionString = LabConnStr;
             cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Parameters.AddWithValue("@userID", userID);
+            cmdSkillRead.Parameters.AddWithValue("@skill", skill);
+            cmdSkillRead.Parameters.AddWithValue("@skillLevel", skillLevel);
             cmdSkillRead.Connection.Open();
             cmdSkillRead.ExecuteNonQuery();
 
@@ -189,13 +218,15 @@ namespace Lab.Pages.DB
         public static void InsertSoftSkill(string softSkill, int userID)
         {
             string sqlQuery = "INSERT INTO UserSoftSkill (userID,softSkill) VALUES (";
-            sqlQuery += userID + ",";
-            sqlQuery += "'" + softSkill + "')";
+            sqlQuery += "@userID,";
+            sqlQuery += "@softSkill)";
 
             SqlCommand cmdSkillRead = new SqlCommand();
             cmdSkillRead.Connection = new SqlConnection();
             cmdSkillRead.Connection.ConnectionString = LabConnStr;
             cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Parameters.AddWithValue("@softSkill", softSkill);
+            cmdSkillRead.Parameters.AddWithValue("@userID", userID);
             cmdSkillRead.Connection.Open();
             cmdSkillRead.ExecuteNonQuery();
 
@@ -240,18 +271,25 @@ namespace Lab.Pages.DB
         public static void InsertProject(Project p)
         {
             string sqlQuery = "INSERT INTO Project (userID,projectName,projectOwner,projectOwnerEmail,projectMissionStatement,projectDescription,projectDate) VALUES (";
-            sqlQuery += p.userID + ",";
-            sqlQuery += "'" + p.projectName + "',";
-            sqlQuery += "'" + p.projectOwner + "',";
-            sqlQuery += "'" + p.projectOwnerEmail + "',";
-            sqlQuery += "'" + p.projectMissionStatement + "',";
-            sqlQuery += "'" + p.projectDescription + "',";
-            sqlQuery += "'" + p.projectDate + "')";
+            sqlQuery += "@userID,";
+            sqlQuery += "@projectName,";
+            sqlQuery += "@projectOwner,";
+            sqlQuery += "@projectOwnerEmail,";
+            sqlQuery += "@projectMissionStatement,";
+            sqlQuery += "@projectDescription,";
+            sqlQuery += "@projectDate)";
 
             SqlCommand cmdUserRead = new SqlCommand();
             cmdUserRead.Connection = new SqlConnection();
             cmdUserRead.Connection.ConnectionString = LabConnStr;
             cmdUserRead.CommandText = sqlQuery;
+            cmdUserRead.Parameters.AddWithValue("@userID", p.userID);
+            cmdUserRead.Parameters.AddWithValue("@projectName", p.projectName);
+            cmdUserRead.Parameters.AddWithValue("@projectOwner", p.projectOwner);
+            cmdUserRead.Parameters.AddWithValue("@projectOwnerEmail", p.projectOwnerEmail);
+            cmdUserRead.Parameters.AddWithValue("@projectMissionStatement", p.projectMissionStatement);
+            cmdUserRead.Parameters.AddWithValue("@projectDescription", p.projectDescription);
+            cmdUserRead.Parameters.AddWithValue("@projectDate", p.projectDate);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
 
@@ -348,17 +386,24 @@ namespace Lab.Pages.DB
         {
             string sqlQuery = "UPDATE Project SET ";
 
-            sqlQuery += "projectName='" + p.projectName + "',";
-            sqlQuery += "projectOwner='" + p.projectOwner + "',";
-            sqlQuery += "projectOwnerEmail='" + p.projectOwnerEmail + "',";
-            sqlQuery += "projectMissionStatement='" + p.projectMissionStatement + "',";
-            sqlQuery += "projectDescription='" + p.projectDescription + "',";
-            sqlQuery += "projectDate='" + p.projectDate + "' WHERE projectID=" + p.projectID;
+            sqlQuery += "projectName= @projectName,";
+            sqlQuery += "projectOwner= @projectOwner,";
+            sqlQuery += "projectOwnerEmail= @projectOwnerEmail,";
+            sqlQuery += "projectMissionStatement= @projectMissionStatement,";
+            sqlQuery += "projectDescription= @projectDescription,";
+            sqlQuery += "projectDate= @projectDate WHERE projectID= @projectID";
 
             SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
             cmdSkillRead.Connection = new SqlConnection();
             cmdSkillRead.Connection.ConnectionString = LabConnStr;
             cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Parameters.AddWithValue("@projectID", p.projectID);
+            cmdSkillRead.Parameters.AddWithValue("@projectName", p.projectName);
+            cmdSkillRead.Parameters.AddWithValue("@projectOwner", p.projectOwner);
+            cmdSkillRead.Parameters.AddWithValue("@projectOwnerEmail", p.projectOwnerEmail);
+            cmdSkillRead.Parameters.AddWithValue("@projectMissionStatement", p.projectMissionStatement);
+            cmdSkillRead.Parameters.AddWithValue("@projectDescription", p.projectDescription);
+            cmdSkillRead.Parameters.AddWithValue("@projectDate", p.projectDate);
             cmdSkillRead.Connection.Open();
             cmdSkillRead.ExecuteNonQuery();
         }
@@ -440,13 +485,17 @@ namespace Lab.Pages.DB
         {
             string sqlQuery = "UPDATE UserSkill SET ";
 
-            sqlQuery += "skill='" + s.skill;
-            sqlQuery += "',skillLevel= '" + s.skillLevel + "'WHERE skill= '" + skillPlaceHolder + "'AND userID=" + s.userID;
+            sqlQuery += "skill= @skill,";
+            sqlQuery += "skillLevel= @skillLevel WHERE skill= @skillPlaceHolder AND userID= @userID";
 
             SqlCommand cmdSkillRead = new SqlCommand(sqlQuery);
             cmdSkillRead.Connection = new SqlConnection();
             cmdSkillRead.Connection.ConnectionString = LabConnStr;
             cmdSkillRead.CommandText = sqlQuery;
+            cmdSkillRead.Parameters.AddWithValue("@skill", s.skill);
+            cmdSkillRead.Parameters.AddWithValue("@skillLevel", s.skillLevel);
+            cmdSkillRead.Parameters.AddWithValue("@skillPlaceHolder", skillPlaceHolder);
+            cmdSkillRead.Parameters.AddWithValue("@userID", s.userID);
             cmdSkillRead.Connection.Open();
             cmdSkillRead.ExecuteNonQuery();
         }
@@ -517,6 +566,56 @@ namespace Lab.Pages.DB
             cmdProductRead.ExecuteNonQuery();
 
         }
+
+        public static void RequestJoinQuery(int userID, int projectID, int teamID, string userPitch)
+        {
+            string sqlQuery = "INSERT INTO Request (userID, projectID, teamID, accepted, userPitch) VALUES (";
+            sqlQuery += "@userID,";
+            sqlQuery += "@projectID,";
+            sqlQuery += "@teamID,";
+            sqlQuery += 0 + ",";
+            sqlQuery += "@userPitch)";
+
+            SqlCommand cmdProductRead = new SqlCommand();
+            cmdProductRead.Connection = new SqlConnection();
+            cmdProductRead.Connection.ConnectionString = LabConnStr;
+            cmdProductRead.CommandText = sqlQuery;
+            cmdProductRead.Parameters.AddWithValue("@userID", userID);
+            cmdProductRead.Parameters.AddWithValue("@projectID", projectID);
+            cmdProductRead.Parameters.AddWithValue("@teamID", teamID);
+            cmdProductRead.Parameters.AddWithValue("@userPitch", userPitch);
+
+            cmdProductRead.Connection.Open();
+            cmdProductRead.ExecuteNonQuery();
+
+        }
+
+        public static void ProjectChatRoomQuery(int userID, int projectID, string subject, string fullName, string recipient, string messageInfo)
+        {
+
+            string sqlQuery = "INSERT INTO ProjectChatRoom (userID, projectID, subject, sender, recipient, messageInfo) VALUES (";
+            sqlQuery += "@userID,";
+            sqlQuery += "@projectID,";
+            sqlQuery += "@subject,";
+            sqlQuery += "@fullName,";
+            sqlQuery += "@recipient,";
+            sqlQuery += "@messageInfo)";
+
+            SqlCommand cmdProductRead = new SqlCommand();
+            cmdProductRead.Connection = new SqlConnection();
+            cmdProductRead.Connection.ConnectionString = LabConnStr;
+            cmdProductRead.CommandText = sqlQuery;
+            cmdProductRead.Parameters.AddWithValue("@userID", userID);
+            cmdProductRead.Parameters.AddWithValue("@projectID", projectID);
+            cmdProductRead.Parameters.AddWithValue("@subject", subject);
+            cmdProductRead.Parameters.AddWithValue("@fullName", fullName);
+            cmdProductRead.Parameters.AddWithValue("@recipient", recipient);
+            cmdProductRead.Parameters.AddWithValue("@messageInfo", messageInfo);
+            cmdProductRead.Connection.Open();
+            cmdProductRead.ExecuteNonQuery();
+
+        }
+
 
         //method to find project information about the specific project a team is working on
         public static SqlDataReader GetProjectID(int teamID)
