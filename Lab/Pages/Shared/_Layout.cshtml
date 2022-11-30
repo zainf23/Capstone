@@ -83,7 +83,7 @@
                                     <li><a class="dropdown-item" asp-page="/Users/EditUsers" asp-route-userid=@Context.Session.GetInt32("userID")>Edit Profile</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" asp-page="/Login/ChangePassword" asp-route-userid=@Context.Session.GetInt32("userID")>Change Password</a></li>
-                                    <li><a class="dropdown-item" asp-page="/Login/LandingPage">Sign out</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Login/Logout">Sign out</a></li>
                                 </ul>
                             </div>
                         }
