@@ -51,9 +51,16 @@ namespace Lab.Pages.Users
         // update user info
         public IActionResult OnPost()
         {
-            DBClass.UpdateUser(UserToUpdate);
+            if (UserToUpdate.email.EndsWith("jmu.edu"))
+            {
+                DBClass.UpdateUser(UserToUpdate);
 
-            return RedirectToPage("ViewProfiles");
+                return RedirectToPage("ViewProfiles");
+            }
+
+            ViewData["ErrorMessage"] = "Please enter your JMU email";
+            return Page();
+
         }
     }
 }

@@ -43,6 +43,12 @@
                                         <br />
                                         <input type="text" asp-for="@Model.UserToUpdate.secondName" required />
                                         <br />
+                                        @{
+                                            if (ViewData["ErrorMessage"] != null)
+                                            {
+                                                <p class="text-danger text-align right" align="center">@ViewData["ErrorMessage"].ToString()</p>
+                                            }
+                                        }
                                         <label asp-for="@Model.UserToUpdate.email">Email</label>
                                         <br />
                                         <input type="text" asp-for="@Model.UserToUpdate.email" />
@@ -161,3 +167,4 @@
     }
 
 }
+
