@@ -38,20 +38,26 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Enter Username</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input asp-for="@Model.enteredUsername" class="form-control" placeholder="Enter Username" style="width:450px">
+                    <form>
+                    <input asp-for="@Model.Username" class="form-control" placeholder="Enter Username" style="width:450px">
+                    <br />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <input type="submit" value="Go to Security Questions" asp-page="SecQuestions" asp-route-username = "@Model.Username" class="btn btn-purple" />
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a class="btn btn-purple" asp-page="SecQuestions" asp-route-enteredusername="@Model.enteredUsername">Go to Security Questions</a>
                 </div>
+                
             </div>
         </div>
     </div>
+    
 </body>
 
 
