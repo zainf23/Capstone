@@ -48,24 +48,24 @@
                     </div>
 
                 @{
-                    int unreadCount = 0;
-                    string sqlQuery = "Select count(*) AS readCount FROM Messages WHERE readMessage IS NULL";
-                    SqlDataReader messageReader = DBClass.GeneralReaderQuery(sqlQuery);
-                    while (messageReader.Read())
-                    {
-                        unreadCount = Int32.Parse(messageReader["readCount"].ToString());
-                    }
-
-                    int inviteCount = 0;
-                    string sqlQuery1 = "Select count(*) AS inviteCount FROM RequestTwo WHERE acceptedTwo = 0";
-                    SqlDataReader inviteReader = DBClass.GeneralReaderQuery(sqlQuery1);
-                    while (inviteReader.Read())
-                    {
-                        inviteCount = Int32.Parse(inviteReader["inviteCount"].ToString());
-                    }
-
                     if (Context.Session.GetString("username") != null) 
                     {
+                        int unreadCount = 0;
+                        string sqlQuery = "Select count(*) AS readCount FROM Messages WHERE readMessage IS NULL AND otherUserID = " + Context.Session.GetInt32("userID");
+                        SqlDataReader messageReader = DBClass.GeneralReaderQuery(sqlQuery);
+                        while (messageReader.Read())
+                        {
+                            unreadCount = Int32.Parse(messageReader["readCount"].ToString());
+                        }
+
+                        int inviteCount = 0;
+                        string sqlQuery1 = "Select count(*) AS inviteCount FROM RequestTwo WHERE acceptedTwo = 0 AND userID = "+ Context.Session.GetInt32("userID");
+                        SqlDataReader inviteReader = DBClass.GeneralReaderQuery(sqlQuery1);
+                        while (inviteReader.Read())
+                        {
+                            inviteCount = Int32.Parse(inviteReader["inviteCount"].ToString());
+                        }
+
                         string fileName = "";
                         string sqlQuery2 = "Select [fileName] FROM UserProfilePic WHERE userID =" + Context.Session.GetInt32("userID");
                         SqlDataReader picReader = DBClass.GeneralReaderQuery(sqlQuery2);
