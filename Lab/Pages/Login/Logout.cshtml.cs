@@ -8,7 +8,7 @@ namespace Lab.Pages.Login
         public IActionResult OnGet()
         {
             HttpContext.Session.Clear();
-            return RedirectToPage("/Index");
+            return RedirectToPage("HashedLogin");
         }
     }
 }
