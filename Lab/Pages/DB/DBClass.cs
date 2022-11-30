@@ -110,39 +110,63 @@ namespace Lab.Pages.DB
         {
             string sqlQuery = "UPDATE [User] SET ";
 
-            sqlQuery += "firstName= @firstName,";
-            sqlQuery += "secondName= @secondName,";
-            sqlQuery += "email= @email,";
-            sqlQuery += "jmuType= @jmuType,";
-            sqlQuery += "interests= @interests,";
-            sqlQuery += "experience= @experience,";
-            sqlQuery += "gradYear= @gradYear,";
-            sqlQuery += "major= @major,";
-            sqlQuery += "minor= @minor,";
-            sqlQuery += "jobTitle= @jobTitle,";
-            sqlQuery += "department= @department,";
-            sqlQuery += "moreInfo= @moreInfo WHERE userID= @userID";
+            sqlQuery += "firstName='" + u.firstName + "',";
+            sqlQuery += "secondName='" + u.secondName + "',";
+            sqlQuery += "email='" + u.email + "',";
+            sqlQuery += "jmuType='" + u.jmuType + "',";
+            sqlQuery += "interests='" + u.interests + "',";
+            sqlQuery += "experience='" + u.experience + "',";
+            sqlQuery += "gradYear='" + u.gradYear + "',";
+            sqlQuery += "major='" + u.major + "',";
+            sqlQuery += "minor='" + u.minor + "',";
+            sqlQuery += "jobTitle='" + u.jobTitle + "',";
+            sqlQuery += "department='" + u.department + "',";
+            sqlQuery += "moreInfo='" + u.moreInfo + "' WHERE userID=" + u.userID;
 
             SqlCommand cmdUserRead = new SqlCommand(sqlQuery);
             cmdUserRead.Connection = new SqlConnection();
             cmdUserRead.Connection.ConnectionString = LabConnStr;
             cmdUserRead.CommandText = sqlQuery;
-            cmdUserRead.Parameters.AddWithValue("@userID", u.userID);
-            cmdUserRead.Parameters.AddWithValue("@firstName", u.firstName);
-            cmdUserRead.Parameters.AddWithValue("@secondName", u.secondName);
-            cmdUserRead.Parameters.AddWithValue("@email", u.email);
-            cmdUserRead.Parameters.AddWithValue("@jmuType", u.jmuType);
-            cmdUserRead.Parameters.AddWithValue("@interests", u.interests);
-            cmdUserRead.Parameters.AddWithValue("@experience", u.experience);
-            cmdUserRead.Parameters.AddWithValue("@gradYear", u.gradYear);
-            cmdUserRead.Parameters.AddWithValue("@major", u.major);
-            cmdUserRead.Parameters.AddWithValue("@minor", u.minor);
-            cmdUserRead.Parameters.AddWithValue("@jobTitle", u.jobTitle);
-            cmdUserRead.Parameters.AddWithValue("@department", u.department);
-            cmdUserRead.Parameters.AddWithValue("@moreInfo", u.moreInfo);
             cmdUserRead.Connection.Open();
             cmdUserRead.ExecuteNonQuery();
         }
+        //public static void UpdateUser(User u)
+        //{
+        //    string sqlQuery = "UPDATE [User] SET ";
+
+        //    sqlQuery += "firstName= @firstName,";
+        //    sqlQuery += "secondName= @secondName,";
+        //    sqlQuery += "email= @email,";
+        //    sqlQuery += "jmuType= @jmuType,";
+        //    sqlQuery += "interests= @interests,";
+        //    sqlQuery += "experience= @experience,";
+        //    sqlQuery += "gradYear= @gradYear,";
+        //    sqlQuery += "major= @major,";
+        //    sqlQuery += "minor= @minor,";
+        //    sqlQuery += "jobTitle= @jobTitle,";
+        //    sqlQuery += "department= @department,";
+        //    sqlQuery += "moreInfo= @moreInfo WHERE userID= @userID";
+
+        //    SqlCommand cmdUserRead = new SqlCommand(sqlQuery);
+        //    cmdUserRead.Connection = new SqlConnection();
+        //    cmdUserRead.Connection.ConnectionString = LabConnStr;
+        //    cmdUserRead.CommandText = sqlQuery;
+        //    cmdUserRead.Parameters.AddWithValue("@userID", u.userID);
+        //    cmdUserRead.Parameters.AddWithValue("@firstName", u.firstName);
+        //    cmdUserRead.Parameters.AddWithValue("@secondName", u.secondName);
+        //    cmdUserRead.Parameters.AddWithValue("@email", u.email);
+        //    cmdUserRead.Parameters.AddWithValue("@jmuType", u.jmuType);
+        //    cmdUserRead.Parameters.AddWithValue("@interests", u.interests);
+        //    cmdUserRead.Parameters.AddWithValue("@experience", u.experience);
+        //    cmdUserRead.Parameters.AddWithValue("@gradYear", u.gradYear);
+        //    cmdUserRead.Parameters.AddWithValue("@major", u.major);
+        //    cmdUserRead.Parameters.AddWithValue("@minor", u.minor);
+        //    cmdUserRead.Parameters.AddWithValue("@jobTitle", u.jobTitle);
+        //    cmdUserRead.Parameters.AddWithValue("@department", u.department);
+        //    cmdUserRead.Parameters.AddWithValue("@moreInfo", u.moreInfo);
+        //    cmdUserRead.Connection.Open();
+        //    cmdUserRead.ExecuteNonQuery();
+        //}
         //method to read skills into list
         public static SqlDataReader SkillReader()
         {
