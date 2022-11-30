@@ -1,8 +1,10 @@
+using Lab.Pages.DataClasses;
 using Lab.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace Lab.Pages.Search
 {
@@ -27,6 +29,14 @@ namespace Lab.Pages.Search
         public string userPitch { get; set; }
 
         public List<SelectListItem> Projects { get; set; }
+
+        public List<TeamUser> Members { get; set; }
+
+        public RequesToJoinProjectModel()
+        {
+            Members = new List<TeamUser>();
+        }
+
 
         public void OnGet(int userid)
         {
@@ -66,7 +76,30 @@ namespace Lab.Pages.Search
             }
             teamFinder.Close();
 
-            string sqlQuery = "INSERT INTO RequestTwo (userID, projectID, teamID, acceptedTwo, userPitchTwo) VALUES (";
+            string sqlQuery3 = "Select userID from TeamUser Where teamID = " + teamID;
+            SqlDataReader memberReader = DBClass.GeneralReaderQuery(sqlQuery3);
+
+            while (memberReader.Read())
+            {
+                Members.Add(new TeamUser
+                {
+                    userID = Int32.Parse(memberReader["userID"].ToString())
+                }); ;
+
+            }
+            memberReader.Close();
+
+            foreach (var prod in Members)
+            {
+                if (prod.userID == userID)
+                {
+                    ViewData["ErrorMessage"] = "This user is already a member on your Project!";
+                    return Page();
+
+                }
+            }
+
+                string sqlQuery = "INSERT INTO RequestTwo (userID, projectID, teamID, acceptedTwo, userPitchTwo) VALUES (";
             sqlQuery += userID + ",";
             sqlQuery += projectID + ",";
             sqlQuery += teamID + ",";

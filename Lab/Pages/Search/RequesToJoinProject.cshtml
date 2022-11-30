@@ -46,6 +46,12 @@
                             <br />
                             <button type="submit" class="btn btn-purple">Request -> </button>
                             <a asp-page="Index" class="btn btn-warning">Cancel</a>
+                            @{
+                                if (ViewData["ErrorMessage"] != null)
+                                {
+                                    <p class="text-danger text-align right" align="center">@ViewData["ErrorMessage"].ToString()</p>
+                                }
+                            }
                         </form>
                     </div>
                 </div>
