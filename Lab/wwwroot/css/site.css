@@ -41,6 +41,11 @@ label {
     font-family: 'Archivo', sans-serif;
 }
 
+button {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+}
+
 ::placeholder {
     font-family: 'Archivo', sans-serif;
 }
@@ -69,15 +74,19 @@ body {
 }
 
 .btn-purple {
+    font-family: 'Archivo', sans-serif;
     color: #FFFFFF;
     background-color: #4891BC;
     border-color: #000000;
+    font-weight: 500;
 }
 
 .btn-purple1 {
+    font-family: 'Archivo', sans-serif;
     color: #FFFFFF;
     background-color: #450084;
     border-color: #000000;
+    font-weight: 500;
 }
 
 
