@@ -13,7 +13,7 @@ namespace Lab.Pages.Login
         public string passphrase { get; set; }
 
         [BindProperty]
-        public string enteredUsername { get; set; }
+        public string Username { get; set; }
 
         public int userID { get; set; }
 

@@ -23,10 +23,10 @@ namespace Lab.Pages.Login
         [BindProperty]
         public string enteredusername { get; set; }
 
-        public void OnGet(string enteredusername)
+        public void OnGet(string Username)
         {
 
-            String usernameQuery = "SELECT userID FROM [User] WHERE username = '" + enteredusername + "'";
+            String usernameQuery = "SELECT userID FROM [User] WHERE username = '" + Username + "'";
             SqlDataReader idReader = DBClass.GeneralReaderQuery(usernameQuery);
             while (idReader.Read())
             {
