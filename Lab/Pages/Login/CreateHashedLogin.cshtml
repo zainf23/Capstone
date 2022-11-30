@@ -11,53 +11,71 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&family=Arvo&display=swap" rel="stylesheet">
 
+<div class="m-4">
+    <div class="card">
+        <div class="card-header" style="background-color: #DACCE6">
+            <ul class="nav nav-pills card-header-pills btn btn-purple1">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link btn btn-purple" data-bs-toggle="tab"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body" style="background-color: #DACCE6">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" style="background-color: #DACCE6" id="home">
+                    <div class="row">
+                        <form asp-page="CreateHashedLogin">
+                            <br />
+                            <h2 class="text-center" style="color: #450084;">Create Account</h2>
+                            <label>Enter New Username:</label>
+                            <input asp-for="username" class="form-control" required placeholder="Enter Username" />
 
-<form asp-page="CreateHashedLogin">
-    <br />
-    <h2 style="color: #450084;">Create Account</h2>
-    <label>Enter New Username:</label>
-    <input asp-for="username" class="form-control" required placeholder="Enter Username" />
+                            <br />
 
-    <br />
-   
-    <label>Enter New User's Password:</label>
-    <input asp-for="passphrase" class="form-control" required type="password" />
-   
-    <br />
+                            <label>Enter New User's Password:</label>
+                            <input asp-for="passphrase" class="form-control" required type="password" />
 
-    <label>First Name:</label>
-    <input asp-for="firstName" class="form-control" required placeholder="Enter First Name" />
+                            <br />
 
-    <br />
+                            <label>First Name:</label>
+                            <input asp-for="firstName" class="form-control" required placeholder="Enter First Name" />
 
-    <label>Second Name:</label>
-    <input asp-for="secondName" class="form-control" required placeholder="Enter Second Name" />
+                            <br />
 
-    <br />
-    
-    <label for="jmuType">Choose Your JMU Affiliation:</label>
-    <select asp-for="jmuType" required>
-        <option value="Student">Student</option>
-        <option value="Faculty">Faculty</option>
-    </select>
-    <br />
-    <br />
-    <h2 style="color: #450084;">Security Questions</h2>
-    <label asp-for="@Model.secQuestionMom">What is your Mother's Maiden Name?</label>
-    <br />
-    <input type="text" asp-for="@Model.secQuestionMom" required placeholder="Enter Answer" />
-    <br />
-    <label asp-for="@Model.secQuestionPet">What was the name of your first pet?</label>
-    <br />
-    <input type="text" asp-for="@Model.secQuestionPet" required placeholder="Enter Answer" />
-    <br />
-    <label asp-for="@Model.secQuestionParents">What city did your Parents meet in?</label>
-    <br />
-    <input type="text" asp-for="@Model.secQuestionParents" required placeholder="Enter Answer" />
-    <br />
-    <br />
-    <input type="submit" class="btn btn-purple" />
-</form>
+                            <label>Second Name:</label>
+                            <input asp-for="secondName" class="form-control" required placeholder="Enter Second Name" />
+
+                            <br />
+
+                            <label for="jmuType">Choose Your JMU Affiliation:</label>
+                            <select asp-for="jmuType" required>
+                                <option value="Student">Student</option>
+                                <option value="Faculty">Faculty</option>
+                            </select>
+                            <br />
+                            <br />
+                            <h2 style="color: #450084;">Security Questions</h2>
+                            <label asp-for="@Model.secQuestionMom">What is your Mother's Maiden Name?</label>
+                            <br />
+                            <input type="text" asp-for="@Model.secQuestionMom" required placeholder="Enter Answer" />
+                            <br />
+                            <label asp-for="@Model.secQuestionPet">What was the name of your first pet?</label>
+                            <br />
+                            <input type="text" asp-for="@Model.secQuestionPet" required placeholder="Enter Answer" />
+                            <br />
+                            <label asp-for="@Model.secQuestionParents">What city did your Parents meet in?</label>
+                            <br />
+                            <input type="text" asp-for="@Model.secQuestionParents" required placeholder="Enter Answer" />
+                            <br />
+                            <br />
+                            <input type="submit" class="btn btn-purple" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @{
     if (ViewData["UserCreate"] != null)
