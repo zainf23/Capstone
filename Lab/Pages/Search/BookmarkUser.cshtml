@@ -30,7 +30,7 @@
                             <input type="hidden" asp-for="mainUserID" placeholder="User ID" />
                             <input type="hidden" asp-for="otherUserID" placeholder="Other User ID" />
                             <div class="form-group">
-                                <label asp-for="reason">Reason for Bookmarking</label>
+                                <label asp-for="reason">Reason for Bookmarking @Model.firstName @Model.lastName</label>
                                 <textarea class="form-control" asp-for="reason" required rows="3"></textarea>
                             </div>
                             <br />

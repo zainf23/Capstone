@@ -141,7 +141,7 @@ namespace Lab.Pages.Users
             }
             picReader.Close();
 
-            String sqlQueryTwo = "Select Distinct u.userID, u.firstName, u.secondName, u.jmuType, u.gradYear, u.major, u.minor, u.jobtitle, u.department, upp.fileName from [User] u, UserProfilePic upp, Bookmark b WHERE (u.userID = upp.userID AND u.userID = b.otherUserID) AND b.userID =" + UserProfile.userID;
+            String sqlQueryTwo = "Select Distinct u.userID, u.firstName, u.secondName, u.jmuType, u.gradYear, u.major, u.minor, u.jobtitle, u.department, upp.fileName,b.reason from [User] u, UserProfilePic upp, Bookmark b WHERE (u.userID = upp.userID AND u.userID = b.otherUserID) AND b.userID =" + UserProfile.userID;
             SqlDataReader BookmarkReader = DBClass.GeneralReaderQuery(sqlQueryTwo);
             
             while (BookmarkReader.Read())
@@ -158,6 +158,7 @@ namespace Lab.Pages.Users
                     jobTitle = BookmarkReader["jobtitle"].ToString(),
                     department = BookmarkReader["department"].ToString(),
                     fileName = BookmarkReader["fileName"].ToString(),
+                    reason = BookmarkReader["reason"].ToString(),
 
                 });
             }
