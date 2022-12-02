@@ -1,5 +1,7 @@
 ﻿@page
 @model Lab.Pages.Messages.CreateMessageModel
+@using System.Web.Helpers
+
 @{
 }
 
@@ -28,7 +30,7 @@
                     <div class="row">
                         <form asp-page="CreateMessage">
                             <br />
-                            <h2 class = "text-center" style="color: #450084;">Send a Message</h2>
+                            <h2 class="text-center" style="color: #450084;">Send a Message</h2>
                             <input type="hidden" asp-for="@Model.userID" placeholder="userID" />
 
                             <div class="input-group">
@@ -56,3 +58,4 @@
         </div>
     </div>
 </div>
+
