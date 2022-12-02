@@ -1,6 +1,7 @@
 ﻿@page
 @using System.Data.SqlClient
 @using Lab.Pages.DB
+@using Lab.Pages.AWSupload
 @model Lab.Pages.Users.ViewProfilesModel
 @{
     ViewData["Title"] = @Model.UserProfile.firstName + "'s Profile";
@@ -44,7 +45,11 @@
                                 <div class="col-lg-4">
                                     <div class="card mb-4">
                                         <div class="card-body text-center">
-                                            <img src="/Images/@Model.fileName" alt="avatar"
+                                            @{
+                                                AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                                                string Url = urlFinder.getUrl(); 
+                                            }
+                                            <img src="@Url@Model.fileName" alt="avatar"
                                              class="rounded-circle img-fluid" style="width: 150px;">
                                             <br />
                                             <br />
@@ -219,7 +224,7 @@
                                     {
                                         <div class="col">
                                             <div class="card">
-                                                <img src="~/Images/@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
+                                                <img src="@Url@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
                                                 <div class="card-body">
                                                     <h5 class="card-title">@pro.firstName @pro.secondName</h5>
                                                     @{
@@ -309,7 +314,7 @@
                                 <div class="col-lg-4">
                                     <div class="card mb-4">
                                         <div class="card-body text-center">
-                                            <img src="/Images/@Model.fileName" alt="avatar"
+                                            <img src="@Url@Model.fileName" alt="avatar"
                                              class="rounded-circle img-fluid" style="width: 150px;">
                                             <br />
                                             <br />
@@ -464,7 +469,7 @@
                                     {
                                         <div class="col">
                                             <div class="card">
-                                                <img src="~/Images/@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
+                                                <img src="@Url@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
                                                 <div class="card-body">
                                                     <h5 class="card-title">@pro.firstName @pro.secondName</h5>
                                                     @{

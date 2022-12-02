@@ -1,4 +1,5 @@
 ﻿@page
+@using Lab.Pages.AWSupload
 @model Lab.Pages.Projects.ViewOtherProjectsModel
 @{
 }
@@ -27,7 +28,11 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    <img src="/Images/@Model.fileName" alt="avatar"
+                                    @{
+                                        AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                                        string url = urlFinder.getUrl();
+                                    }
+                                    <img src="@url@Model.fileName" alt="avatar"
                                          class="rounded-circle img-fluid" style="width: 150px;">
                                     <br />
                                     <br />

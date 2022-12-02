@@ -1,5 +1,6 @@
 ﻿@page
 @model Lab.Pages.Search.IndexModel
+@using Lab.Pages.AWSupload
 @{
     ViewData["Title"] = "Search Projects";
 }
@@ -42,6 +43,8 @@
                             </div>
                         </form>
                         @{
+                            AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                            string url = urlFinder.getUrl();
                             if (Model.SearchString != null)
                             {
 
@@ -50,8 +53,8 @@
                                         foreach (var pro in Model.UserSearchList)
                                         {
                                             <div class="col">
-                                                <div class="card">
-                                                    <img src="~/Images/@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
+                                                <div class="card">                                             
+                                                    <img src="@url@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
                                                     <div class="card-body">
                                                         <h5 class="card-title align-items-center d-flex justify-content-center">@pro.firstName @pro.secondName</h5>
                                                         @{

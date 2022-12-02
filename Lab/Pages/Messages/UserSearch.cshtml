@@ -1,4 +1,5 @@
 ﻿@page
+@using Lab.Pages.AWSupload
 @model Lab.Pages.Messages.UserSearchModel
 @{
 }
@@ -43,6 +44,8 @@
                             </div>
                         </form>
                         @{
+                            AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                            string url = urlFinder.getUrl();
                             if (Model.SearchString != null)
                             {
 
@@ -52,7 +55,7 @@
                                         {
                                             <div class="col">
                                                 <div class="card">
-                                                    <img src="~/Images/@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
+                                                    <img src="@url@pro.fileName" class="rounded-circle img-fluid mx-auto d-block" style="width: 200px; height:220px;" />
                                                     <div class="card-body">
                                                         <h5 class="card-title align-items-center d-flex justify-content-center">@pro.firstName @pro.secondName</h5>
                                                         @{

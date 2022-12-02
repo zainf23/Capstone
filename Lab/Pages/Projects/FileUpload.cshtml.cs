@@ -1,3 +1,4 @@
+using Lab.Pages.AWSupload;
 using Lab.Pages.DataClasses;
 using Lab.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
@@ -25,15 +26,17 @@ namespace Lab.Pages.Projects
             {
                 if (formFile.Length > 0)
                 {
+                    AmazonS3Uploader uploader = new AmazonS3Uploader();
+                    var result = uploader.UploadFileAsync(formFile);
                     // full path to file in temp location
-                    var filePath = Directory.GetCurrentDirectory() +
-                    @"\wwwroot\images\" + formFile.FileName;
-                    filePaths.Add(filePath);
-                    using (var stream = new FileStream(filePath,
-                    FileMode.Create))
-                    {
-                        formFile.CopyTo(stream);
-                    }
+                    //var filePath = Directory.GetCurrentDirectory() +
+                    //@"\wwwroot\images\" + formFile.FileName;
+                    //filePaths.Add(filePath);
+                    //using (var stream = new FileStream(filePath,
+                    //FileMode.Create))
+                    //{
+                    //    formFile.CopyTo(stream);
+                    //}
                     fileName = formFile.FileName;
                 }
                 projectID = (int)HttpContext.Session.GetInt32("projectID");

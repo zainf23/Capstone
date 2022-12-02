@@ -1,6 +1,7 @@
 ﻿@page
 @using System.Data.SqlClient
 @using Lab.Pages.DB
+@using Lab.Pages.AWSupload
 @model Lab.Pages.Search.ViewProjectModel
 @{
     ViewData["Title"] = @Model.ProjectInfo.projectName;
@@ -43,7 +44,11 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    <img src="/Images/@Model.fileName" alt="avatar"
+                                    @{
+                                        AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                                        string url = urlFinder.getUrl();
+                                    }
+                                    <img src="@url@Model.fileName" alt="avatar"
                                          class="rounded-circle img-fluid" style="width: 150px;">
                                     <br />
                                     
@@ -211,7 +216,7 @@
                                             <div class="card mb-4">
                                                 <div class="card-header">
                                                     <div class="media flex-wrap w-100 align-items-center">
-                                                        <img src="/Images/@pro.fileName" class="rounded-circle img-fluid" style="width: 100px;">
+                                                        <img src="@url@pro.fileName" class="rounded-circle img-fluid" style="width: 100px;">
                                                         <br />
                                                         <br />
                                                         <div class="media-body ml-3">

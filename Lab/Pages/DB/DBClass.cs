@@ -16,10 +16,10 @@ namespace Lab.Pages.DB
         //            Database=AUTH;uid=adminuser;password=Swoopes1;Pooling=false";
 
         private static readonly string LabConnStr
-            = @"Server=Localhost;Database=Capstone;Trusted_Connection=True";
+            = @"Server=Localhost;Database=Capstone;Trusted_Connection=True;Pooling=false";
 
         private static readonly string AuthConnStr
-           = @"Server=Localhost;Database=AUTH;Trusted_Connection=True";
+           = @"Server=Localhost;Database=AUTH;Trusted_Connection=True;Pooling=false";
 
         // method to read data from user file
         public static SqlDataReader UserReader(string username)

@@ -1,4 +1,5 @@
 ﻿@page
+@using Lab.Pages.AWSupload
 @model Lab.Pages.Projects.MyProjectsModel
 @{
 }
@@ -101,11 +102,13 @@
                     <h2 class="text-center " style="color: #450084;">My Owned Projects</h2>
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         @{
+                            AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                            string url = urlFinder.getUrl();
                             foreach (var pro in Model.MyProjectList)
                             {
                                 <div class="card-group col">
                                     <div class="card">
-                                        <img src="~/Images/@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
+                                        <img src="@url@pro.fileName" class="card-img-top img-fluid" style="width: 170px;" />
                                         <div class="card-body">
                                             <h5 class="card-title">@pro.projectName</h5>
                                             <p class="cardd-text">Project Owner: @pro.projectOwner</p>
@@ -139,7 +142,7 @@
                             {
                                 <div class="card-group col">
                                     <div class="card">
-                                        <img src="~/Images/@proj.fileName" class="card-img-top img-fluid" style="width: 170px;" />
+                                        <img src="@url@proj.fileName" class="card-img-top img-fluid" style="width: 170px;" />
                                         <div class="card-body">
                                             <h5 class="card-title">@proj.projectName</h5>
                                             <p class="cardd-text">Project Owner: @proj.projectOwner</p>

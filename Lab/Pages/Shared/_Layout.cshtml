@@ -1,5 +1,6 @@
 ﻿@using System.Data.SqlClient
 @using Lab.Pages.DB
+@using Lab.Pages.AWSupload
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,6 +74,9 @@
                         {
                             fileName = picReader["fileName"].ToString();
                         }
+                        AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                        
+                        string url = urlFinder.getUrl() + fileName;
 
                         if (unreadCount == 0)
                         {
@@ -121,7 +125,7 @@
 
                         <div class="dropdown text-end">
                             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/Images/@fileName" alt="mdo" width="60" height="60" class="rounded-circle">
+                                <img src="@url" alt="mdo" width="60" height="60" class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small">
                                 <li><a class="dropdown-item" asp-page="/Users/ViewProfiles">View Profile</a></li>

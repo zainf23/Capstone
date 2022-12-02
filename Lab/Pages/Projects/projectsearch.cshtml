@@ -1,4 +1,5 @@
 ﻿@page
+@using Lab.Pages.AWSupload
 @model Lab.Pages.Projects.projectsearchModel
 @{
 }
@@ -32,6 +33,8 @@
                             </div>
                         </form>
                         @{
+                            AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                            string url = urlFinder.getUrl();
                             if (Model.SearchString != null)
                             {
 
@@ -42,7 +45,7 @@
                                         {
                                             <div class="card-group col">
                                                 <div class="card">
-                                                    <img src="~/Images/@pro.fileName" class="card-img-top rounded-circle img-fluid" style="width: 170px;" />
+                                                    <img src="@url@pro.fileName" class="card-img-top rounded-circle img-fluid" style="width: 170px;" />
                                                     <div class="card-body">
                                                         <h5 class="card-title">@pro.projectName</h5>
                                                         <p class="cardd-text">Project Owner: @pro.projectOwner</p>
