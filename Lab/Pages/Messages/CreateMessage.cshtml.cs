@@ -4,8 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data.SqlClient;
+using System.Net;
+using System.Net.Mail;
+
+using System.Reflection;
+using System.Web.Helpers;
 
 namespace Lab.Pages.Messages
+
 {
     public class CreateMessageModel : PageModel
     {
@@ -44,6 +50,9 @@ namespace Lab.Pages.Messages
 
         [BindProperty]
         public string userName { get; set; }
+
+        [BindProperty]
+        public string rEmail { get; set; }
 
 
 
@@ -101,7 +110,39 @@ namespace Lab.Pages.Messages
             date = System.DateTime.Now.ToString("F");
 
 
-            DBClass.SendMessage(userID,otherUserID,subject,message,senderName,date);
+            DBClass.SendMessage(userID, otherUserID, subject, message, senderName, date);
+
+
+
+            var errorMessage = "";
+            var debuggingFlag = false;
+            try
+            {
+
+                var smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    // the NetworkCredential has 2 parameters the email account sending the email and the app password for that account(email, app password)
+                    // https://youtu.be/lk5dhDzfzsU this video walk you through the proccess of setting and changing the app password hywqoinqgqqkfgsy
+                    Credentials = new NetworkCredential("madisonconjmu@gmail.com", "gkkfxcqvycrzhbsw"),
+
+                    EnableSsl = true,
+                };
+                String otherEmail = "Select email from [User] WHERE userID ='" + otherUserID + "'";
+                SqlDataReader otherEmailReader = DBClass.GeneralReaderQuery(otherEmail);
+                while (otherEmailReader.Read())
+                {
+                    rEmail = otherEmailReader["email"].ToString();
+                }
+                nameReader.Close();
+                Console.WriteLine(otherEmailReader);
+                smtpClient.Send("madisonconjmu@gmail.com", rEmail, "Madison Connect Update", "Hello, \n\tYou have recived an update on Madison Connect please sign in to view.\nhttp://lab-dev.eba-he83pxes.us-east-1.elasticbeanstalk.com");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
 
             return RedirectToPage("Index");
