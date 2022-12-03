@@ -11,20 +11,39 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&family=Arvo&display=swap" rel="stylesheet">
 
-<form method="post" enctype="multipart/form-data" asp-action="FileUpload">
-    <h2 style="color: #450084;">Upload Project Profile Picture</h2>
-    <div class="form-group">
-        <div class="col-md-10">
-            <label asp-for="files">Choose a File to Upload:</label>
-            <br />
-            <input asp-for="files" type="file" />
+<div class="m-4">
+    <div class="card">
+        <div class="card-header" style="background-color: #DACCE6">
+            <ul class="nav nav-pills card-header-pills btn btn-purple1">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link btn btn-purple" data-bs-toggle="tab"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body" style="background-color: #DACCE6">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" style="background-color: #DACCE6" id="home">
+                    <div class="row">
+                        <form method="post" enctype="multipart/form-data" asp-action="FileUpload">
+                            <h2 class="text-center" style="color: #450084;">Upload Project Profile Picture</h2>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label asp-for="files">Choose a File to Upload:</label>
+                                    <br />
+                                    <input asp-for="files" type="file" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="submit" class="btn btn-purple" value="Upload File" />
+                                    <a asp-page="ViewProjects" class="btn btn-warning">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <br />
-    <div class="form-group">
-        <div class="col-md-10">
-            <input type="submit" class="btn btn-purple" value="Upload File" />
-            <a asp-page="ViewProjects" class="btn btn-warning">Cancel</a>
-        </div>
-    </div>
-</form>
+</div>

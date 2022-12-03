@@ -314,6 +314,10 @@
                                 <div class="col-lg-4">
                                     <div class="card mb-4">
                                         <div class="card-body text-center">
+                                            @{
+                                                AmazonS3Uploader urlFinder = new AmazonS3Uploader();
+                                                string Url = urlFinder.getUrl();
+                                            }
                                             <img src="@Url@Model.fileName" alt="avatar"
                                              class="rounded-circle img-fluid" style="width: 150px;">
                                             <br />

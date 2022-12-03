@@ -96,7 +96,7 @@ namespace Lab.Pages.Login
                     return RedirectToPage("PasswordChange");
                 }
             }          
-                ViewData["ErrorMessage"] = "Security Question Incorrect";
+                ViewData["ErrorMessage"] = "Security Question Incorrect!";
                 return Page();
             
             

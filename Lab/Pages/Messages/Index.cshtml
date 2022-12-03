@@ -40,6 +40,13 @@
     <h2 class="text-center" style="color: #450084;">My Inbox</h2>
     <br />
         @{
+            if (ViewData["ErrorMessage"] != null)
+            {
+                <h5 class="text-danger text-align right" align="center">@ViewData["ErrorMessage"].ToString()</h5>
+            }
+        }
+        <br />
+        @{
             AmazonS3Uploader urlFinder = new AmazonS3Uploader();
             string url = urlFinder.getUrl(); 
             foreach (var m in Model.MyMessages)
@@ -85,7 +92,7 @@
 <div class="tab-pane fade" style="background-color: #DACCE6" id="read">
     <br />
     <h2 class="text-center" style="color: #450084;">My Read Inbox</h2>
-    <br />
+        <br />
     @{
         foreach (var m in Model.MyReadMessages)
         {
