@@ -123,7 +123,7 @@ namespace Lab.Pages.Search
                     Port = 587,
                     // the NetworkCredential has 2 parameters the email account sending the email and the app password for that account(email, app password)
                     // https://youtu.be/lk5dhDzfzsU this video walk you through the proccess of setting and changing the app password gkkfxcqvycrzhbsw
-                    Credentials = new NetworkCredential("madisonconjmu@gmail.com", "gkkfxcqvycrzhbsw"),
+                    Credentials = new NetworkCredential("madisonconnectjmu@gmail.com", "mvmktbowgtrltcsm"),
 
                     EnableSsl = true,
                 };
@@ -135,7 +135,7 @@ namespace Lab.Pages.Search
                 }
                 otherEmailReader.Close();
                 Console.WriteLine(otherEmailReader);
-                smtpClient.Send("madisonconjmu@gmail.com", rEmail, "Madison Connect Update", "Hello, \n\tYou have recived an update on Madison Connect please sign in to view.\nhttp://lab-dev.eba-he83pxes.us-east-1.elasticbeanstalk.com");
+                smtpClient.Send("madisonconnectjmu@gmail.com", rEmail, "Madison Connect Update", "Hello, \n\tYou have recived an update on Madison Connect please sign in to view.\nhttp://lab-dev.eba-he83pxes.us-east-1.elasticbeanstalk.com");
 
             }
             catch (Exception ex)
